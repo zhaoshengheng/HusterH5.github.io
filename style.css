@@ -647,19 +647,20 @@ button:active { transform: scale(.98); }
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 .h5-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: var(--page-w);
   height: var(--page-h);
   min-width: var(--page-w);
   min-height: var(--page-h);
   max-width: none;
   max-height: none;
-  transform: scale(var(--stage-scale, 1));
+  transform: translate(-50%, -50%) scale(var(--stage-scale, 1));
   transform-origin: center center;
   border-radius: 0;
 }
@@ -1228,7 +1229,7 @@ button:active { transform: scale(.98); }
 .route-preview-card .small-btn { min-height: 42px; padding: 9px 15px; font-size: 13px; }
 
 /* ===== v8 repair: back to stable v4 style, only safe improvements ===== */
-.h5-stage { width: var(--page-w); height: var(--page-h); transform: scale(var(--stage-scale, 1)); transform-origin: center center; }
+.h5-stage { position: absolute; left: 50%; top: 50%; width: var(--page-w); height: var(--page-h); transform: translate(-50%, -50%) scale(var(--stage-scale, 1)); transform-origin: center center; }
 .identity-preview { display: none !important; }
 .identity-desk { height: 620px; margin-top: 22px; }
 .identity .identity-next { position: absolute; left: 38px; right: 38px; bottom: 76px; width: auto; }
