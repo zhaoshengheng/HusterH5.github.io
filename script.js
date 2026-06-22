@@ -244,6 +244,7 @@ let draggingCompare = false;
 const unlocked = new Set();
 let taskState = { id: 0, done: 0, required: 1, completed: false };
 let autoAdvanceTimer = null;
+let posterRenderToken = 0;
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -281,6 +282,13 @@ function nextRouteIndexAfterCurrent() {
   return routeIndexes[currentRoutePosition + 1] ?? null;
 }
 
+function prevRouteIndexBeforeCurrent() {
+  const routeIndexes = getRouteIndexes();
+  const currentRoutePosition = routeIndexes.indexOf(landmarkIndex);
+  if (currentRoutePosition < 0) return null;
+  return routeIndexes[currentRoutePosition - 1] ?? null;
+}
+
 function routeProgressLabel(item = landmarks[landmarkIndex]) {
   const order = routeOrderFor(item);
   return order > 0
@@ -305,7 +313,7 @@ function getFutureFileName(item) {
 }
 
 function detailFlowFor(item) {
-  return [3, 5, 8, 9, 13].includes(item.id) ? 'task-first' : 'image-first';
+  return 'image-first';
 }
 
 function applyDetailFlow(item) {
@@ -440,6 +448,10 @@ function applyIdentityTheme() {
   stage.style.setProperty('--identity-accent', item.accent);
   stage.style.setProperty('--identity-soft', item.soft);
   stage.dataset.identity = currentIdentity;
+  document.body.dataset.identity = currentIdentity;
+  document.body.style.setProperty('--identity-visual', `url("${item.visual}")`);
+  document.body.style.setProperty('--identity-accent', item.accent);
+  document.body.style.setProperty('--identity-soft', item.soft);
   updateBgmSource();
 }
 
@@ -521,10 +533,6 @@ function updateRouteCard() {
   const inRoute = isIdentityRouteLandmark(item);
   const routeText = routeProgressLabel(item);
   $('#routeCard').innerHTML = `
-    <div class="route-preview-media">
-      <img id="routePreviewImg" alt="${item.name} 现在照片预览" />
-      <div class="route-preview-placeholder" id="routePreviewPlaceholder"><b>${landmarkStem(item)}_now.jpg</b><small>现在照片预留位</small></div>
-    </div>
     <div class="route-preview-copy">
       <span>${routeText} / ${landmarkStem(item)} / ${item.campus} / ${item.group}</span>
       <h3>${item.name}</h3>
@@ -532,7 +540,6 @@ function updateRouteCard() {
       <button class="route-enter-btn" id="enterLandmark"><b>进入地标探索</b><i>→</i></button>
     </div>
   `;
-  updateImage($('#routePreviewImg'), $('#routePreviewPlaceholder'), getNowSrc(item));
   $('#enterLandmark').addEventListener('click', () => {
     updateLandmark();
     goTo(3);
@@ -747,6 +754,25 @@ function goNextLandmarkFromTask() {
   landmarkIndex = nextIndex;
   updateLandmark();
   showToast(`下一站：${landmarks[landmarkIndex].name}`);
+}
+
+function goAdjacentLandmarkBySwipe(direction) {
+  if (pageIndex !== 3) return false;
+  if (!isIdentityRouteLandmark(landmarks[landmarkIndex])) {
+    landmarkIndex = (landmarkIndex + direction + landmarks.length) % landmarks.length;
+    updateLandmark();
+    showToast(`自由探索：${landmarks[landmarkIndex].name}`);
+    return true;
+  }
+  const targetIndex = direction > 0 ? nextRouteIndexAfterCurrent() : prevRouteIndexBeforeCurrent();
+  if (targetIndex === null) {
+    goTo(direction > 0 ? 4 : 2);
+    return true;
+  }
+  landmarkIndex = targetIndex;
+  updateLandmark();
+  showToast(`${direction > 0 ? '下一站' : '上一站'}：${landmarks[landmarkIndex].name}`);
+  return true;
 }
 
 function launchTaskEffect(strong = false) {
@@ -1035,10 +1061,31 @@ function getStageHeight() {
   return Number.isFinite(value) && value > 0 ? value : 1030;
 }
 
+function resetStageScroll() {
+  const stage = $('#stage');
+  const pagesWrap = $('#pages');
+  if (stage && stage.scrollTop !== 0) stage.scrollTop = 0;
+  if (pagesWrap && pagesWrap.scrollTop !== 0) pagesWrap.scrollTop = 0;
+}
+
+function activePageCanScroll(direction) {
+  const page = pages[pageIndex];
+  if (!page) return false;
+  const scrollablePages = new Set(['route', 'detail', 'collection', 'ending']);
+  if (!scrollablePages.has(page.dataset.page)) return false;
+  const maxScroll = page.scrollHeight - page.clientHeight;
+  if (maxScroll <= 6) return false;
+  return direction > 0 ? page.scrollTop < maxScroll - 6 : page.scrollTop > 6;
+}
+
 function updatePageTransform() {
   const pagesWrap = $('#pages');
   if (!pagesWrap) return;
+  resetStageScroll();
+  pages.forEach(page => { page.scrollTop = 0; });
   pagesWrap.style.transform = 'none';
+  pagesWrap.style.top = '0px';
+  requestAnimationFrame(resetStageScroll);
 }
 
 function goTo(index) {
@@ -1049,7 +1096,9 @@ function goTo(index) {
   }
   pageIndex = target;
   updatePageTransform();
-  $('#stage').dataset.page = pages[pageIndex].dataset.page;
+  const pageName = pages[pageIndex].dataset.page;
+  $('#stage').dataset.page = pageName;
+  document.body.dataset.h5Page = pageName;
   $('#pageNow').textContent = String(pageIndex + 1).padStart(2, '0');
   $('#pageTotal').textContent = String(pages.length).padStart(2, '0');
   pages.forEach((page, idx) => {
@@ -1057,9 +1106,15 @@ function goTo(index) {
     page.classList.remove('page-ready');
   });
   if (pages[pageIndex].dataset.page === 'collection') renderStamps();
-  if (pages[pageIndex].dataset.page === 'ending') updateIdentityPreview();
+  if (pages[pageIndex].dataset.page === 'ending') {
+    updateIdentityPreview();
+    requestAnimationFrame(() => makePoster(false));
+  }
   updateGuideBubble();
-  requestAnimationFrame(() => requestAnimationFrame(() => pages[pageIndex].classList.add('page-ready')));
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    resetStageScroll();
+    pages[pageIndex].classList.add('page-ready');
+  }));
 }
 
 function resetExperience() {
@@ -1139,13 +1194,25 @@ function wrapTextLimited(ctx, text, x, y, maxWidth, lineHeight, maxLines = Infin
   return y + lineHeight;
 }
 
-async function makePoster() {
+async function makePoster(showMessage = true) {
+  const token = ++posterRenderToken;
   const canvas = $('#posterCanvas');
+  const exportScale = 2;
+  const designW = 640;
+  const designH = 1030;
+  if (canvas.width !== designW * exportScale || canvas.height !== designH * exportScale) {
+    canvas.width = designW * exportScale;
+    canvas.height = designH * exportScale;
+  }
   const ctx = canvas.getContext('2d');
-  const w = canvas.width;
-  const h = canvas.height;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.setTransform(exportScale, 0, 0, exportScale, 0, 0);
+  const w = designW;
+  const h = designH;
   const id = identities[currentIdentity];
   const bg = await loadCanvasImage('assets/generated/identity-entry-bg.jpg');
+  if (token !== posterRenderToken) return;
   if (bg) {
     drawCoverImage(ctx, bg, 0, 0, w, h);
   } else {
@@ -1171,59 +1238,69 @@ async function makePoster() {
   }
   ctx.globalAlpha = 1;
 
-  roundRect(ctx, 50, 70, 540, 806, 36, true, false, 'rgba(255,248,232,.93)');
+  roundRect(ctx, 44, 64, 552, 844, 36, true, false, 'rgba(255,248,232,.94)');
   roundRect(ctx, 76, 100, 188, 42, 21, true, false, id.accent);
   ctx.fillStyle = '#ffffff';
-  ctx.font = '900 18px sans-serif';
+  ctx.font = '900 18px "Microsoft YaHei", sans-serif';
   ctx.fillText(id.label, 104, 128);
 
-  ctx.fillStyle = '#0b4ea2';
-  ctx.font = '900 24px sans-serif';
+  const posterTitleGradient = ctx.createLinearGradient(86, 0, 520, 0);
+  posterTitleGradient.addColorStop(0, '#0b4ea2');
+  posterTitleGradient.addColorStop(.64, id.accent);
+  posterTitleGradient.addColorStop(1, '#29c5d8');
+  ctx.fillStyle = posterTitleGradient;
+  ctx.font = '900 24px "Microsoft YaHei", sans-serif';
   ctx.fillText('HUST TIME PASS', 86, 178);
   ctx.fillStyle = 'rgba(22,48,76,.52)';
-  ctx.font = '19px sans-serif';
+  ctx.font = '19px "Microsoft YaHei", sans-serif';
   ctx.fillText('时空喻园：现在，遇见未来', 86, 212);
 
-  ctx.fillStyle = '#16304c';
-  ctx.font = '900 48px sans-serif';
-  wrapTextLimited(ctx, id.endingTitle, 86, 296, 470, 58, 2);
+  const endingTitleGradient = ctx.createLinearGradient(86, 0, 556, 0);
+  endingTitleGradient.addColorStop(0, '#16304c');
+  endingTitleGradient.addColorStop(.58, '#0b4ea2');
+  endingTitleGradient.addColorStop(1, id.accent);
+  ctx.fillStyle = endingTitleGradient;
+  ctx.font = '900 46px "STKaiti", "KaiTi", "Microsoft YaHei", serif';
+  let cursorY = wrapTextLimited(ctx, id.endingTitle, 86, 292, 470, 56, 2) + 34;
 
   ctx.fillStyle = 'rgba(22,48,76,.68)';
-  ctx.font = '22px sans-serif';
-  wrapTextLimited(ctx, id.endingText, 86, 426, 470, 32, 5);
+  ctx.font = '20px "Microsoft YaHei", sans-serif';
+  cursorY = wrapTextLimited(ctx, id.endingText, 86, cursorY, 470, 30, 9);
 
-  roundRect(ctx, 78, 600, 484, 88, 22, true, false, 'rgba(11,78,162,.08)');
+  const routeY = Math.min(640, Math.max(570, cursorY + 18));
+  roundRect(ctx, 78, routeY, 484, 144, 22, true, false, 'rgba(11,78,162,.08)');
   ctx.fillStyle = id.accent;
-  ctx.font = '900 20px sans-serif';
-  ctx.fillText('身份路线', 104, 636);
+  ctx.font = '900 20px "Microsoft YaHei", sans-serif';
+  ctx.fillText('身份路线', 104, routeY + 36);
   ctx.fillStyle = 'rgba(22,48,76,.68)';
-  ctx.font = '16px sans-serif';
-  wrapTextLimited(ctx, id.routeSummary, 104, 666, 430, 24, 1);
+  ctx.font = '14px "Microsoft YaHei", sans-serif';
+  wrapTextLimited(ctx, id.routeSummary, 104, routeY + 64, 430, 21, 4);
 
-  roundRect(ctx, 86, 720, 205, 100, 24, true, false, 'rgba(11,78,162,.10)');
-  roundRect(ctx, 320, 720, 205, 100, 24, true, false, 'rgba(11,78,162,.10)');
+  const statsY = routeY + 164;
+  roundRect(ctx, 86, statsY, 205, 100, 24, true, false, 'rgba(11,78,162,.10)');
+  roundRect(ctx, 320, statsY, 205, 100, 24, true, false, 'rgba(11,78,162,.10)');
   ctx.fillStyle = '#0b4ea2';
-  ctx.font = '900 34px sans-serif';
-  ctx.fillText(`${unlocked.size}/${totalLandmarkCount()}`, 116, 774);
-  ctx.fillText(id.routeType, 350, 774);
+  ctx.font = '900 34px "Microsoft YaHei", sans-serif';
+  ctx.fillText(`${unlocked.size}/${totalLandmarkCount()}`, 116, statsY + 54);
+  ctx.fillText(id.routeType, 350, statsY + 54);
   ctx.fillStyle = 'rgba(22,48,76,.58)';
-  ctx.font = '22px sans-serif';
-  ctx.fillText('点亮地标', 116, 808);
-  ctx.fillText('路线类型', 350, 808);
+  ctx.font = '22px "Microsoft YaHei", sans-serif';
+  ctx.fillText('点亮地标', 116, statsY + 88);
+  ctx.fillText('路线类型', 350, statsY + 88);
 
   ctx.fillStyle = 'rgba(255,255,255,.86)';
-  ctx.font = '24px sans-serif';
-  ctx.fillText('时空喻园：现在，遇见未来', 70, 920);
+  ctx.font = '24px "Microsoft YaHei", sans-serif';
+  ctx.fillText('时空喻园：现在，遇见未来', 70, 934);
   ctx.fillStyle = 'rgba(255,255,255,.62)';
-  ctx.font = '18px sans-serif';
-  ctx.fillText('AI 生成内容已标注｜真实照片请使用团队拍摄或授权图片', 70, 956);
+  ctx.font = '18px "Microsoft YaHei", sans-serif';
+  ctx.fillText('AI 生成内容已标注｜真实照片请使用团队拍摄或授权图片', 70, 968);
   canvas.style.display = 'block';
   const download = $('#downloadPoster');
   if (download) {
     download.href = canvas.toDataURL('image/png');
     download.hidden = false;
   }
-  showToast('分享海报已生成，可点击保存');
+  if (showMessage) showToast('分享海报已生成，可点击保存');
 }
 
 function roundRect(ctx, x, y, width, height, radius, fill, stroke, fillStyle) {
@@ -1261,6 +1338,12 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
 }
 
 function bindEvents() {
+  const keepStageFixed = () => resetStageScroll();
+  $('#stage').addEventListener('scroll', keepStageFixed, { passive: true });
+  $('#pages').addEventListener('scroll', keepStageFixed, { passive: true });
+  window.addEventListener('pageshow', keepStageFixed);
+  window.addEventListener('load', keepStageFixed);
+
   $('#identityDesk').addEventListener('click', e => {
     const card = e.target.closest('.role-card');
     if (!card) return;
@@ -1363,6 +1446,11 @@ function bindEvents() {
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dy) > 80 && Math.abs(dy) > Math.abs(dx) * 1.3) {
       const direction = dy < 0 ? 1 : -1;
+      if (activePageCanScroll(direction)) return;
+      if (pageIndex === 3 && !e.target.closest('input, .interaction-module, #imageLayers')) {
+        goAdjacentLandmarkBySwipe(direction);
+        return;
+      }
       if (direction === -1 || (direction === 1 && !(pageIndex === 1 && !identityChosen))) {
         if (e.target.closest('input, .campus-accordion, .stamp-wall, .interaction-module, .identity-desk, #imageLayers')) return;
       }
@@ -1372,12 +1460,17 @@ function bindEvents() {
   $('#stage').addEventListener('wheel', e => {
     if (wheelLock) return;
     const direction = e.deltaY > 0 ? 1 : -1;
+    if (activePageCanScroll(direction)) return;
     if (direction === -1 || (direction === 1 && !(pageIndex === 1 && !identityChosen))) {
       if (e.target.closest('.campus-accordion, .stamp-wall, .interaction-module, .identity-desk, #imageLayers')) return;
     }
     if (Math.abs(e.deltaY) < 24) return;
     wheelLock = true;
-    goTo(pageIndex + direction);
+    if (pageIndex === 3 && !e.target.closest('.interaction-module, #imageLayers')) {
+      goAdjacentLandmarkBySwipe(direction);
+    } else {
+      goTo(pageIndex + direction);
+    }
     setTimeout(() => { wheelLock = false; }, 760);
   }, { passive: true });
 }
@@ -1388,11 +1481,11 @@ function updateStageScale() {
   const baseHeight = 1030;
   const widthScale = window.innerWidth / baseWidth;
   const heightScale = window.innerHeight / baseHeight;
-  const isTallPhone = window.innerWidth <= 720 && window.innerHeight / window.innerWidth > baseHeight / baseWidth;
-  const scale = isTallPhone ? widthScale : Math.min(widthScale, heightScale);
-  const stageHeight = isTallPhone ? Math.max(baseHeight, window.innerHeight / widthScale) : baseHeight;
+  const scale = Math.min(widthScale, heightScale);
+  const stageHeight = baseHeight;
   document.documentElement.style.setProperty('--stage-scale', scale.toFixed(4));
   document.documentElement.style.setProperty('--stage-h', `${stageHeight.toFixed(2)}px`);
+  document.documentElement.style.setProperty('--stage-extra', '0px');
   updatePageTransform();
 }
 

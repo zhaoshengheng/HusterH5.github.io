@@ -2415,3 +2415,709 @@ body.dragging-compare * { cursor: ew-resize !important; }
   z-index: 0;
 }
 .guide-stop { position: relative; z-index: 1; }
+
+/* ===== v12 mobile readability, task affordance, and poster-first ending ===== */
+.primary-btn,
+.route-enter-btn,
+.task-next-btn,
+.interaction-module button,
+.book-page,
+.meal-card,
+.quiz-option,
+.keyword-chip,
+.lab-step,
+.guide-stop,
+.memory-chip,
+.gate-pass {
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn::after,
+.route-enter-btn::after,
+.task-next-btn::after,
+.interaction-module button:not(.done):not(.wrong)::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,.58);
+  box-shadow:
+    0 0 0 0 color-mix(in srgb, var(--identity-accent) 30%, transparent),
+    inset 0 0 16px rgba(255,255,255,.18);
+  animation: actionGlow 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.interaction-module button:not(.done):not(.wrong)::before,
+.route-enter-btn::before,
+.primary-btn::before,
+.task-next-btn::before {
+  animation: buttonShine 2.35s ease-in-out infinite;
+}
+
+@keyframes actionGlow {
+  0%, 100% { opacity: .56; box-shadow: 0 0 0 0 color-mix(in srgb, var(--identity-accent) 20%, transparent), inset 0 0 12px rgba(255,255,255,.12); }
+  50% { opacity: 1; box-shadow: 0 0 0 5px color-mix(in srgb, var(--identity-accent) 16%, transparent), inset 0 0 18px rgba(255,255,255,.24); }
+}
+
+@keyframes buttonShine {
+  0%, 58% { transform: translateX(-125%) skewX(-22deg); }
+  100% { transform: translateX(125%) skewX(-22deg); }
+}
+
+.detail-flow-image-first .interaction-module {
+  margin-top: 16px;
+}
+
+.detail-flow-image-first .detail-layout {
+  margin-top: 13px;
+}
+
+.ending #makePoster {
+  display: none !important;
+}
+
+.ending.active {
+  background:
+    linear-gradient(180deg, rgba(5,19,33,.10), rgba(5,19,33,.72)),
+    var(--identity-visual) center/cover no-repeat,
+    #07182e;
+}
+
+.ending .ticket {
+  display: none;
+}
+
+.ending .ticket-wrap {
+  padding-top: 62px;
+}
+
+.ending #posterCanvas {
+  display: block;
+  width: min(100%, 444px);
+  max-height: calc(var(--stage-h, 1030px) - 260px);
+  margin: 0 auto 14px;
+  border-radius: 28px;
+}
+
+.ending .poster-tip {
+  max-width: 460px;
+  margin: 10px auto 0;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.poster-download {
+  width: min(100%, 444px);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 72px 32px 76px;
+  }
+
+  .topbar {
+    left: 26px;
+    right: 26px;
+    top: 20px;
+  }
+
+  .topbar-brand,
+  .progress-pill {
+    padding: 11px 17px;
+    font-size: 16px;
+  }
+
+  .music-toggle {
+    left: 136px;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .primary-btn,
+  .ghost-btn,
+  .small-btn,
+  .route-enter-btn {
+    min-height: 56px;
+    padding: 15px 24px;
+    font-size: 18px;
+  }
+
+  .cover-hero {
+    left: 22px;
+    right: 22px;
+    top: 74px;
+    height: 470px;
+  }
+
+  .cover-copy {
+    left: 32px;
+    right: 32px;
+    bottom: calc(76px + var(--stage-extra, 0px) * .08);
+  }
+
+  .cover h1 {
+    font-size: 76px;
+  }
+
+  .cover h2 {
+    font-size: 36px;
+  }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .ai-note {
+    font-size: 14px;
+  }
+
+  .photo-slot strong {
+    font-size: 30px;
+  }
+
+  .page-title h2,
+  .compact-title h2 {
+    font-size: 42px;
+  }
+
+  .page-title p:not(.eyebrow),
+  .compact-title p:not(.eyebrow) {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .eyebrow {
+    font-size: 15px;
+  }
+
+  .identity-desk {
+    height: 650px;
+    margin-top: 16px;
+  }
+
+  .role-card {
+    width: 276px;
+    min-height: 192px;
+    padding: 22px 20px;
+    border-radius: 22px;
+  }
+
+  .role-card span {
+    font-size: 14px;
+  }
+
+  .role-card h3 {
+    margin-top: 38px;
+    font-size: 29px;
+  }
+
+  .role-card p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .role-card.highschool { left: 36px; top: 6px; }
+  .role-card.student { right: 22px; top: 142px; }
+  .role-card.alumni { left: 18px; top: 306px; }
+  .role-card.public { right: 34px; top: 452px; }
+
+  .slope-scene {
+    left: 30px;
+    bottom: 34px;
+    width: 352px;
+    height: 166px;
+  }
+
+  .h5-stage[data-page="identity"] .guide-bear {
+    left: 58px;
+    bottom: 86px;
+    width: 142px;
+  }
+
+  .h5-stage[data-page="identity"] .guide-bear img {
+    width: 136px;
+  }
+
+  .boar-run {
+    left: 260px;
+    right: 64px;
+    bottom: 126px;
+  }
+
+  .boar {
+    width: 178px;
+  }
+
+  .campus-head {
+    padding: 14px 16px;
+    grid-template-columns: 46px 1fr auto;
+  }
+
+  .campus-mark {
+    width: 46px;
+    height: 46px;
+    font-size: 15px;
+  }
+
+  .campus-meta strong {
+    font-size: 23px;
+  }
+
+  .campus-meta span,
+  .campus-meta small {
+    font-size: 14px;
+  }
+
+  .campus-map {
+    height: 196px;
+  }
+
+  .route-preview-card {
+    grid-template-columns: 138px 1fr;
+    gap: 12px;
+    min-height: 150px;
+    padding: 14px 16px;
+    margin-top: 10px;
+  }
+
+  .route-preview-card h3 {
+    font-size: 24px;
+    margin: 5px 0 4px;
+  }
+
+  .route-preview-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .route-preview-card span {
+    font-size: 12px;
+  }
+
+  .route-preview-media,
+  .route-preview-media img {
+    min-height: 118px;
+  }
+
+  .route-enter-btn {
+    min-height: 44px;
+    min-width: 142px;
+    padding: 9px 10px 9px 16px;
+    font-size: 14px;
+  }
+
+  .route-enter-btn i {
+    width: 26px;
+    height: 26px;
+  }
+
+  .detail-header h2 {
+    font-size: 40px;
+  }
+
+  .detail-header p:not(.eyebrow) {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .detail .image-layers,
+  .detail-book .image-layers,
+  .detail-classroom .image-layers,
+  .detail-science .image-layers,
+  .detail-medicine .image-layers,
+  .detail-canteen .image-layers,
+  .detail-flow-task-first .image-layers {
+    height: min(540px, calc(var(--stage-h, 1030px) * .44)) !important;
+  }
+
+  .story-card {
+    padding: 18px 20px;
+  }
+
+  .story-card p {
+    font-size: 16px;
+  }
+
+  .task-status {
+    padding: 15px 16px;
+  }
+
+  .task-status span {
+    font-size: 14px;
+  }
+
+  .task-status strong {
+    font-size: 20px;
+  }
+
+  .task-status small {
+    font-size: 15px;
+  }
+
+  .interaction-module {
+    min-height: 188px;
+    padding: 18px;
+    border-radius: 28px;
+  }
+
+  .module-head h3 {
+    font-size: 23px;
+    line-height: 1.25;
+  }
+
+  .module-copy {
+    font-size: 15px;
+  }
+
+  .quiz-card strong {
+    font-size: 22px;
+  }
+
+  .quiz-option,
+  .keyword-chip,
+  .lab-step,
+  .guide-stop,
+  .memory-chip,
+  .meal-card,
+  .book-page {
+    min-height: 70px;
+    font-size: 17px;
+  }
+
+  .gate-swipe {
+    grid-template-columns: 136px 1fr;
+  }
+
+  .gate-reader {
+    min-height: 118px;
+  }
+
+  .gate-pass {
+    min-height: 130px;
+  }
+
+  .gate-pass strong {
+    font-size: 28px;
+  }
+
+  .window-grid {
+    gap: 8px;
+  }
+
+  .window-dot {
+    min-height: 30px;
+  }
+
+  .ending .ticket-wrap {
+    padding: 56px 28px 28px;
+  }
+
+  .ending #posterCanvas {
+    width: min(100%, 468px);
+    max-height: calc(var(--stage-h, 1030px) - 238px);
+  }
+
+  .phone-shell {
+    place-items: start center;
+    align-items: flex-start;
+    justify-items: center;
+  }
+
+  .h5-stage {
+    top: 0 !important;
+    transform: translateX(-50%) scale(var(--stage-scale, 1)) !important;
+    transform-origin: top center !important;
+  }
+}
+
+body[data-h5-page="cover"] {
+  background:
+    linear-gradient(180deg, rgba(5,19,33,.08), rgba(5,19,33,.62)),
+    url("./assets/generated/cover-forest-hust.jpg") center/cover no-repeat,
+    #07182e;
+}
+
+body[data-h5-page="identity"] {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.72), rgba(246,240,223,.92)),
+    url("./assets/generated/identity-entry-bg.jpg") center/cover no-repeat,
+    #f6f0df;
+}
+
+body[data-h5-page="route"],
+body[data-h5-page="detail"],
+body[data-h5-page="collection"],
+body[data-h5-page="info"] {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.78), rgba(246,240,223,.94)),
+    var(--identity-visual, none) center/cover no-repeat,
+    #f6f0df;
+}
+
+body[data-h5-page="ending"] {
+  background:
+    linear-gradient(180deg, rgba(5,19,33,.10), rgba(5,19,33,.78)),
+    var(--identity-visual, none) center/cover no-repeat,
+    #07182e;
+}
+
+/* final mobile-H5 submission overrides */
+.loading {
+  background:
+    radial-gradient(circle at 48% 36%, rgba(41,197,216,.22), transparent 30%),
+    linear-gradient(180deg, rgba(5,19,33,.18), rgba(5,19,33,.86)),
+    url("./assets/generated/loading-hust-gate-mao.png") center/cover no-repeat,
+    #07182e;
+}
+
+.route-preview-card {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  min-height: 132px;
+}
+
+.route-preview-card::before,
+.route-preview-card::after,
+.route-preview-media,
+.route-preview-placeholder {
+  display: none !important;
+}
+
+.route-preview-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.boar-run {
+  left: 292px;
+  right: 82px;
+}
+
+.ending .ticket-wrap {
+  min-height: 100%;
+  padding: 50px 44px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.ending #posterCanvas {
+  display: block;
+  order: 1;
+  width: min(100%, 388px);
+  height: auto;
+  max-height: 632px;
+  margin: 0 auto 4px;
+  border-radius: 24px;
+  object-fit: contain;
+}
+
+.ending .poster-download[hidden] {
+  display: none !important;
+}
+
+.ending .poster-download:not([hidden]) {
+  display: flex;
+  order: 2;
+  width: min(100%, 388px);
+  min-height: 50px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+}
+
+.ending .poster-tip {
+  order: 3;
+  max-width: 388px;
+  margin: 0 auto;
+  color: rgba(255,255,255,.84);
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .boar-run {
+    left: 230px;
+    right: 92px;
+    bottom: 126px;
+  }
+
+  .route-preview-card {
+    min-height: 134px;
+    padding: 14px 16px;
+  }
+
+  .ending .ticket-wrap {
+    padding: 46px 34px 22px;
+  }
+
+  .ending #posterCanvas,
+  .ending .poster-download:not([hidden]) {
+    width: min(100%, 374px);
+  }
+}
+
+/* v13 interaction safety, identity typography, and sharper poster preview */
+:root {
+  --display-font: "FZYaoti", "STXingkai", "STKaiti", "KaiTi", "Microsoft YaHei", serif;
+  --ui-font: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  --title-gradient: linear-gradient(100deg, #16304c 0%, #0b4ea2 58%, #29c5d8 100%);
+}
+
+body {
+  font-family: var(--ui-font);
+}
+
+.h5-stage.theme-highschool {
+  --title-gradient: linear-gradient(100deg, #16304c 0%, #d8a85b 62%, #29c5d8 100%);
+}
+
+.h5-stage.theme-student {
+  --title-gradient: linear-gradient(100deg, #0c2f68 0%, #0b4ea2 55%, #29c5d8 100%);
+}
+
+.h5-stage.theme-alumni {
+  --title-gradient: linear-gradient(100deg, #16304c 0%, #b98b61 58%, #d8a85b 100%);
+}
+
+.h5-stage.theme-public {
+  --title-gradient: linear-gradient(100deg, #16304c 0%, #5a8f69 58%, #29c5d8 100%);
+}
+
+.cover h1,
+.page-title h2,
+.detail-header h2,
+.route-preview-card h3,
+.role-card h3,
+.ticket h2,
+.module-head h3 {
+  font-family: var(--display-font);
+  font-weight: 900;
+}
+
+.page-title h2,
+.detail-header h2,
+.route-preview-card h3,
+.collection .page-title h2,
+.ending .ticket h2 {
+  color: transparent;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 10px 28px color-mix(in srgb, var(--identity-accent) 12%, transparent);
+}
+
+.role-card h3 {
+  color: color-mix(in srgb, var(--identity-accent) 68%, #16304c);
+}
+
+.cover h1 {
+  color: transparent;
+  background: linear-gradient(100deg, #fff8e8 0%, #e8d5a8 46%, #29c5d8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 12px 36px rgba(41,197,216,.20);
+}
+
+.cover h2 {
+  font-family: var(--display-font);
+}
+
+.page.route.active,
+.page.detail.active,
+.page.collection.active {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.page.route.active::-webkit-scrollbar,
+.page.detail.active::-webkit-scrollbar,
+.page.collection.active::-webkit-scrollbar {
+  display: none;
+}
+
+.route.active {
+  padding-bottom: 132px;
+}
+
+.detail.active {
+  padding-bottom: 146px;
+}
+
+.collection.active {
+  padding-bottom: 148px;
+}
+
+.h5-stage[data-page="route"] .guide-bear,
+.h5-stage[data-page="detail"] .guide-bear,
+.h5-stage[data-page="collection"] .guide-bear {
+  display: none !important;
+}
+
+.task-next-btn {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.collection-actions {
+  margin-top: 24px;
+  padding-bottom: 20px;
+}
+
+.collection-actions .primary-btn,
+.collection-actions .ghost-btn {
+  min-height: 54px;
+}
+
+.ending .ticket-wrap {
+  padding: 38px 42px 20px;
+  gap: 9px;
+}
+
+.ending #posterCanvas {
+  width: min(100%, 430px);
+  max-height: 692px;
+  border-radius: 28px;
+  image-rendering: auto;
+}
+
+.ending .poster-download:not([hidden]) {
+  width: min(100%, 430px);
+  min-height: 52px;
+}
+
+.ending .poster-tip {
+  max-width: 430px;
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .ending .ticket-wrap {
+    padding: 36px 32px 20px;
+  }
+
+  .ending #posterCanvas,
+  .ending .poster-download:not([hidden]) {
+    width: min(100%, 414px);
+  }
+}
