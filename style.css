@@ -4946,7 +4946,7 @@ body {
   display: block;
   height: 102px;
   border-radius: 18px;
-  background-image: url("assets/generated/hust-card-pass-set.png");
+  background-image: url("assets/generated/hust-card-pass-set-v2.png");
   background-size: 320% 100%;
   background-repeat: no-repeat;
   background-position: left center;
@@ -4993,6 +4993,12 @@ body {
   overflow: hidden;
 }
 
+.memory-chip.memory-text-only {
+  min-height: 92px;
+  grid-template-rows: auto auto;
+  align-content: center;
+}
+
 .memory-visual {
   width: 100%;
   height: 70px;
@@ -5005,55 +5011,39 @@ body {
 }
 
 .memory-meal .memory-visual {
-  background-image: url("assets/generated/hust-card-pass-set.png");
-  background-size: 320% 100%;
-  background-position: right center;
+  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-size: 600% 100%;
+  background-position: 0 center;
 }
 
 .memory-menu .memory-visual {
-  background:
-    linear-gradient(90deg, rgba(11,78,162,.22) 0 8px, transparent 8px),
-    repeating-linear-gradient(0deg, rgba(185,139,97,.16) 0 1px, transparent 1px 14px),
-    linear-gradient(135deg, #fff8e8, #f0e2c6);
+  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-size: 600% 100%;
+  background-position: 20% center;
 }
 
 .memory-table .memory-visual {
-  background:
-    radial-gradient(circle at 28% 42%, rgba(216,168,91,.55) 0 12px, transparent 13px),
-    radial-gradient(circle at 66% 46%, rgba(11,78,162,.45) 0 10px, transparent 11px),
-    linear-gradient(135deg, #fff8e8, #efe2c9);
+  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-size: 600% 100%;
+  background-position: 40% center;
 }
 
 .memory-ripple .memory-visual {
-  background:
-    radial-gradient(circle at 50% 50%, transparent 0 16px, rgba(41,197,216,.52) 17px 19px, transparent 20px 31px, rgba(41,197,216,.32) 32px 34px, transparent 35px),
-    linear-gradient(135deg, #e8f5f6, #fff8e8);
+  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-size: 600% 100%;
+  background-position: 60% center;
 }
 
 .memory-wind .memory-visual {
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(90,143,105,.28), transparent 38%),
-    repeating-linear-gradient(-12deg, rgba(11,78,162,.18) 0 2px, transparent 2px 16px),
-    linear-gradient(135deg, #f7f0df, #e8f5f6);
+  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-size: 600% 100%;
+  background-position: 80% center;
 }
 
 .memory-pause .memory-visual {
-  background:
-    radial-gradient(circle at 30% 34%, rgba(216,168,91,.30), transparent 28%),
-    linear-gradient(135deg, rgba(22,48,76,.16), transparent 42%),
-    url("图片/7.醉晚亭1.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.memory-first .memory-visual,
-.memory-road .memory-visual,
-.memory-reunion .memory-visual {
-  background:
-    linear-gradient(180deg, rgba(255,248,232,.22), rgba(22,48,76,.22)),
-    url("图片/1毛主席像.jpg");
-  background-size: cover;
-  background-position: center;
+  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-size: 600% 100%;
+  background-position: 100% center;
 }
 
 .ticket-footer {
@@ -5115,5 +5105,11 @@ body {
 
   .memory-visual {
     height: 62px;
+  }
+
+  .memory-chip.memory-text-only {
+    min-height: 92px !important;
+    grid-template-rows: auto auto !important;
+    align-content: center !important;
   }
 }

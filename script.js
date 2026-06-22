@@ -712,6 +712,7 @@ function setCompareFromClientX(clientX) {
 }
 
 function taskRequirement(item) {
+  if (item.id === 1) return 1;
   if (currentIdentity === 'alumni') return 3;
   const byLandmark = {
     1: 1,
@@ -1175,6 +1176,7 @@ function renderWaterTowerTask(module, item, identity) {
 }
 
 function renderAlumniMemoryTask(module, item, identity) {
+  const hasVisual = item.id === 5 || item.id === 7;
   const texts = item.id === 5
     ? [['meal', '旧饭卡', '旧饭卡已刷开'], ['menu', '常点菜单', '那年常点的一餐已浮现'], ['table', '同窗一桌', '返校味道已收藏']]
     : item.id === 7
@@ -1183,8 +1185,8 @@ function renderAlumniMemoryTask(module, item, identity) {
   module.innerHTML = moduleShell(item, identity, 'memory-module', `
     <div class="memory-strip">
       ${texts.map(([kind, title, msg]) => `
-        <button class="memory-chip memory-${kind} task-step" data-message="${msg}。">
-          <span class="memory-visual" aria-hidden="true"></span>
+        <button class="memory-chip ${hasVisual ? 'memory-with-visual' : 'memory-text-only'} memory-${kind} task-step" data-message="${msg}。">
+          ${hasVisual ? '<span class="memory-visual" aria-hidden="true"></span>' : ''}
           <b>${title}</b><small>点击收藏</small>
         </button>
       `).join('')}
