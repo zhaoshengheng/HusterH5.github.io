@@ -1,7 +1,7 @@
 ﻿const landmarks = [
   {
     id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 16, y: 31,
-    now: 'assets/landmarks/01_now.jpg', future: 'assets/landmarks/01_future.jpg',
+    now: '图片/1南大门2.jpg', future: 'assets/landmarks/01_future.jpg',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
     moduleTitle: '拖动时间轴：从入园第一眼到未来校门',
     moduleText: '把校门处理成“时空入口”，适合高中生的憧憬、在读生的出发、校友的回望。',
@@ -14,7 +14,7 @@
   },
   {
     id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 32, y: 24,
-    now: 'assets/landmarks/02_now.jpg', future: 'assets/landmarks/02_future.jpg',
+    now: '图片/2图书馆1.jpg', future: 'assets/landmarks/02_future.jpg',
     intro: '书页、光影与数据星河，在这里汇成校园的知识中心。',
     moduleTitle: '翻开一本未来书：知识从纸页延伸到云端',
     moduleText: '点击书页可随机切换知识关键词，弱化模板化科技风，让交互更像真实阅读。',
@@ -27,7 +27,7 @@
   },
   {
     id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 48, y: 32,
-    now: 'assets/landmarks/03_now.jpg', future: 'assets/landmarks/03_future.jpg',
+    now: '图片/3校史馆1.jpg', future: 'assets/landmarks/03_future.jpg',
     intro: '历史不是静止的展陈，而是通向未来的坐标轴。',
     moduleTitle: '滑动校史光带：从过去走向未来',
     moduleText: '用时间轴而不是普通卡片承载校史馆，让“现在—未来”主题更自然。',
@@ -40,7 +40,7 @@
   },
   {
     id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 62, y: 29,
-    now: 'assets/landmarks/04_now.jpg', future: 'assets/landmarks/04_future.jpg',
+    now: '图片/4青年园1.jpg', future: 'assets/landmarks/04_future.jpg',
     intro: '青年人的想法、社团、热爱与偶遇，在这里持续发生。',
     moduleTitle: '切换校园四季：让热爱在这里发生',
     moduleText: '自然类地标加入季节按钮和轻量水纹/叶片，让页面不再只有同一种图片比较。',
@@ -53,7 +53,7 @@
   },
   {
     id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 76, y: 39,
-    now: 'assets/landmarks/05_now.jpg', future: 'assets/landmarks/05_future.jpg',
+    now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
     moduleTitle: '选择未来菜单：补充一份喻园能量',
     moduleText: '把百景园定位为食堂体验点，用菜品、饭卡和能量条承接真实大学生活。',
@@ -66,7 +66,7 @@
   },
   {
     id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 27, y: 54,
-    now: 'assets/landmarks/06_now.jpg', future: 'assets/landmarks/06_future.jpg',
+    now: '图片/6.西十二教学楼.jpg', future: 'assets/landmarks/06_future.jpg',
     intro: '课堂、考试、自习与讨论，在楼体的灯光里不断切换。',
     moduleTitle: '点亮教室：把早八、讨论和灵感都放进楼里',
     moduleText: '教学楼使用“点亮窗格”的交互，更贴近楼体和课堂场景。',
@@ -79,7 +79,7 @@
   },
   {
     id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 44, y: 58,
-    now: 'assets/landmarks/07_now.jpg', future: 'assets/landmarks/07_future.jpg',
+    now: '图片/7.醉晚亭1.jpg', future: 'assets/landmarks/07_future.jpg',
     intro: '水面、亭影与晚风，把喻园的诗意留在此刻。',
     moduleTitle: '轻触水纹：让亭影从现在扩散到未来',
     moduleText: '醉晚亭适合做水纹、晚风和诗句，不建议套同一种硬科技组件。',
@@ -92,7 +92,7 @@
   },
   {
     id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 61, y: 57,
-    now: 'assets/landmarks/08_now.jpg', future: 'assets/landmarks/08_future.jpg',
+    now: '图片/8.东九教学楼1.jpg', future: 'assets/landmarks/08_future.jpg',
     intro: '知识在这里进入实验、协作与真实问题。',
     moduleTitle: '点亮实验格：让问题变成可验证的答案',
     moduleText: '将东九处理成实验/协作空间，交互重点是点亮、协作和问题解决。',
@@ -105,9 +105,9 @@
   },
   {
     id: 9, name: '爱因斯坦广场', group: '科学之光', mode: 'science', campus: '主校区', icon: '科', x: 78, y: 63,
-    now: 'assets/landmarks/09_now.jpg', future: 'assets/landmarks/09_future.jpg',
+    now: '图片/9.爱因斯坦广场1.jpg', future: 'assets/landmarks/09_future.jpg',
     intro: '科学精神不是遥远的公式，而是敢于发问的校园气质。',
-    moduleTitle: '点亮星点：让公式变成探索坐标',
+    moduleTitle: '点亮星点：生成探索坐标',
     moduleText: '科学地标使用星点/公式动效，体现求是创新，避免只做静态介绍。',
     copies: {
       highschool: '在这里，你可以把好奇心看作未来最重要的入学装备。',
@@ -118,7 +118,7 @@
   },
   {
     id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '医', x: 26, y: 79,
-    now: 'assets/landmarks/10_now.jpg', future: 'assets/landmarks/10_future.jpg',
+    now: '图片/10.裘法祖像1.jpg', future: 'assets/landmarks/10_future.jpg',
     intro: '医学精神在此凝望，也在一代代同济人手中延续。',
     moduleTitle: '触发生命脉冲：技术背后始终有人',
     moduleText: '医学地标不宜过度赛博化，重点是仁心、严谨和生命温度。',
@@ -131,7 +131,7 @@
   },
   {
     id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 49, y: 75,
-    now: 'assets/landmarks/11_now.jpg', future: 'assets/landmarks/11_future.jpg',
+    now: '图片/11.碧珠长廊1.png', future: 'assets/landmarks/11_future.jpg',
     intro: '长廊连接的不只是空间，也连接着医学、人文与日常步履。',
     moduleTitle: '切换光影：长廊把赶路变成记忆',
     moduleText: '长廊以光影和步行感为核心，让交互更温和、更有人文气质。',
@@ -144,7 +144,7 @@
   },
   {
     id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '济', x: 70, y: 81,
-    now: 'assets/landmarks/12_now.jpg', future: 'assets/landmarks/12_future.jpg',
+    now: '图片/12.同济图书馆1.jpg', future: 'assets/landmarks/12_future.jpg',
     intro: '医学知识在这里沉淀，也在未来生命科学中重新生长。',
     moduleTitle: '翻开医学知识云库：理解生命，守护生命',
     moduleText: '同济图书馆与主校区图书馆共用书页逻辑，但内容强调医学知识和长期主义。',
@@ -157,7 +157,7 @@
   },
   {
     id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 13, y: 78,
-    now: 'assets/landmarks/13_now.jpg', future: 'assets/landmarks/13_future.jpg',
+    now: '图片/13.同济医学院大门.jpg', future: 'assets/landmarks/13_future.jpg',
     intro: '从这道门进入同济校区，也进入华科医学人文与生命科学的支线。',
     moduleTitle: '进入医学人文支线：从校门理解医学精神',
     moduleText: '同济医学院大门作为社会大众路线的转场节点，连接主校区导览与医学人文空间。',
@@ -166,6 +166,19 @@
       student: '从主校区到同济校区，华科的学习日常也有更宽的专业坐标。',
       alumni: '母校的未来不只在主校区生长，也在同济医学精神中继续延伸。',
       public: '这里是开放导览进入同济校区的第一站，展示华科医学教育的入口形象。'
+    }
+  },
+  {
+    id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 42, y: 82,
+    now: 'assets/landmarks/14_now.jpg', future: 'assets/landmarks/14_future.jpg',
+    intro: '水塔像同济校区的时间标尺，把老建筑、树影与医学记忆一起留在校园天际线里。',
+    moduleTitle: '拨动水塔刻度：从校园记忆望向未来医学',
+    moduleText: '水塔作为同济校区自由探索地标，适合承载时间感、空间识别和医学人文记忆。',
+    copies: {
+      highschool: '未来第一次走进同济校区时，水塔会像一个安静的方向标，提醒你校园也有时间的高度。',
+      student: '它不一定总在日程里，却会在赶路时突然出现，成为同济校区最熟悉的坐标之一。',
+      alumni: '多年以后再看见水塔，很多同济校区的路、树影和旧日片段都会跟着回来。',
+      public: '水塔是同济校区具有识别度的校园景观，也让开放导览多了一处可被记住的历史坐标。'
     }
   }
 ];
@@ -245,6 +258,8 @@ const unlocked = new Set();
 let taskState = { id: 0, done: 0, required: 1, completed: false };
 let autoAdvanceTimer = null;
 let posterRenderToken = 0;
+let posterDataUrl = '';
+let guideDrag = null;
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -334,7 +349,7 @@ function guidePoseFor(pageName, item = landmarks[landmarkIndex]) {
   if (pageName === 'detail') {
     if (taskState.completed) return 'wave';
     if (item.mode === 'book' || item.id === 3) return 'read';
-    if (item.id === 5 || item.id === 1 || item.id === 13) return 'point';
+    if (item.id === 5 || item.id === 1 || item.id === 13 || item.id === 14) return 'point';
   }
   if (pageName === 'collection') return 'read';
   return 'wave';
@@ -372,6 +387,7 @@ function guideMessageFor(pageName, item = landmarks[landmarkIndex]) {
     },
     public: {
       13: '这里进入同济医学人文支线，后半程会更有医学温度。',
+      14: '水塔是同济校区的时间坐标，适合作为开放导览里的彩蛋地标。',
       10: '点击生命脉冲，理解医学精神里的责任与温度。',
       11: '沿着导览线走完长廊，就完成开放校园观察。'
     }
@@ -395,6 +411,15 @@ function updateGuideBubble() {
   bear.dataset.pose = pose;
   bubble.textContent = guideMessageFor(pageName, item);
   bear.classList.toggle('guide-hidden', pageName === 'cover');
+}
+
+function resetGuideDrag() {
+  const bear = $('#guideBear');
+  if (!bear) return;
+  bear.style.setProperty('--guide-drag-x', '0px');
+  bear.style.setProperty('--guide-drag-y', '0px');
+  guideDrag = null;
+  bear.classList.remove('dragging');
 }
 
 function initLoading() {
@@ -533,6 +558,13 @@ function updateRouteCard() {
   const inRoute = isIdentityRouteLandmark(item);
   const routeText = routeProgressLabel(item);
   $('#routeCard').innerHTML = `
+    <div class="route-preview-media">
+      <img id="routePreviewImage" alt="${item.name}现在图片预览" />
+      <div class="route-preview-placeholder" id="routePreviewPlaceholder">
+        <strong>NOW</strong>
+        <small>${landmarkStem(item)}_now.jpg</small>
+      </div>
+    </div>
     <div class="route-preview-copy">
       <span>${routeText} / ${landmarkStem(item)} / ${item.campus} / ${item.group}</span>
       <h3>${item.name}</h3>
@@ -544,15 +576,46 @@ function updateRouteCard() {
     updateLandmark();
     goTo(3);
   });
-  $$('.map-pin').forEach((pin) => pin.classList.toggle('active', Number(pin.dataset.index) === landmarkIndex));
+  updateImage($('#routePreviewImage'), $('#routePreviewPlaceholder'), getNowSrc(item));
+  refreshRouteSelection();
   updateGuideBubble();
 }
 
+function refreshRouteSelection() {
+  const item = landmarks[landmarkIndex];
+  $$('.map-pin, .landmark-chip').forEach((node) => {
+    node.classList.toggle('active', Number(node.dataset.index) === landmarkIndex);
+  });
+  $$('.campus-card').forEach((card) => {
+    const selected = card.dataset.campus === item.campus;
+    card.classList.toggle('selected', selected);
+    const note = card.querySelector('.map-note');
+    const tag = card.querySelector('.map-note-tag');
+    if (!note || !tag) return;
+    if (selected) {
+      tag.textContent = routeProgressLabel(item);
+      const strong = note.querySelector('strong');
+      const span = note.querySelector('span');
+      if (strong) strong.textContent = item.name;
+      if (span) {
+        span.textContent = `${item.group}｜${isIdentityRouteLandmark(item) ? identities[currentIdentity].taskLead : '自由探索坐标，完成后同样会进入集章册。'}`;
+      }
+    }
+  });
+}
+
 function selectLandmark(index, jump = false) {
-  landmarkIndex = Number(index);
-  openCampus = landmarks[landmarkIndex].campus;
-  renderRoute();
-  updateLandmarkMetaOnly();
+  const nextIndex = Number(index);
+  if (!Number.isFinite(nextIndex) || !landmarks[nextIndex]) return;
+  const nextCampus = landmarks[nextIndex].campus;
+  const needsRender = openCampus !== nextCampus;
+  landmarkIndex = nextIndex;
+  openCampus = nextCampus;
+  if (needsRender) {
+    renderRoute();
+  } else {
+    updateRouteCard();
+  }
   if (jump) {
     updateLandmark();
     goTo(3);
@@ -610,6 +673,7 @@ function updateLandmark() {
   const detailPage = $('#detailPage');
   const keepState = pageIndex === 3;
   detailPage.className = `page detail detail-${item.mode} detail-flow-${detailFlowFor(item)}${keepState ? ' active page-ready' : ''}`;
+  detailPage.classList.toggle('landmark-changing', keepState);
   applyDetailFlow(item);
   $('#landmarkGroup').textContent = `${item.campus}｜${item.group}`;
   $('#landmarkName').textContent = `${String(item.id).padStart(2, '0')} ${item.name}`;
@@ -623,7 +687,14 @@ function updateLandmark() {
   updateImage($('#futureImage'), $('#futurePlaceholder'), getFutureSrc(item));
   resetLandmarkTask(item);
   renderInteraction(item);
+  renderAmbientScene(item);
   renderRoute();
+  if (keepState) {
+    window.clearTimeout(detailPage._landmarkTimer);
+    detailPage._landmarkTimer = window.setTimeout(() => {
+      detailPage.classList.remove('landmark-changing');
+    }, 520);
+  }
 }
 
 function setCompare(value) {
@@ -645,16 +716,17 @@ function taskRequirement(item) {
     1: 1,
     2: 2,
     3: 1,
-    4: 2,
+    4: 1,
     5: 2,
     6: 4,
     7: 2,
     8: 3,
     9: 3,
     10: 1,
-    11: 2,
+    11: 1,
     12: 2,
-    13: 1
+    13: 1,
+    14: 1
   };
   return byLandmark[item.id] || 2;
 }
@@ -677,6 +749,26 @@ function resetLandmarkTask(item) {
   void futureLayer.offsetWidth;
   futureLayer.style.transition = '';
   updateTaskStatus(taskState.completed ? '这个坐标已经点亮，可停留查看未来图景，也可以手动继续。' : `${identities[currentIdentity].taskLead}，未来图景会在任务完成后展开。`);
+}
+
+function renderAmbientScene(item) {
+  const overlay = $('#sceneOverlay');
+  if (!overlay || item.mode !== 'nature') return;
+  const seed = item.id * 17 + pageIndex * 31;
+  const rand = (index, offset = 0) => {
+    const value = Math.sin(seed + index * 12.9898 + offset * 78.233) * 43758.5453;
+    return value - Math.floor(value);
+  };
+  for (let i = 0; i < 8; i++) {
+    const wave = document.createElement('span');
+    wave.className = 'ambient-wave';
+    wave.style.setProperty('--x', `${12 + rand(i, 1) * 76}%`);
+    wave.style.setProperty('--y', `${18 + rand(i, 2) * 64}%`);
+    wave.style.setProperty('--size', `${58 + rand(i, 3) * 112}px`);
+    wave.style.setProperty('--delay', `${(rand(i, 4) * 1.8).toFixed(2)}s`);
+    wave.style.setProperty('--dur', `${(2.9 + rand(i, 5) * 2.6).toFixed(2)}s`);
+    overlay.appendChild(wave);
+  }
 }
 
 function updateTaskStatus(message) {
@@ -826,6 +918,8 @@ function renderInteraction(item) {
   if (item.id === 8) return renderDongjiuTask(module, item, identity);
   if (item.id === 9) return renderScienceTask(module, item, identity);
   if (item.id === 11) return renderCorridorTask(module, item, identity);
+  if (item.id === 12) return renderDigitalLibraryTask(module, item, identity);
+  if (item.id === 14) return renderWaterTowerTask(module, item, identity);
   if (item.mode === 'medicine') return renderMedicineTask(module, item, identity);
   return renderLibraryTask(module, item, identity);
 }
@@ -833,11 +927,17 @@ function renderInteraction(item) {
 function moduleShell(item, identity, className, body, copy) {
   return `
     <div class="interaction-card ${className}">
-      <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
+      <div class="module-head"><h3>${avoidWidowText(item.moduleTitle)}</h3><span>${identity.lensTitle}</span></div>
       ${body}
       <p class="module-copy" id="moduleCopy">${copy}</p>
     </div>
   `;
+}
+
+function avoidWidowText(text) {
+  const keep = 6;
+  if (!text || text.length <= keep + 2) return text;
+  return `${text.slice(0, -keep)}<span class="no-break">${text.slice(-keep)}</span>`;
 }
 
 function renderGateTask(module, item, identity) {
@@ -885,12 +985,26 @@ function renderLibraryTask(module, item, identity) {
       ? [['知识中心', '知识中心已点亮'], ['数字服务', '数字阅读服务已记录'], ['安静力量', '学习空间观察已完成']]
       : [['未来书', '第一本大学书已翻开'], ['专业词条', '专业词条已收藏'], ['夜读灯光', '夜读灯光已点亮']];
   module.innerHTML = moduleShell(item, identity, 'book-module', `
-    <div class="book-stack">
-      ${options.map(([title, msg]) => `<button class="book-page task-step" data-message="${msg}。"><b>${title}</b><br>${msg}</button>`).join('')}
+    <div class="book-flip-task">
+      <div class="book-spine" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="book-pages">
+        ${options.map(([title, msg], index) => `
+          <button class="book-page task-step flip-page" style="--page:${index}" data-message="${msg}。">
+            <span>PAGE ${String(index + 1).padStart(2, '0')}</span>
+            <b>${title}</b>
+            <small>${msg}</small>
+          </button>
+        `).join('')}
+      </div>
     </div>
-  `, `${identity.taskLead}：选择 ${taskState.required} 个阅读状态，图书馆会切换到身份专属未来图。`);
+  `, `${identity.taskLead}：轻触书页翻开 ${taskState.required} 页，图书馆会切换到身份专属未来图。`);
   bindTaskSteps((btn) => {
-    btn.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-14deg)' }, { transform: 'rotateY(0deg)' }], { duration: 420, easing: 'ease-out' });
+    btn.classList.add('flipped');
+    btn.animate([
+      { transform: 'rotateY(0deg) translateY(0)' },
+      { transform: 'rotateY(-54deg) translateY(-4px)' },
+      { transform: 'rotateY(-16deg) translateY(0)' }
+    ], { duration: 620, easing: 'cubic-bezier(.22,1,.36,1)' });
   });
 }
 
@@ -916,12 +1030,17 @@ function renderYouthTask(module, item, identity) {
     : currentIdentity === 'student'
       ? ['松弛', '运动', '灵感', '同行']
       : ['开放', '活力', '公共空间', '青年气质'];
+  const startValue = taskState.completed ? 100 : 18;
   module.innerHTML = moduleShell(item, identity, 'keyword-module', `
-    <div class="keyword-cloud">
-      ${words.map(word => `<button class="keyword-chip task-step" data-message="已选择「${word}」：校园生活能量正在生成。">${word}</button>`).join('')}
+    <div class="energy-task">
+      <div class="energy-words">${words.map(word => `<span>${word}</span>`).join('')}</div>
+      <label class="energy-slider">
+        <b>校园生活能量</b>
+        <input id="youthEnergyRange" type="range" min="0" max="100" value="${startValue}" aria-label="拖动生成校园生活能量值" />
+      </label>
     </div>
-  `, `${identity.taskLead}：选择 ${taskState.required} 个关键词。`);
-  bindTaskSteps();
+  `, `${identity.taskLead}：拖动能量条到 72%，生成校园生活能量值。`);
+  bindRangeTask('#youthEnergyRange', 72, '校园生活能量值已生成：日常、热爱与未来正在汇合。');
 }
 
 function renderPavilionTask(module, item, identity) {
@@ -957,14 +1076,23 @@ function renderDongjiuTask(module, item, identity) {
 
 function renderScienceTask(module, item, identity) {
   module.innerHTML = moduleShell(item, identity, 'science-module', `
-    <div class="constellation" id="constellation">${starHtml('science')}</div>
-  `, `${identity.taskLead}：点亮 3 颗创新星点，生成今日成长关键词。`);
+    <div class="constellation science-constellation" id="constellation">
+      <div class="science-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+      ${starHtml('science')}
+    </div>
+  `, `${identity.taskLead}：点亮 3 颗创新星点，把好奇心连成探索坐标。`);
   bindStars('创新星点已点亮：好奇心正在变成探索坐标。');
 }
 
 function renderMedicineTask(module, item, identity) {
   module.innerHTML = moduleShell(item, identity, 'medicine-module', `
-    <button class="pulse-strip" id="pulseStrip" aria-label="触发生命脉冲"></button>
+    <button class="pulse-strip ecg-panel" id="pulseStrip" aria-label="触发生命脉冲">
+      <span class="heart-beat" aria-hidden="true">♥</span>
+      <svg class="ecg-wave" viewBox="0 0 320 92" aria-hidden="true">
+        <polyline points="0,52 42,52 58,30 76,70 96,52 132,52 148,16 170,78 192,52 236,52 252,38 268,62 286,52 320,52"></polyline>
+      </svg>
+      <span class="pulse-copy">触发生命脉冲</span>
+    </button>
   `, `${identity.taskLead}：触发生命脉冲，进入医学人文支线。`);
   $('#pulseStrip').addEventListener('click', () => {
     registerTaskStep('仁心、严谨、责任、生命温度，是医学未来最重要的底色。');
@@ -972,13 +1100,69 @@ function renderMedicineTask(module, item, identity) {
 }
 
 function renderCorridorTask(module, item, identity) {
+  const startValue = taskState.completed ? 100 : 0;
   module.innerHTML = moduleShell(item, identity, 'corridor-module', `
-    <div class="guide-line-task">
-      <button class="guide-stop task-step" data-message="导览线第一段已完成：医学人文空间被记录。">起点</button>
-      <button class="guide-stop task-step" data-message="导览线第二段已完成：开放校园路线闭合。">终点</button>
+    <div class="guide-line-task corridor-board">
+      <div class="corridor-steps" aria-hidden="true">
+        <span data-label="起点"></span>
+        <span data-label="长廊"></span>
+        <span data-label="终点"></span>
+      </div>
+      <label class="corridor-slider-label">
+        <b>拖动导览光点</b>
+        <input id="corridorRange" class="route-range corridor-range" type="range" min="0" max="100" value="${startValue}" aria-label="滑动完成碧珠长廊导览线" />
+      </label>
+      <div class="corridor-hint">沿着树影移动光点，到终点后记录医学人文路线。</div>
     </div>
-  `, `${identity.taskLead}：滑动式导览线先用两段路线预留，后续可接入真实导览动画。`);
-  bindTaskSteps();
+  `, `${identity.taskLead}：把导览线滑到终点，完成开放校园路线。`);
+  bindRangeTask('#corridorRange', 86, '导览线已走到终点：医学人文空间被完整记录。');
+}
+
+function renderDigitalLibraryTask(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'digital-library-module', `
+    <div class="book-flip-task medical-book-task">
+      <div class="book-spine" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="book-pages">
+        ${['医学检索', '电子阅览', '智慧借阅'].map((text, index) => `
+          <button class="book-page task-step flip-page" style="--page:${index}" data-message="${text}已接入：同济医学知识云库正在点亮。">
+            <span>MED ${String(index + 1).padStart(2, '0')}</span>
+            <b>${text}</b>
+            <small>翻开接入</small>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `, `${identity.taskLead}：翻开 ${taskState.required} 页医学知识服务。`);
+  bindTaskSteps((btn) => {
+    btn.classList.add('flipped');
+    btn.animate([
+      { transform: 'rotateY(0deg) translateY(0)' },
+      { transform: 'rotateY(-54deg) translateY(-4px)' },
+      { transform: 'rotateY(-16deg) translateY(0)' }
+    ], { duration: 620, easing: 'cubic-bezier(.22,1,.36,1)' });
+  });
+}
+
+function renderWaterTowerTask(module, item, identity) {
+  const startValue = taskState.completed ? 100 : 0;
+  module.innerHTML = moduleShell(item, identity, 'tower-module', `
+    <div class="tower-task">
+      <div class="tower-dial" id="towerDial"><span></span><b>水塔</b></div>
+      <label>
+        <small>旋转时间刻度</small>
+        <input id="towerRange" type="range" min="0" max="100" value="${startValue}" aria-label="旋转水塔时间刻度" />
+      </label>
+    </div>
+  `, `${identity.taskLead}：把水塔时间刻度推到亮起，解锁同济校区彩蛋坐标。`);
+  const range = $('#towerRange');
+  const dial = $('#towerDial');
+  const updateDial = () => {
+    const value = Number(range.value);
+    dial.style.setProperty('--tower-rotate', `${value * 2.7 - 135}deg`);
+  };
+  range.addEventListener('input', updateDial);
+  updateDial();
+  bindRangeTask('#towerRange', 90, '水塔时间刻度已校准：同济记忆坐标被点亮。');
 }
 
 function renderAlumniMemoryTask(module, item, identity) {
@@ -1003,6 +1187,26 @@ function bindTaskSteps(extraAction) {
     $('#moduleCopy').textContent = btn.dataset.message;
     registerTaskStep(btn.dataset.message);
   }));
+}
+
+function bindRangeTask(selector, threshold, message) {
+  const input = $(selector);
+  if (!input) return;
+  const sync = () => {
+    const value = Number(input.value);
+    const progress = `${Math.max(0, Math.min(100, value))}%`;
+    input.style.setProperty('--range-progress', progress);
+    input.closest('.guide-line-task, .energy-task, .tower-task')?.style.setProperty('--range-progress', progress);
+    if (value >= threshold && !input.dataset.done) {
+      input.dataset.done = 'true';
+      input.classList.add('done');
+      input.disabled = true;
+      $('#moduleCopy').textContent = message;
+      registerTaskStep(message);
+    }
+  };
+  input.addEventListener('input', sync);
+  sync();
 }
 
 function starHtml(type) {
@@ -1097,6 +1301,7 @@ function goTo(index) {
   pageIndex = target;
   updatePageTransform();
   const pageName = pages[pageIndex].dataset.page;
+  resetGuideDrag();
   $('#stage').dataset.page = pageName;
   document.body.dataset.h5Page = pageName;
   $('#pageNow').textContent = String(pageIndex + 1).padStart(2, '0');
@@ -1108,6 +1313,7 @@ function goTo(index) {
   if (pages[pageIndex].dataset.page === 'collection') renderStamps();
   if (pages[pageIndex].dataset.page === 'ending') {
     updateIdentityPreview();
+    $('.ending')?.classList.remove('poster-ready');
     requestAnimationFrame(() => makePoster(false));
   }
   updateGuideBubble();
@@ -1131,6 +1337,13 @@ function resetExperience() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.display = 'none';
   }
+  posterDataUrl = '';
+  const posterImage = $('#posterImage');
+  if (posterImage) {
+    posterImage.hidden = true;
+    posterImage.removeAttribute('src');
+  }
+  $('.ending')?.classList.remove('poster-ready');
   const download = $('#downloadPoster');
   if (download) {
     download.hidden = true;
@@ -1294,13 +1507,57 @@ async function makePoster(showMessage = true) {
   ctx.fillStyle = 'rgba(255,255,255,.62)';
   ctx.font = '18px "Microsoft YaHei", sans-serif';
   ctx.fillText('AI 生成内容已标注｜真实照片请使用团队拍摄或授权图片', 70, 968);
-  canvas.style.display = 'block';
+  posterDataUrl = canvas.toDataURL('image/png');
+  canvas.style.display = 'none';
+  const posterImage = $('#posterImage');
+  if (posterImage) {
+    posterImage.src = posterDataUrl;
+    posterImage.hidden = false;
+  }
+  $('.ending')?.classList.add('poster-ready');
   const download = $('#downloadPoster');
   if (download) {
-    download.href = canvas.toDataURL('image/png');
+    download.href = posterDataUrl;
     download.hidden = false;
   }
-  if (showMessage) showToast('分享海报已生成，可点击保存');
+  if (showMessage) showToast('分享海报已生成，可点击保存按钮下载');
+}
+
+function dataUrlToBlob(dataUrl) {
+  const [meta, data] = dataUrl.split(',');
+  const mime = meta.match(/data:(.*?);/)?.[1] || 'image/png';
+  const binary = atob(data);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new Blob([bytes], { type: mime });
+}
+
+async function handlePosterSave(event) {
+  if (!posterDataUrl) return;
+  const isMobileWebView = /MicroMessenger|QQ\/|AlipayClient|DingTalk|Weibo|Android|iPhone|iPad/i.test(navigator.userAgent);
+  try {
+    const file = new File([dataUrlToBlob(posterDataUrl)], '时空喻园身份海报.png', { type: 'image/png' });
+    if (navigator.canShare?.({ files: [file] }) && navigator.share) {
+      event.preventDefault();
+      await navigator.share({ files: [file], title: '时空喻园身份海报' });
+      return;
+    }
+  } catch {
+    // Fall through to the image view/download path.
+  }
+  if (isMobileWebView) {
+    event.preventDefault();
+    const win = window.open('', '_blank');
+    if (win) {
+      win.document.write(`<meta name="viewport" content="width=device-width,initial-scale=1"><title>保存海报</title><body style="margin:0;background:#07182e;display:grid;place-items:center;min-height:100vh;"><img src="${posterDataUrl}" alt="时空喻园身份海报" style="width:100%;max-width:640px;height:auto;display:block;-webkit-touch-callout:default;user-select:auto;"></body>`);
+      win.document.close();
+      showToast('已打开海报图片，长按图片保存');
+    } else {
+      const posterImage = $('#posterImage');
+      posterImage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showToast('请长按海报图片保存');
+    }
+  }
 }
 
 function roundRect(ctx, x, y, width, height, radius, fill, stroke, fillStyle) {
@@ -1431,6 +1688,7 @@ function bindEvents() {
     goTo(3);
   });
   $('#makePoster').addEventListener('click', () => { makePoster(); });
+  $('#downloadPoster').addEventListener('click', handlePosterSave);
   $('#restart').addEventListener('click', resetExperience);
 
   let touchStartY = 0;
@@ -1441,6 +1699,7 @@ function bindEvents() {
     touchStartX = e.touches[0].clientX;
   }, { passive: true });
   $('#stage').addEventListener('touchend', e => {
+    if (e.target.closest('#guideBear')) return;
     if (draggingCompare) return;
     const dy = e.changedTouches[0].clientY - touchStartY;
     const dx = e.changedTouches[0].clientX - touchStartX;
@@ -1496,6 +1755,7 @@ function bindButtonRipple() {
   $('#stage').addEventListener('click', e => {
     const btn = e.target.closest('button');
     if (!btn || btn.disabled) return;
+    if (btn.classList.contains('map-pin') || btn.classList.contains('landmark-chip')) return;
     const rect = btn.getBoundingClientRect();
     const ripple = document.createElement('span');
     ripple.className = 'btn-ripple';
@@ -1504,6 +1764,43 @@ function bindButtonRipple() {
     btn.appendChild(ripple);
     setTimeout(() => ripple.remove(), 620);
   });
+}
+
+function bindGuideDrag() {
+  const bear = $('#guideBear');
+  const stage = $('#stage');
+  if (!bear || !stage) return;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const readPx = name => parseFloat(bear.style.getPropertyValue(name)) || 0;
+  const endDrag = () => {
+    if (!guideDrag) return;
+    guideDrag = null;
+    bear.classList.remove('dragging');
+  };
+  bear.addEventListener('pointerdown', e => {
+    const pageName = pages[pageIndex]?.dataset.page || '';
+    if (!['route', 'detail', 'collection'].includes(pageName)) return;
+    guideDrag = {
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      baseX: readPx('--guide-drag-x'),
+      baseY: readPx('--guide-drag-y')
+    };
+    bear.classList.add('dragging');
+    bear.setPointerCapture?.(e.pointerId);
+    e.preventDefault();
+  });
+  bear.addEventListener('pointermove', e => {
+    if (!guideDrag || guideDrag.pointerId !== e.pointerId) return;
+    const dx = e.clientX - guideDrag.startX;
+    const dy = e.clientY - guideDrag.startY;
+    bear.style.setProperty('--guide-drag-x', `${clamp(guideDrag.baseX + dx, -360, 220)}px`);
+    bear.style.setProperty('--guide-drag-y', `${clamp(guideDrag.baseY + dy, -430, 360)}px`);
+  });
+  bear.addEventListener('pointerup', endDrag);
+  bear.addEventListener('pointercancel', endDrag);
+  window.addEventListener('blur', endDrag);
 }
 
 function injectKeyframes() {
@@ -1526,6 +1823,7 @@ function init() {
   bindEvents();
   bindCompareDrag();
   bindButtonRipple();
+  bindGuideDrag();
   goTo(0);
 }
 
