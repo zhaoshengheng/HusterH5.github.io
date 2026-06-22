@@ -1482,10 +1482,13 @@ function updateStageScale() {
   const widthScale = window.innerWidth / baseWidth;
   const heightScale = window.innerHeight / baseHeight;
   const scale = Math.min(widthScale, heightScale);
-  const stageHeight = baseHeight;
+  const stageHeight = widthScale <= heightScale
+    ? Math.max(baseHeight, window.innerHeight / scale)
+    : baseHeight;
+  const stageExtra = Math.max(0, stageHeight - baseHeight);
   document.documentElement.style.setProperty('--stage-scale', scale.toFixed(4));
   document.documentElement.style.setProperty('--stage-h', `${stageHeight.toFixed(2)}px`);
-  document.documentElement.style.setProperty('--stage-extra', '0px');
+  document.documentElement.style.setProperty('--stage-extra', `${stageExtra.toFixed(2)}px`);
   updatePageTransform();
 }
 

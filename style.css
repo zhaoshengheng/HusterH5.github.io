@@ -3121,3 +3121,83 @@ body {
     width: min(100%, 414px);
   }
 }
+
+/* v14 tall-phone fill: keep 640x1030 base, extend runtime stage height */
+.phone-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--paper);
+}
+
+.h5-stage {
+  max-height: none !important;
+}
+
+.page {
+  min-height: var(--stage-h, var(--page-h));
+}
+
+.cover-hero {
+  top: calc(72px + var(--stage-extra, 0px) * .03);
+}
+
+.cover-now {
+  top: 48px;
+}
+
+.cover-future {
+  top: 0;
+}
+
+.time-ribbon {
+  bottom: -4px;
+}
+
+.cover-copy {
+  bottom: calc(72px + var(--stage-extra, 0px) * .18);
+}
+
+.identity-desk {
+  height: calc(var(--stage-h, var(--page-h)) - 320px);
+}
+
+.h5-stage[data-page="identity"] .guide-bear {
+  bottom: calc(68px + var(--stage-extra, 0px) * .12);
+}
+
+.boar-run {
+  bottom: calc(126px + var(--stage-extra, 0px) * .34);
+}
+
+.route.active,
+.detail.active,
+.collection.active,
+.ending.active {
+  min-height: var(--stage-h, var(--page-h));
+}
+
+.route-preview-card {
+  margin-bottom: max(0px, calc(var(--stage-extra, 0px) * .22));
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .cover-hero {
+    height: min(520px, calc(470px + var(--stage-extra, 0px) * .08));
+  }
+
+  .cover-copy {
+    bottom: calc(78px + var(--stage-extra, 0px) * .20);
+  }
+
+  .role-card.public {
+    top: calc(452px + var(--stage-extra, 0px) * .08);
+  }
+
+  .h5-stage[data-page="identity"] .guide-bear {
+    bottom: calc(86px + var(--stage-extra, 0px) * .18);
+  }
+
+  .boar-run {
+    bottom: calc(126px + var(--stage-extra, 0px) * .38);
+  }
+}
