@@ -4488,6 +4488,23 @@ body {
   overflow: hidden;
 }
 
+.poster-image.save-preview {
+  position: relative !important;
+  order: 2;
+  display: block !important;
+  width: min(100%, 552px) !important;
+  height: auto !important;
+  max-height: calc(var(--stage-h, 1030px) - 248px);
+  margin: 0 auto 10px;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  object-fit: contain;
+  border-radius: 28px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.28);
+  -webkit-touch-callout: default;
+  user-select: auto;
+}
+
 .ending .poster-download:not([hidden]),
 .ending #makePoster {
   width: min(100%, 552px) !important;
@@ -4521,5 +4538,582 @@ body {
   .ending .poster-download:not([hidden]),
   .ending #makePoster {
     width: min(100%, 520px) !important;
+  }
+}
+
+/* v18 completion-gated station scroll, complete previews, readable titles and ending actions */
+.module-head {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px;
+  min-height: 0 !important;
+  padding-right: 0 !important;
+}
+
+.module-head h3 {
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+  text-wrap: balance;
+  line-height: 1.24 !important;
+  font-size: 21px !important;
+}
+
+.module-head h3 .no-break,
+.no-break {
+  white-space: normal !important;
+}
+
+.module-head span {
+  position: static !important;
+  justify-self: start;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 30px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.campus-map {
+  height: 360px !important;
+  overflow: visible !important;
+  margin-bottom: 8px;
+}
+
+.campus-body-inner {
+  overflow: visible;
+}
+
+.map-pin {
+  position: absolute !important;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  z-index: 6;
+}
+
+.route-preview-card {
+  grid-template-columns: 1fr !important;
+  gap: 16px;
+  min-height: 0;
+}
+
+.route-preview-media {
+  width: 100%;
+  height: 226px !important;
+  min-height: 226px !important;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.62), rgba(232,243,241,.58)),
+    repeating-linear-gradient(90deg, rgba(22,48,76,.06) 0 1px, transparent 1px 24px);
+}
+
+.route-preview-media img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  background: rgba(255,248,232,.36);
+}
+
+.route-preview-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.route-preview-card h3 {
+  font-size: 29px !important;
+  line-height: 1.18;
+}
+
+.route-preview-card p {
+  display: block;
+  max-height: none;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.ending #makePoster,
+.ending #makePoster[hidden],
+.ending.poster-ready #makePoster {
+  display: none !important;
+}
+
+.ending .poster-download:not([hidden]) {
+  order: 2;
+  display: flex !important;
+}
+
+.ending #endingRestart {
+  order: 3;
+  width: min(100%, 552px);
+  min-height: 54px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  background: rgba(255,248,232,.78);
+  border: 1px solid rgba(255,255,255,.55);
+  color: var(--ink);
+  box-shadow: 0 14px 34px rgba(0,0,0,.16);
+}
+
+.ending .poster-tip {
+  order: 4;
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .campus-map {
+    height: 340px !important;
+  }
+
+  .route-preview-media {
+    height: 206px !important;
+    min-height: 206px !important;
+  }
+
+  .module-head h3 {
+    font-size: 20px !important;
+  }
+
+  .ending #endingRestart {
+    width: min(100%, 520px);
+  }
+}
+
+.gate-swipe {
+  min-height: 156px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(41,197,216,.22), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,248,232,.50));
+  border-radius: 24px;
+  padding: 16px;
+}
+
+.gate-reader {
+  width: 96px;
+  height: 96px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(7,24,46,.92), rgba(11,78,162,.76)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 14px);
+}
+
+.gate-pass {
+  min-height: 112px;
+  transform: rotate(-4deg);
+  box-shadow: 0 18px 34px rgba(23,42,64,.16);
+}
+
+.gate-pass.swiped {
+  transform: rotate(0deg) translateX(8px);
+}
+
+.quiz-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255,248,232,.90), rgba(232,243,241,.68)),
+    repeating-linear-gradient(0deg, rgba(185,139,97,.10) 0 1px, transparent 1px 24px);
+}
+
+.quiz-card::before {
+  content: "HUST HISTORY";
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  color: rgba(185,139,97,.24);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.quiz-option {
+  border: 1px solid rgba(185,139,97,.18);
+  background: rgba(255,255,255,.66);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.42);
+}
+
+.canteen-tray {
+  padding: 16px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(216,168,91,.22), transparent 24%),
+    linear-gradient(135deg, rgba(255,248,232,.86), rgba(232,243,223,.62));
+}
+
+.meal-card {
+  position: relative;
+  border: 1px dashed rgba(185,139,97,.40);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(216,168,91,.24), transparent 20%),
+    linear-gradient(180deg, #fffdf4, #f2ead6);
+}
+
+.meal-card::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(216,168,91,.18);
+  box-shadow: inset 0 0 0 8px rgba(255,255,255,.42);
+}
+
+.energy-task {
+  background:
+    linear-gradient(135deg, rgba(232,243,241,.86), rgba(255,248,232,.58)),
+    radial-gradient(circle at var(--range-progress, 18%) 72%, rgba(41,197,216,.26), transparent 20%);
+}
+
+.energy-words span {
+  box-shadow: 0 8px 18px rgba(23,42,64,.08);
+}
+
+.ripple-board {
+  min-height: 134px;
+  background:
+    radial-gradient(ellipse at 28% 50%, rgba(41,197,216,.30), transparent 26%),
+    radial-gradient(ellipse at 70% 52%, rgba(90,143,105,.24), transparent 28%),
+    linear-gradient(135deg, rgba(255,255,255,.76), rgba(232,243,255,.70));
+}
+
+.ripple-point {
+  animation: rippleFloat 2.4s ease-in-out infinite;
+}
+
+.ripple-point:nth-child(2) {
+  animation-delay: .5s;
+}
+
+@keyframes rippleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.window-grid {
+  padding: 16px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(7,24,46,.90), rgba(11,78,162,.72)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.10) 0 1px, transparent 1px 32px);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+.window-dot {
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(255,248,232,.22);
+}
+
+.window-dot.on {
+  background: #ffd166;
+  box-shadow: 0 0 18px rgba(255,209,102,.82), 0 0 0 4px rgba(255,209,102,.12);
+}
+
+.lab-steps {
+  padding: 14px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(41,197,216,.20), transparent 24%),
+    linear-gradient(135deg, rgba(7,24,46,.90), rgba(11,78,162,.76));
+}
+
+.lab-step {
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.20);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.07)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.10) 0 1px, transparent 1px 18px);
+}
+
+.lab-step small {
+  color: rgba(255,255,255,.72);
+}
+
+.memory-strip {
+  padding: 14px;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255,248,232,.90), rgba(246,224,194,.62)),
+    repeating-linear-gradient(90deg, rgba(185,139,97,.12) 0 2px, transparent 2px 18px);
+}
+
+.memory-chip {
+  transform: rotate(var(--memory-rot, -1.2deg));
+  box-shadow: 0 14px 24px rgba(23,42,64,.10);
+}
+
+.memory-chip:nth-child(2) { --memory-rot: 1.4deg; }
+.memory-chip:nth-child(3) { --memory-rot: -.6deg; }
+
+/* v19 route accordions, card-swipe entry, alumni memory visuals and poster cleanup */
+.campus-body-inner {
+  overflow: hidden !important;
+}
+
+.campus-card.open .campus-body-inner {
+  overflow: visible !important;
+}
+
+.campus-map {
+  height: 430px !important;
+  overflow: hidden !important;
+  border-radius: 28px !important;
+}
+
+.campus-map::before {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+.map-pin {
+  position: absolute !important;
+  touch-action: manipulation;
+}
+
+.route-preview-media {
+  height: 300px !important;
+  min-height: 300px !important;
+}
+
+.route-preview-media img {
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.module-head {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 10px 14px !important;
+}
+
+.module-head h3 {
+  grid-column: 1 !important;
+  padding-left: 16px !important;
+  position: relative !important;
+  letter-spacing: .04em !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+.module-head h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .16em;
+  width: 4px;
+  height: 1.25em;
+  border-radius: 99px;
+  background: linear-gradient(180deg, var(--hust-blue), #29c5d8);
+}
+
+.module-head span {
+  grid-column: 2 !important;
+  justify-self: end !important;
+  align-self: start !important;
+  max-width: 136px !important;
+  white-space: normal !important;
+  text-align: center;
+}
+
+.gate-swipe {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.gate-pass {
+  display: grid;
+  grid-template-columns: minmax(132px, 1.2fr) minmax(92px, .8fr);
+  gap: 14px;
+  align-items: center;
+  min-height: 136px !important;
+  padding: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(11,78,162,.16);
+  background:
+    linear-gradient(135deg, rgba(255,248,232,.94), rgba(232,243,241,.74)),
+    radial-gradient(circle at 12% 14%, rgba(41,197,216,.20), transparent 28%);
+}
+
+.gate-card-art {
+  display: block;
+  height: 102px;
+  border-radius: 18px;
+  background-image: url("assets/generated/hust-card-pass-set.png");
+  background-size: 320% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  box-shadow: 0 12px 24px rgba(23,42,64,.14), inset 0 0 0 1px rgba(255,255,255,.42);
+}
+
+.gate-pass.pass-student .gate-card-art { background-position: center center; }
+.gate-pass.pass-alumni .gate-card-art,
+.gate-pass.pass-public .gate-card-art { background-position: right center; }
+
+.gate-pass-copy {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.gate-pass-copy small,
+.gate-pass-copy strong,
+.gate-pass-copy i {
+  display: block;
+}
+
+.gate-pass-copy strong {
+  font-size: 22px;
+}
+
+.quiz-card strong {
+  padding-left: 18px !important;
+}
+
+.memory-strip {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.memory-chip {
+  min-height: 128px;
+  padding: 12px 10px 10px;
+  display: grid;
+  grid-template-rows: 70px auto auto;
+  gap: 5px;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.memory-visual {
+  width: 100%;
+  height: 70px;
+  border-radius: 18px;
+  display: block;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,248,232,.48)),
+    radial-gradient(circle at 50% 50%, rgba(185,139,97,.24), transparent 42%);
+  box-shadow: inset 0 0 0 1px rgba(22,48,76,.08);
+}
+
+.memory-meal .memory-visual {
+  background-image: url("assets/generated/hust-card-pass-set.png");
+  background-size: 320% 100%;
+  background-position: right center;
+}
+
+.memory-menu .memory-visual {
+  background:
+    linear-gradient(90deg, rgba(11,78,162,.22) 0 8px, transparent 8px),
+    repeating-linear-gradient(0deg, rgba(185,139,97,.16) 0 1px, transparent 1px 14px),
+    linear-gradient(135deg, #fff8e8, #f0e2c6);
+}
+
+.memory-table .memory-visual {
+  background:
+    radial-gradient(circle at 28% 42%, rgba(216,168,91,.55) 0 12px, transparent 13px),
+    radial-gradient(circle at 66% 46%, rgba(11,78,162,.45) 0 10px, transparent 11px),
+    linear-gradient(135deg, #fff8e8, #efe2c9);
+}
+
+.memory-ripple .memory-visual {
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 16px, rgba(41,197,216,.52) 17px 19px, transparent 20px 31px, rgba(41,197,216,.32) 32px 34px, transparent 35px),
+    linear-gradient(135deg, #e8f5f6, #fff8e8);
+}
+
+.memory-wind .memory-visual {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(90,143,105,.28), transparent 38%),
+    repeating-linear-gradient(-12deg, rgba(11,78,162,.18) 0 2px, transparent 2px 16px),
+    linear-gradient(135deg, #f7f0df, #e8f5f6);
+}
+
+.memory-pause .memory-visual {
+  background:
+    radial-gradient(circle at 30% 34%, rgba(216,168,91,.30), transparent 28%),
+    linear-gradient(135deg, rgba(22,48,76,.16), transparent 42%),
+    url("图片/7.醉晚亭1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.memory-first .memory-visual,
+.memory-road .memory-visual,
+.memory-reunion .memory-visual {
+  background:
+    linear-gradient(180deg, rgba(255,248,232,.22), rgba(22,48,76,.22)),
+    url("图片/1毛主席像.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.ticket-footer {
+  left: 42px !important;
+  right: 42px !important;
+  bottom: 22px !important;
+  padding-top: 12px !important;
+  font-size: 12px !important;
+  opacity: .78;
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .campus-map {
+    height: 390px !important;
+  }
+
+  .route-preview-media {
+    height: 268px !important;
+    min-height: 268px !important;
+  }
+
+  .module-head {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .module-head span {
+    grid-column: 1 !important;
+    justify-self: start !important;
+    max-width: 100% !important;
+  }
+
+  .gate-swipe {
+    grid-template-columns: 1fr;
+  }
+
+  .gate-reader {
+    width: 100%;
+    height: 64px;
+    border-radius: 22px;
+  }
+
+  .gate-pass {
+    grid-template-columns: 1fr;
+  }
+
+  .gate-card-art {
+    height: 118px;
+  }
+
+  .memory-strip {
+    gap: 9px;
+  }
+
+  .memory-chip {
+    min-height: 118px;
+    grid-template-rows: 62px auto auto;
+  }
+
+  .memory-visual {
+    height: 62px;
   }
 }

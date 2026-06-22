@@ -3,7 +3,7 @@
     id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 16, y: 31,
     now: '图片/1南大门2.jpg', future: 'assets/landmarks/01_future.jpg',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
-    moduleTitle: '拖动时间轴：从入园第一眼到未来校门',
+    moduleTitle: '刷入园卡：开启未来校门',
     moduleText: '把校门处理成“时空入口”，适合高中生的憧憬、在读生的出发、校友的回望。',
     copies: {
       highschool: '穿过这扇门，你会把“想象中的大学”第一次变成可抵达的地点。',
@@ -16,7 +16,7 @@
     id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 32, y: 24,
     now: '图片/2图书馆1.jpg', future: 'assets/landmarks/02_future.jpg',
     intro: '书页、光影与数据星河，在这里汇成校园的知识中心。',
-    moduleTitle: '翻开一本未来书：知识从纸页延伸到云端',
+    moduleTitle: '翻开未来书：连接纸页与云端',
     moduleText: '点击书页可随机切换知识关键词，弱化模板化科技风，让交互更像真实阅读。',
     copies: {
       highschool: '这里像一座未来知识塔：专业、理想与好奇心，都从翻开第一页开始。',
@@ -29,7 +29,7 @@
     id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 48, y: 32,
     now: '图片/3校史馆1.jpg', future: 'assets/landmarks/03_future.jpg',
     intro: '历史不是静止的展陈，而是通向未来的坐标轴。',
-    moduleTitle: '滑动校史光带：从过去走向未来',
+    moduleTitle: '校史答题：从过去走向未来',
     moduleText: '用时间轴而不是普通卡片承载校史馆，让“现在—未来”主题更自然。',
     copies: {
       highschool: '未来不是凭空出现的，它长在一代代 HUSTer 的脚步里。',
@@ -42,7 +42,7 @@
     id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 62, y: 29,
     now: '图片/4青年园1.jpg', future: 'assets/landmarks/04_future.jpg',
     intro: '青年人的想法、社团、热爱与偶遇，在这里持续发生。',
-    moduleTitle: '切换校园四季：让热爱在这里发生',
+    moduleTitle: '拖动能量：让热爱在这里发生',
     moduleText: '自然类地标加入季节按钮和轻量水纹/叶片，让页面不再只有同一种图片比较。',
     copies: {
       highschool: '未来的大学不只有课堂，也有社团、朋友、热爱与更自由的自己。',
@@ -55,7 +55,7 @@
     id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 76, y: 39,
     now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
-    moduleTitle: '选择未来菜单：补充一份喻园能量',
+    moduleTitle: '选择菜单：补充喻园能量',
     moduleText: '把百景园定位为食堂体验点，用菜品、饭卡和能量条承接真实大学生活。',
     copies: {
       highschool: '这是你想象中的“未来大学第一顿饭”：新鲜、真实，也带着一点入学前的期待。',
@@ -68,7 +68,7 @@
     id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 27, y: 54,
     now: '图片/6.西十二教学楼.jpg', future: 'assets/landmarks/06_future.jpg',
     intro: '课堂、考试、自习与讨论，在楼体的灯光里不断切换。',
-    moduleTitle: '点亮教室：把早八、讨论和灵感都放进楼里',
+    moduleTitle: '点亮教室：唤醒课堂灵感',
     moduleText: '教学楼使用“点亮窗格”的交互，更贴近楼体和课堂场景。',
     copies: {
       highschool: '未来的课堂不只是听讲，而是把问题、实验和想象放在同一张桌面上。',
@@ -81,7 +81,7 @@
     id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 44, y: 58,
     now: '图片/7.醉晚亭1.jpg', future: 'assets/landmarks/07_future.jpg',
     intro: '水面、亭影与晚风，把喻园的诗意留在此刻。',
-    moduleTitle: '轻触水纹：让亭影从现在扩散到未来',
+    moduleTitle: '轻触水纹：让亭影扩散',
     moduleText: '醉晚亭适合做水纹、晚风和诗句，不建议套同一种硬科技组件。',
     copies: {
       highschool: '如果你想象大学的浪漫，不妨先从一座亭子和一片水光开始。',
@@ -94,7 +94,7 @@
     id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 61, y: 57,
     now: '图片/8.东九教学楼1.jpg', future: 'assets/landmarks/08_future.jpg',
     intro: '知识在这里进入实验、协作与真实问题。',
-    moduleTitle: '点亮实验格：让问题变成可验证的答案',
+    moduleTitle: '点亮实验格：让问题变成答案',
     moduleText: '将东九处理成实验/协作空间，交互重点是点亮、协作和问题解决。',
     copies: {
       highschool: '未来的你也许会在这里第一次把“我想知道”变成“我能证明”。',
@@ -120,7 +120,7 @@
     id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '医', x: 26, y: 79,
     now: '图片/10.裘法祖像1.jpg', future: 'assets/landmarks/10_future.jpg',
     intro: '医学精神在此凝望，也在一代代同济人手中延续。',
-    moduleTitle: '触发生命脉冲：技术背后始终有人',
+    moduleTitle: '触发生命脉冲：理解医学温度',
     moduleText: '医学地标不宜过度赛博化，重点是仁心、严谨和生命温度。',
     copies: {
       highschool: '如果你向往医学，这里会告诉你：未来的技术背后，始终站着人的温度。',
@@ -133,7 +133,7 @@
     id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 49, y: 75,
     now: '图片/11.碧珠长廊1.png', future: 'assets/landmarks/11_future.jpg',
     intro: '长廊连接的不只是空间，也连接着医学、人文与日常步履。',
-    moduleTitle: '切换光影：长廊把赶路变成记忆',
+    moduleTitle: '滑动导览线：记录长廊光影',
     moduleText: '长廊以光影和步行感为核心，让交互更温和、更有人文气质。',
     copies: {
       highschool: '未来的校园也许很智能，但真正让人停留的，依然是这种可以慢慢走过的地方。',
@@ -146,7 +146,7 @@
     id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '济', x: 70, y: 81,
     now: '图片/12.同济图书馆1.jpg', future: 'assets/landmarks/12_future.jpg',
     intro: '医学知识在这里沉淀，也在未来生命科学中重新生长。',
-    moduleTitle: '翻开医学知识云库：理解生命，守护生命',
+    moduleTitle: '翻开医学书：连接生命知识',
     moduleText: '同济图书馆与主校区图书馆共用书页逻辑，但内容强调医学知识和长期主义。',
     copies: {
       highschool: '你未来读过的每一页，都可能与理解生命、守护生命有关。',
@@ -159,7 +159,7 @@
     id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 13, y: 78,
     now: '图片/13.同济医学院大门.jpg', future: 'assets/landmarks/13_future.jpg',
     intro: '从这道门进入同济校区，也进入华科医学人文与生命科学的支线。',
-    moduleTitle: '进入医学人文支线：从校门理解医学精神',
+    moduleTitle: '医学支线：理解医学精神',
     moduleText: '同济医学院大门作为社会大众路线的转场节点，连接主校区导览与医学人文空间。',
     copies: {
       highschool: '如果未来的你向往医学，这扇门会把理想引向更具体的责任。',
@@ -172,7 +172,7 @@
     id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 42, y: 82,
     now: 'assets/landmarks/14_now.jpg', future: 'assets/landmarks/14_future.jpg',
     intro: '水塔像同济校区的时间标尺，把老建筑、树影与医学记忆一起留在校园天际线里。',
-    moduleTitle: '拨动水塔刻度：从校园记忆望向未来医学',
+    moduleTitle: '拨动水塔刻度：点亮同济记忆',
     moduleText: '水塔作为同济校区自由探索地标，适合承载时间感、空间识别和医学人文记忆。',
     copies: {
       highschool: '未来第一次走进同济校区时，水塔会像一个安静的方向标，提醒你校园也有时间的高度。',
@@ -500,8 +500,8 @@ function updateBgmSource() {
 }
 
 function campusPinY(item) {
-  if (item.campus === '同济校区') return Math.max(18, Math.min(86, (item.y - 75) * 5 + 48));
-  return Math.max(16, Math.min(84, item.y + 4));
+  if (item.campus === '同济校区') return Math.max(18, Math.min(78, (item.y - 75) * 4.2 + 46));
+  return Math.max(16, Math.min(74, item.y + 1));
 }
 
 function campusMapKey(campus) {
@@ -616,6 +616,7 @@ function selectLandmark(index, jump = false) {
   } else {
     updateRouteCard();
   }
+  refreshRouteSelection();
   if (jump) {
     updateLandmark();
     goTo(3);
@@ -850,6 +851,11 @@ function goNextLandmarkFromTask() {
 
 function goAdjacentLandmarkBySwipe(direction) {
   if (pageIndex !== 3) return false;
+  if (!taskState.completed) {
+    showToast('完成本站任务后，再上下滑动切换站点。');
+    updateTaskStatus('先完成当前地标任务，未来图景展开后即可上下切换站点。');
+    return true;
+  }
   if (!isIdentityRouteLandmark(landmarks[landmarkIndex])) {
     landmarkIndex = (landmarkIndex + direction + landmarks.length) % landmarks.length;
     updateLandmark();
@@ -905,11 +911,12 @@ function bindCompareDrag() {
 function renderInteraction(item) {
   const module = $('#interactionModule');
   const identity = identities[currentIdentity];
+  if (item.id === 1) return renderGateTask(module, item, identity);
+  if (item.mode === 'book') return renderLibraryTask(module, item, identity);
   if (currentIdentity === 'alumni') {
     renderAlumniMemoryTask(module, item, identity);
     return;
   }
-  if (item.id === 1) return renderGateTask(module, item, identity);
   if (item.id === 3) return renderHistoryQuiz(module, item, identity);
   if (item.id === 5) return renderCanteenTask(module, item, identity);
   if (item.id === 4) return renderYouthTask(module, item, identity);
@@ -918,7 +925,6 @@ function renderInteraction(item) {
   if (item.id === 8) return renderDongjiuTask(module, item, identity);
   if (item.id === 9) return renderScienceTask(module, item, identity);
   if (item.id === 11) return renderCorridorTask(module, item, identity);
-  if (item.id === 12) return renderDigitalLibraryTask(module, item, identity);
   if (item.id === 14) return renderWaterTowerTask(module, item, identity);
   if (item.mode === 'medicine') return renderMedicineTask(module, item, identity);
   return renderLibraryTask(module, item, identity);
@@ -941,12 +947,15 @@ function avoidWidowText(text) {
 }
 
 function renderGateTask(module, item, identity) {
-  const cardLabel = currentIdentity === 'highschool' ? '未来入园卡' : currentIdentity === 'public' ? '开放导览票' : '校园通行卡';
+  const cardLabel = currentIdentity === 'highschool' ? '未来 HUSTer 卡' : currentIdentity === 'student' ? '校园卡' : currentIdentity === 'alumni' ? '校友卡' : '开放导览卡';
   module.innerHTML = moduleShell(item, identity, 'gate-module', `
     <div class="gate-swipe">
       <div class="gate-reader"><span></span><b>SCAN</b></div>
-      <button class="gate-pass task-step" data-message="${cardLabel}已刷入，校门未来图景正在展开。">
-        <small>${cardLabel}</small><strong>${identities[currentIdentity].label}</strong><i>刷卡入园</i>
+      <button class="gate-pass task-step pass-${currentIdentity}" data-message="${cardLabel}已刷入，校门未来图景正在展开。">
+        <span class="gate-card-art" aria-hidden="true"></span>
+        <span class="gate-pass-copy">
+          <small>${cardLabel}</small><strong>${identities[currentIdentity].label}</strong><i>刷卡入园</i>
+        </span>
       </button>
     </div>
   `, `${identity.taskLead}：点击或轻触入园卡完成刷卡。`);
@@ -1167,13 +1176,18 @@ function renderWaterTowerTask(module, item, identity) {
 
 function renderAlumniMemoryTask(module, item, identity) {
   const texts = item.id === 5
-    ? [['旧饭卡', '旧饭卡已刷开'], ['常点菜单', '那年常点的一餐已浮现'], ['同窗一桌', '返校味道已收藏']]
+    ? [['meal', '旧饭卡', '旧饭卡已刷开'], ['menu', '常点菜单', '那年常点的一餐已浮现'], ['table', '同窗一桌', '返校味道已收藏']]
     : item.id === 7
-      ? [['水纹', '亭边水纹已扩散'], ['晚风', '那阵晚风已回来'], ['停留', '青春片段已保存']]
-      : [['初见', '第一段返校记忆已唤起'], ['旧路', '第二段校园记忆已唤起'], ['重逢', '第三段母校记忆已唤起']];
+      ? [['ripple', '水纹', '亭边水纹已扩散'], ['wind', '晚风', '那阵晚风已回来'], ['pause', '停留', '青春片段已保存']]
+      : [['first', '初见', '第一段返校记忆已唤起'], ['road', '旧路', '第二段校园记忆已唤起'], ['reunion', '重逢', '第三段母校记忆已唤起']];
   module.innerHTML = moduleShell(item, identity, 'memory-module', `
     <div class="memory-strip">
-      ${texts.map(([title, msg]) => `<button class="memory-chip task-step" data-message="${msg}。"><b>${title}</b><small>点击收藏</small></button>`).join('')}
+      ${texts.map(([kind, title, msg]) => `
+        <button class="memory-chip memory-${kind} task-step" data-message="${msg}。">
+          <span class="memory-visual" aria-hidden="true"></span>
+          <b>${title}</b><small>点击收藏</small>
+        </button>
+      `).join('')}
     </div>
   `, `${identity.taskLead}：校友路线需点亮 3 段记忆后，未来母校图景才会展开。`);
   bindTaskSteps();
@@ -1547,15 +1561,12 @@ async function handlePosterSave(event) {
   }
   if (isMobileWebView) {
     event.preventDefault();
-    const win = window.open('', '_blank');
-    if (win) {
-      win.document.write(`<meta name="viewport" content="width=device-width,initial-scale=1"><title>保存海报</title><body style="margin:0;background:#07182e;display:grid;place-items:center;min-height:100vh;"><img src="${posterDataUrl}" alt="时空喻园身份海报" style="width:100%;max-width:640px;height:auto;display:block;-webkit-touch-callout:default;user-select:auto;"></body>`);
-      win.document.close();
-      showToast('已打开海报图片，长按图片保存');
-    } else {
-      const posterImage = $('#posterImage');
-      posterImage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      showToast('请长按海报图片保存');
+    const posterImage = $('#posterImage');
+    if (posterImage) {
+      posterImage.hidden = false;
+      posterImage.classList.add('save-preview');
+      posterImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showToast('已在当前页显示海报，长按图片保存');
     }
   }
 }
@@ -1634,6 +1645,12 @@ function bindEvents() {
     if (!toggle) return;
     const campus = toggle.dataset.campusToggle;
     openCampus = openCampus === campus ? '' : campus;
+    if (openCampus) {
+      const firstInCampus = landmarks.findIndex(item => item.campus === openCampus);
+      if (firstInCampus >= 0 && landmarks[landmarkIndex].campus !== openCampus) {
+        landmarkIndex = firstInCampus;
+      }
+    }
     renderRoute();
   });
 
@@ -1687,8 +1704,9 @@ function bindEvents() {
     updateLandmark();
     goTo(3);
   });
-  $('#makePoster').addEventListener('click', () => { makePoster(); });
+  $('#makePoster')?.addEventListener('click', () => { makePoster(); });
   $('#downloadPoster').addEventListener('click', handlePosterSave);
+  $('#endingRestart')?.addEventListener('click', resetExperience);
   $('#restart').addEventListener('click', resetExperience);
 
   let touchStartY = 0;
