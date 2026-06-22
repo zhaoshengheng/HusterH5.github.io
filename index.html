@@ -14,13 +14,19 @@
       <div class="loading" id="loading">
         <div class="loader-emblem">HUST</div>
         <div class="loader-title">正在整理喻园时空档案</div>
-        <div class="loader-sub" id="loaderSub">读取：南大门-毛主席像</div>
+        <div class="loader-sub" id="loaderSub">读取：南大门—毛主席像</div>
         <div class="loader-line"><span id="loaderBar"></span></div>
       </div>
 
       <div class="topbar">
         <button class="topbar-brand" id="goHome" aria-label="返回封面">时空喻园</button>
+        <button class="music-toggle" id="musicToggle" hidden aria-label="播放身份背景音乐">♪</button>
         <div class="progress-pill"><span id="pageNow">01</span>/<span id="pageTotal">07</span></div>
+      </div>
+
+      <div class="guide-bear" id="guideBear" aria-hidden="true">
+        <div class="guide-bubble" id="guideBubble">选择入园方式，我带你走专属路线。</div>
+        <img id="guideImage" src="./assets/generated/guide-xinwuxiong-wave.png" alt="" />
       </div>
 
       <main class="pages" id="pages">
@@ -48,7 +54,7 @@
             <p class="eyebrow">主题三｜智绘喻园 · 重构未来时空</p>
             <h1>时空喻园</h1>
             <h2>现在，遇见未来</h2>
-            <p class="lead">以 12 处校园地标为坐标，把真实照片、AI 未来图景与身份分流互动连接成一条可以被探索、被点亮、被分享的校园时空路线。</p>
+            <p class="lead">从“森林大学”与“1037号森林”出发，以 13 处校园地标为坐标，把真实照片、AI 未来图景与身份分流互动连接成一条可以被探索、被点亮、被分享的校园时空路线。</p>
             <button class="primary-btn" data-next>开启校园时空路线</button>
             <p class="ai-note">AI 生成内容已标注；真实校园照片请使用团队拍摄或授权图片。</p>
           </div>
@@ -61,6 +67,9 @@
             <p>点击一张入口卡片，即刻进入对应的校园时空路线。</p>
           </div>
           <div class="identity-desk" id="identityDesk"></div>
+          <div class="slope-scene" aria-hidden="true">
+            <img src="./assets/generated/despair-slope.jpg" alt="" />
+          </div>
           <div class="boar-run" aria-hidden="true">
             <div class="boar-track"></div>
             <div class="boar">
@@ -80,7 +89,7 @@
 
           <div class="route-card route-preview-card" id="routeCard" data-anim data-from="right" style="--delay:420ms">
             <span>01 / 主校区 / 精神之门</span>
-            <h3>南大门-毛主席像</h3>
+            <h3>南大门—毛主席像</h3>
             <p>从这里进入喻园，也从这里看见一所大学的精神坐标。</p>
             <button class="small-btn" id="enterLandmark">查看这个地标</button>
           </div>
@@ -111,7 +120,7 @@
                   <img id="futureImage" alt="未来地标图片" />
                   <div class="placeholder future-placeholder" id="futurePlaceholder">
                     <span>AI FUTURE IMAGE</span>
-                    <strong id="futureFileName">01_future.jpg</strong>
+                    <strong id="futureFileName">01_future_highschool.jpg</strong>
                     <small>AI 未来重构图占位</small>
                   </div>
                 </div>
@@ -132,6 +141,7 @@
                 <strong>选择身份后开始路线</strong>
                 <small>完成任务将自动点亮坐标</small>
               </div>
+              <button class="primary-btn task-next-btn" id="taskNextBtn" hidden>前往下一站</button>
             </div>
           </div>
 
@@ -170,14 +180,15 @@
               <h2 id="endingTitle">未来 HUSTer 探索者</h2>
               <p id="endingText">你已提前收到一张来自未来喻园的邀请函。</p>
               <div class="ticket-stats">
-                <div><strong id="statCount">0/12</strong><span>点亮地标</span></div>
+                <div><strong id="statCount">0/13</strong><span>点亮地标</span></div>
                 <div><strong id="statRoute">主线</strong><span>路线类型</span></div>
               </div>
               <div class="ticket-footer">现在 · 未来 · 华中科技大学校园地标 AI 视觉创意 H5</div>
             </div>
             <button class="primary-btn wide" id="makePoster">生成分享海报</button>
+            <a class="ghost-btn wide poster-download" id="downloadPoster" download="时空喻园身份海报.png" hidden>保存海报图片</a>
             <canvas id="posterCanvas" width="640" height="1030" aria-label="分享海报"></canvas>
-            <p class="poster-tip">生成后可截图保存，作为本次时空路线的结尾分享图。</p>
+            <p class="poster-tip">生成后可点击保存海报图片，作为本次时空路线的结尾分享图。</p>
           </div>
         </section>
 
@@ -189,7 +200,7 @@
           </div>
           <div class="info-panel">
             <h3>200–300 字作品简介</h3>
-            <p>《时空喻园：现在，遇见未来》以华中科技大学主校区与同济校区 12 处地标为线索，面向高中生、在读生、已毕业校友与社会大众设置差异化身份入口。作品通过真实地标照片与 AI 未来重构图的滑动对比、路线地图点选、地标专属互动、时空集章与分享海报生成，呈现校园从当下记忆到未来想象的转化过程。整体视觉弱化模板化科技风，改用校园手账、路线图、票根、书页、时间轴等更具华科大生活感的界面语言，让不同群体在轻量互动中感受喻园地标、校园文化与智慧校园未来图景。</p>
+            <p>《时空喻园：现在，遇见未来》以华中科技大学主校区与同济校区 13 处地标为线索，面向高中生、在读生、已毕业校友与社会大众设置差异化身份入口。作品通过真实地标照片与 AI 未来重构图的滑动对比、路线地图点选、地标专属互动、时空集章与分享海报生成，呈现校园从当下记忆到未来想象的转化过程。整体视觉弱化模板化科技风，改用校园手账、路线图、票根、书页、时间轴等更具华科大生活感的界面语言，让不同群体在轻量互动中感受喻园地标、校园文化与智慧校园未来图景。</p>
           </div>
           <div class="info-panel">
             <h3>AI 生成说明</h3>
@@ -203,6 +214,8 @@
         <button id="prevPage" aria-label="上一页">↑</button>
         <button id="nextPage" aria-label="下一页">↓</button>
       </nav>
+
+      <audio id="bgmAudio" preload="none" loop></audio>
     </div>
   </div>
 

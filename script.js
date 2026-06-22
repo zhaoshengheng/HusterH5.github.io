@@ -1,6 +1,6 @@
 ﻿const landmarks = [
   {
-    id: 1, name: '南大门-毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 16, y: 31,
+    id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 16, y: 31,
     now: 'assets/landmarks/01_now.jpg', future: 'assets/landmarks/01_future.jpg',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
     moduleTitle: '拖动时间轴：从入园第一眼到未来校门',
@@ -13,7 +13,7 @@
     }
   },
   {
-    id: 2, name: '图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 32, y: 24,
+    id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 32, y: 24,
     now: 'assets/landmarks/02_now.jpg', future: 'assets/landmarks/02_future.jpg',
     intro: '书页、光影与数据星河，在这里汇成校园的知识中心。',
     moduleTitle: '翻开一本未来书：知识从纸页延伸到云端',
@@ -52,16 +52,16 @@
     }
   },
   {
-    id: 5, name: '百景园', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '景', x: 76, y: 39,
+    id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 76, y: 39,
     now: 'assets/landmarks/05_now.jpg', future: 'assets/landmarks/05_future.jpg',
-    intro: '一园百景，收藏校园里最柔软的自然光。',
-    moduleTitle: '点选四季：让未来生态花园生长',
-    moduleText: '通过季节小组件，突出生态校园与未来低碳校园，而不是简单套科技蓝。',
+    intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
+    moduleTitle: '选择未来菜单：补充一份喻园能量',
+    moduleText: '把百景园定位为食堂体验点，用菜品、饭卡和能量条承接真实大学生活。',
     copies: {
-      highschool: '大学生活也可以很松弛：在绿意里，给未来一点慢慢生长的时间。',
-      student: '当课表太满，百景园会用风、树影和小路提醒你：先呼吸一下。',
-      alumni: '有些地方不是为了赶路，而是为了让记忆慢下来。',
-      public: '百景园体现了校园生态空间与人文景观的融合。'
+      highschool: '这是你想象中的“未来大学第一顿饭”：新鲜、真实，也带着一点入学前的期待。',
+      student: '今天吃什么，是每个 HUSTer 都绕不开的真实校园问题。',
+      alumni: '记忆里最具体的母校味道，往往藏在一张旧饭卡和一份常点菜单里。',
+      public: '食堂是理解大学日常生活的公共窗口，也让导览从建筑回到真实的人。'
     }
   },
   {
@@ -154,57 +154,82 @@
       alumni: '书架之间的日子，后来都变成了专业底气的一部分。',
       public: '同济校区图书馆展现医学教育、知识积累与人文学习空间的结合。'
     }
+  },
+  {
+    id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 13, y: 78,
+    now: 'assets/landmarks/13_now.jpg', future: 'assets/landmarks/13_future.jpg',
+    intro: '从这道门进入同济校区，也进入华科医学人文与生命科学的支线。',
+    moduleTitle: '进入医学人文支线：从校门理解医学精神',
+    moduleText: '同济医学院大门作为社会大众路线的转场节点，连接主校区导览与医学人文空间。',
+    copies: {
+      highschool: '如果未来的你向往医学，这扇门会把理想引向更具体的责任。',
+      student: '从主校区到同济校区，华科的学习日常也有更宽的专业坐标。',
+      alumni: '母校的未来不只在主校区生长，也在同济医学精神中继续延伸。',
+      public: '这里是开放导览进入同济校区的第一站，展示华科医学教育的入口形象。'
+    }
   }
 ];
 
 const identities = {
   highschool: {
     label: '高中生', type: '录取通知式入口', className: 'highschool',
-    title: '未来有我探索路线', desc: '用地标提前预习一所大学的学习、生活与理想。',
-    endingTitle: '未来 HUSTer 探索者', routeType: '预习线',
+    title: '未来 HUSTer 预见路线', desc: '第一次走进华科，看见未来的自己。',
+    endingTitle: '未来 HUSTer 预见者', routeType: '预见线',
+    route: [1, 3, 2, 6, 5, 4, 9],
+    routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 西十二教学楼 → 百景园（食堂） → 青年园 → 爱因斯坦广场',
     visual: 'assets/generated/identity/highschool.jpg',
+    bgm: 'assets/audio/highschool.mp3',
     accent: '#d8a85b', soft: '#fff4d4',
-    lensTitle: '未来有我',
-    lensCopy: '把每个地标看成一次预演：未来的华科里，可以出现你的身影。',
-    taskLead: '收集未来入学线索',
-    completeToast: '未来邀请已点亮，前往下一站',
-    endingText: '你已提前收到一张来自未来喻园的邀请函。愿你把好奇心带进大学，把选择变成更宽阔的未来。'
+    lensTitle: '看见未来的自己',
+    lensCopy: '把南大门、校史、图书馆、课堂和第一顿饭连成一次提前入学体验。',
+    taskLead: '收集未来入园线索',
+    completeToast: '未来邀请已点亮，可停留查看',
+    endingText: `你还没有真正踏入大学，却已经在这条路线里，看见了未来的自己。未来的华科，不只是一个遥远的目标，也可能是某一天你真实生活的地方。当你真正来到这里时，今天屏幕里的光、路和被点亮的地标，或许都会变成你脚下走过的日常。愿你带着现在的期待，走向属于自己的喻园时光。`
   },
   student: {
     label: '在读生', type: '校园卡式入口', className: 'student',
-    title: '今日喻园任务路线', desc: '在熟悉的路线上重新发现校园，把日常打卡成记忆。',
-    endingTitle: '喻园今日打卡人', routeType: '日常线',
+    title: '今日 HUSTer 成长路线', desc: '熟悉的校园日常，正在升级为未来。',
+    endingTitle: '今日 HUSTer 成长者', routeType: '成长线',
+    route: [8, 6, 2, 5, 4, 7, 9],
+    routeSummary: '东九教学楼 → 西十二教学楼 → 主校区图书馆 → 百景园（食堂） → 青年园 → 醉晚亭 → 爱因斯坦广场',
     visual: 'assets/generated/identity/student.jpg',
+    bgm: 'assets/audio/student.mp3',
     accent: '#0b4ea2', soft: '#eaf3ff',
-    lensTitle: '日常升级',
-    lensCopy: '把熟悉的路、课、灯光和偶遇重新编排成一条今日任务线。',
+    lensTitle: '正在发生的日常',
+    lensCopy: '从上课、赶课、自习、吃饭和片刻休息里，看见校园与自己一起成长。',
     taskLead: '完成今日校园任务',
-    completeToast: '今日坐标已打卡，前往下一站',
-    endingText: '你把熟悉的地标重新点亮了一遍。原来日常不是重复，而是属于在读生的校园时间。'
+    completeToast: '今日坐标已打卡，可停留查看',
+    endingText: `未来的华科并不只存在于远方，它其实藏在你今天经过的路里。藏在赶去上课的清晨，藏在图书馆亮起的灯光里，藏在百景园的一餐饭里，也藏在你偶尔停下脚步、吹过青年园和醉晚亭的风里。你每天经历的校园日常，看似普通，却正在一点点组成属于你的大学记忆。`
   },
   alumni: {
     label: '已毕业校友', type: '旧相册式入口', className: 'alumni',
-    title: '校友记忆回溯路线', desc: '把地标当作旧相册，从现在翻回曾经，也翻向未来。',
-    endingTitle: '喻园时间收藏者', routeType: '回忆线',
+    title: '重返喻园记忆路线', desc: '从校门回来，在熟悉地点重遇青春。',
+    endingTitle: '喻园记忆重逢者', routeType: '返校线',
+    route: [1, 3, 2, 5, 7, 4, 9],
+    routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 百景园（食堂） → 醉晚亭 → 青年园 → 爱因斯坦广场',
     visual: 'assets/generated/identity/alumni.jpg',
+    bgm: 'assets/audio/alumni.mp3',
     accent: '#b98252', soft: '#f7e7d2',
     lensTitle: '重回母校',
-    lensCopy: '从旧相册里回到熟悉的路口，再把回忆交给未来继续生长。',
-    taskLead: '修复一段校园记忆',
-    completeToast: '回忆已修复，前往下一站',
-    endingText: '你带走的不是一张普通地图，而是一段被校园保存很久的时间。'
+    lensCopy: '从南大门重新入园，在图书馆、食堂、亭边和青年园里找回旧日味道。',
+    taskLead: '唤起一段校园记忆',
+    completeToast: '回忆已唤起，可停留查看',
+    endingText: `多年以后再次回到华科，很多地方也许已经变了。路旁的树长得更高，熟悉的建筑换了新的光影，可当你重新站在南大门前，走近图书馆、食堂、青年园和醉晚亭时，某些记忆又会忽然变得清晰。华科不是停在过去的记忆，而是一座一直向前生长的校园。它在未来继续改变，也在未来继续等你回来。`
   },
   public: {
     label: '社会大众', type: '导览票式入口', className: 'public',
-    title: '开放校园导览路线', desc: '用一条轻量路线了解地标、校园文化与未来大学想象。',
-    endingTitle: '未来校园漫游者', routeType: '导览线',
+    title: '开放华科导览路线', desc: '从主校区到同济校区，理解一所大学的公共形象。',
+    endingTitle: '开放华科导览者', routeType: '开放线',
+    route: [1, 3, 2, 9, 13, 10, 12, 11],
+    routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 爱因斯坦广场 → 同济医学院大门 → 裘法祖像 → 同济校区图书馆 → 碧珠长廊',
     visual: 'assets/generated/identity/public.jpg',
+    bgm: 'assets/audio/public.mp3',
     accent: '#5a8f69', soft: '#e8f3df',
     lensTitle: '开放导览',
-    lensCopy: '像城市访客一样观察校园：空间、知识、公共文化如何连接未来。',
+    lensCopy: '从入口形象、历史积淀、知识中心、科学精神走向医学人文支线。',
     taskLead: '完成开放校园观察',
-    completeToast: '导览观察已记录，前往下一站',
-    endingText: '你完成了一次面向未来的校园导览，也看见了一所大学如何连接城市、知识与人。'
+    completeToast: '导览观察已记录，可停留查看',
+    endingText: `沿着这条路线，你看到的不只是一所大学的建筑。你看到的是一座校园如何承载历史、知识、科学与医学精神，也看到它如何向城市、向社会、向未来持续打开。华科不只是学生和校友心中的校园，也是一处可以被公众理解、被城市看见、被未来继续书写的大学空间。`
   }
 };
 
@@ -222,6 +247,147 @@ let autoAdvanceTimer = null;
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
+
+function totalLandmarkCount() {
+  return landmarks.length;
+}
+
+function getRouteIds(identityKey = currentIdentity) {
+  return identities[identityKey]?.route || landmarks.map(item => item.id);
+}
+
+function routeOrderFor(item, identityKey = currentIdentity) {
+  return getRouteIds(identityKey).indexOf(item.id) + 1;
+}
+
+function isIdentityRouteLandmark(item, identityKey = currentIdentity) {
+  return routeOrderFor(item, identityKey) > 0;
+}
+
+function getRouteIndexes(identityKey = currentIdentity) {
+  return getRouteIds(identityKey)
+    .map(id => landmarks.findIndex(item => item.id === id))
+    .filter(index => index >= 0);
+}
+
+function firstRouteIndexForIdentity(identityKey = currentIdentity) {
+  return getRouteIndexes(identityKey)[0] ?? 0;
+}
+
+function nextRouteIndexAfterCurrent() {
+  const routeIndexes = getRouteIndexes();
+  const currentRoutePosition = routeIndexes.indexOf(landmarkIndex);
+  if (currentRoutePosition < 0) return null;
+  return routeIndexes[currentRoutePosition + 1] ?? null;
+}
+
+function routeProgressLabel(item = landmarks[landmarkIndex]) {
+  const order = routeOrderFor(item);
+  return order > 0
+    ? `${identities[currentIdentity].routeType}第 ${order}/${getRouteIds().length} 站`
+    : '自由探索 / 彩蛋地标';
+}
+
+function landmarkStem(item) {
+  return String(item.id).padStart(2, '0');
+}
+
+function getNowSrc(item) {
+  return item.nowByIdentity?.[currentIdentity] || item.now || `assets/landmarks/${landmarkStem(item)}_now.jpg`;
+}
+
+function getFutureSrc(item) {
+  return item.futureByIdentity?.[currentIdentity] || `assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.jpg`;
+}
+
+function getFutureFileName(item) {
+  return `${landmarkStem(item)}_future_${currentIdentity}.jpg`;
+}
+
+function detailFlowFor(item) {
+  return [3, 5, 8, 9, 13].includes(item.id) ? 'task-first' : 'image-first';
+}
+
+function applyDetailFlow(item) {
+  const layout = $('#detailLayout');
+  const module = $('#interactionModule');
+  const nav = document.querySelector('.detail-nav');
+  if (!layout || !module) return;
+  if (detailFlowFor(item) === 'task-first') {
+    layout.parentNode.insertBefore(module, layout);
+  } else if (nav) {
+    nav.parentNode.insertBefore(module, nav);
+  }
+}
+
+function guidePoseFor(pageName, item = landmarks[landmarkIndex]) {
+  if (pageName === 'identity') return 'climb';
+  if (pageName === 'route') return 'point';
+  if (pageName === 'detail') {
+    if (taskState.completed) return 'wave';
+    if (item.mode === 'book' || item.id === 3) return 'read';
+    if (item.id === 5 || item.id === 1 || item.id === 13) return 'point';
+  }
+  if (pageName === 'collection') return 'read';
+  return 'wave';
+}
+
+function guideMessageFor(pageName, item = landmarks[landmarkIndex]) {
+  const identity = identities[currentIdentity];
+  if (pageName === 'cover') return '从 1037 号森林出发，准备进入喻园时空路线。';
+  if (pageName === 'identity') return '我在绝望坡旁边等你，选一张入园卡就出发。';
+  if (pageName === 'route') {
+    return `${identity.label}路线已高亮。点一下地标，我先把说明和照片给你看。`;
+  }
+  if (pageName === 'collection') return `已点亮 ${unlocked.size}/${totalLandmarkCount()} 个坐标，路线章和自由探索章都会保留。`;
+  if (pageName === 'ending') return '海报生成后可以直接保存图片。';
+  if (pageName === 'info') return 'AI 生成说明和作品简介在这里统一查看。';
+  if (pageName !== 'detail') return '';
+
+  const byIdentity = {
+    highschool: {
+      1: '先刷未来入园卡，想象第一次走进华科。',
+      3: '答对校史小题，未来 HUSTer 的时间线就亮了。',
+      5: '选一份未来大学第一顿饭，把期待落到日常里。',
+      9: '点亮好奇心星点，给未来宣言攒能量。'
+    },
+    student: {
+      8: '今天的课程状态由你选择，日常也会长出未来感。',
+      6: '点亮课堂窗格，早八和灵感都会被记录。',
+      5: '先补充今日能量，再继续赶往下一站。',
+      7: '点一圈水纹，把片刻休息留给自己。'
+    },
+    alumni: {
+      1: '校友路线会收集三段记忆，慢慢刷开返校入口。',
+      5: '旧饭卡、常点菜单、同窗一桌，三段都点亮才算返校成功。',
+      7: '亭边的风适合慢一点，找回三片青春碎片。'
+    },
+    public: {
+      13: '这里进入同济医学人文支线，后半程会更有医学温度。',
+      10: '点击生命脉冲，理解医学精神里的责任与温度。',
+      11: '沿着导览线走完长廊，就完成开放校园观察。'
+    }
+  };
+  if (taskState.completed) {
+    const nextIndex = nextRouteIndexAfterCurrent();
+    return nextIndex === null ? '这一站已完成，可以去集章册收尾。' : `这一站已完成，下一站是 ${landmarks[nextIndex].name}。`;
+  }
+  return byIdentity[currentIdentity]?.[item.id] || `${item.name} 的任务不只是点点看，完成后再切到身份专属未来图。`;
+}
+
+function updateGuideBubble() {
+  const bubble = $('#guideBubble');
+  const bear = $('#guideBear');
+  const img = $('#guideImage');
+  if (!bubble || !bear) return;
+  const pageName = pages[pageIndex]?.dataset.page || 'cover';
+  const item = landmarks[landmarkIndex] || landmarks[0];
+  const pose = guidePoseFor(pageName, item);
+  if (img) img.src = `./assets/generated/guide-xinwuxiong-${pose}.png`;
+  bear.dataset.pose = pose;
+  bubble.textContent = guideMessageFor(pageName, item);
+  bear.classList.toggle('guide-hidden', pageName === 'cover');
+}
 
 function initLoading() {
   let progress = 0;
@@ -241,7 +407,7 @@ function initLoading() {
 function renderIdentities() {
   const wrap = $('#identityDesk');
   wrap.innerHTML = Object.entries(identities).map(([key, item], index) => `
-    <button class="role-card ${item.className} ${identityChosen && key === currentIdentity ? 'active' : ''}" data-identity="${key}" data-anim data-from="${index % 2 === 0 ? 'left' : 'right'}" style="--delay:${180 + index * 160}ms">
+    <button class="role-card ${item.className} ${identityChosen && key === currentIdentity ? 'active' : ''}" data-identity="${key}" data-anim data-from="${index % 2 === 0 ? 'left' : 'right'}" style="--delay:${110 + index * 90}ms">
       <span>${item.type}</span>
       <h3>${item.label}</h3>
       <p>${item.lensTitle}｜${item.desc}</p>
@@ -252,16 +418,17 @@ function renderIdentities() {
 function updateIdentityPreview() {
   const item = identities[currentIdentity];
   $('#routeTitle').textContent = item.title;
-  $('#routeDesc').textContent = `${item.lensTitle}｜${item.lensCopy}`;
+  $('#routeDesc').textContent = `${item.lensTitle}｜${item.lensCopy}｜身份路线 ${item.route.length} 站，其余地标保留为自由探索。`;
   $('#ticketIdentity').textContent = item.label;
   $('#endingTitle').textContent = item.endingTitle;
   $('#endingText').textContent = item.endingText;
   $('#statRoute').textContent = item.routeType;
-  $('#statCount').textContent = `${unlocked.size}/12`;
-  $('#collectionDesc').textContent = `当前身份：${item.label}｜已点亮 ${unlocked.size}/12 个地标。`;
+  $('#statCount').textContent = `${unlocked.size}/${totalLandmarkCount()}`;
+  $('#collectionDesc').textContent = `当前身份：${item.label}｜已点亮 ${unlocked.size}/${totalLandmarkCount()} 个地标。身份路线 ${item.route.length} 站，其余坐标作为自由探索或彩蛋地标保留。`;
   const confirm = $('#identityConfirm');
   if (confirm) confirm.disabled = !identityChosen;
   applyIdentityTheme();
+  updateGuideBubble();
 }
 
 function applyIdentityTheme() {
@@ -273,6 +440,26 @@ function applyIdentityTheme() {
   stage.style.setProperty('--identity-accent', item.accent);
   stage.style.setProperty('--identity-soft', item.soft);
   stage.dataset.identity = currentIdentity;
+  updateBgmSource();
+}
+
+function updateBgmSource() {
+  const audio = $('#bgmAudio');
+  const toggle = $('#musicToggle');
+  if (!audio || !toggle) return;
+  const src = identities[currentIdentity]?.bgm;
+  audio.pause();
+  audio.removeAttribute('src');
+  toggle.hidden = true;
+  toggle.classList.remove('playing');
+  if (!src || location.protocol === 'file:') return;
+  fetch(src, { method: 'HEAD' })
+    .then(response => {
+      if (!response.ok) return;
+      audio.src = src;
+      toggle.hidden = false;
+    })
+    .catch(() => {});
 }
 
 function campusPinY(item) {
@@ -287,17 +474,22 @@ function campusMapKey(campus) {
 function renderRoute() {
   const accordion = $('#campusAccordion');
   const campuses = ['主校区', '同济校区'];
+  const routeIds = getRouteIds();
   accordion.innerHTML = campuses.map(campus => {
     const list = landmarks.filter(item => item.campus === campus);
     const isOpen = openCampus === campus;
     const selectedInCampus = landmarks[landmarkIndex].campus === campus;
     const campusShort = campus === '主校区' ? 'MAIN' : 'TJ';
-    const desc = campus === '主校区' ? '点击地图标记探索九处地标' : '点击地图标记探索三处医学人文地标';
+    const routeCount = list.filter(item => routeIds.includes(item.id)).length;
+    const desc = `身份路线 ${routeCount} 站 · 自由探索 ${list.length - routeCount} 处`;
     const pins = list.map(item => {
       const idx = landmarks.findIndex(l => l.id === item.id);
-      return `<button class="map-pin ${idx === landmarkIndex ? 'active' : ''} ${unlocked.has(item.id) ? 'unlocked' : ''}" data-index="${idx}" style="left:${item.x}%;top:${campusPinY(item)}%" aria-label="${item.name}"><span>${item.icon}</span></button>`;
+      const order = routeOrderFor(item);
+      const routeClass = order > 0 ? 'route-member' : 'free-explore';
+      return `<button class="map-pin ${routeClass} ${idx === landmarkIndex ? 'active' : ''} ${unlocked.has(item.id) ? 'unlocked' : ''}" data-index="${idx}" data-order="${order || '彩'}" style="left:${item.x}%;top:${campusPinY(item)}%" aria-label="${item.name}"><span>${item.icon}</span></button>`;
     }).join('');
     const activeItem = list.find(item => landmarks[landmarkIndex].id === item.id) || list[0];
+    const activeLabel = selectedInCampus ? routeProgressLabel(activeItem) : '地图导览';
     return `
       <article class="campus-card ${isOpen ? 'open' : ''} ${selectedInCampus ? 'selected' : ''}" data-campus="${campus}">
         <button class="campus-head" data-campus-toggle="${campus}" aria-expanded="${isOpen}">
@@ -312,9 +504,9 @@ function renderRoute() {
               ${pins}
             </div>
             <div class="map-note">
-              <div class="map-note-tag">地图导览</div>
+              <div class="map-note-tag">${activeLabel}</div>
               <strong>${selectedInCampus ? activeItem.name : '点击地图中的标记选择地标'}</strong>
-              <span>${selectedInCampus ? activeItem.group : '不再使用下方数字组件，直接通过标记点进入更清晰。'}</span>
+              <span>${selectedInCampus ? `${activeItem.group}｜${isIdentityRouteLandmark(activeItem) ? identities[currentIdentity].taskLead : '自由探索坐标，完成后同样会进入集章册。'}` : '高亮点为当前身份路线，浅色点为自由探索或彩蛋地标。'}</span>
             </div>
           </div>
         </div>
@@ -326,17 +518,27 @@ function renderRoute() {
 
 function updateRouteCard() {
   const item = landmarks[landmarkIndex];
+  const inRoute = isIdentityRouteLandmark(item);
+  const routeText = routeProgressLabel(item);
   $('#routeCard').innerHTML = `
-    <span>${identities[currentIdentity].routeType} / ${String(item.id).padStart(2, '0')} / ${item.campus} / ${item.group}</span>
-    <h3>${item.name}</h3>
-    <p>${item.intro} ${identities[currentIdentity].taskLead}。</p>
-    <button class="small-btn" id="enterLandmark">进入这个任务</button>
+    <div class="route-preview-media">
+      <img id="routePreviewImg" alt="${item.name} 现在照片预览" />
+      <div class="route-preview-placeholder" id="routePreviewPlaceholder"><b>${landmarkStem(item)}_now.jpg</b><small>现在照片预留位</small></div>
+    </div>
+    <div class="route-preview-copy">
+      <span>${routeText} / ${landmarkStem(item)} / ${item.campus} / ${item.group}</span>
+      <h3>${item.name}</h3>
+      <p>${item.intro} ${inRoute ? `${identities[currentIdentity].taskLead}。` : '这是地图中保留的自由探索坐标，可作为彩蛋地标点亮。'}</p>
+      <button class="route-enter-btn" id="enterLandmark"><b>进入地标探索</b><i>→</i></button>
+    </div>
   `;
+  updateImage($('#routePreviewImg'), $('#routePreviewPlaceholder'), getNowSrc(item));
   $('#enterLandmark').addEventListener('click', () => {
     updateLandmark();
     goTo(3);
   });
   $$('.map-pin').forEach((pin) => pin.classList.toggle('active', Number(pin.dataset.index) === landmarkIndex));
+  updateGuideBubble();
 }
 
 function selectLandmark(index, jump = false) {
@@ -355,17 +557,43 @@ function updateLandmarkMetaOnly() {
 }
 
 function updateImage(img, placeholder, src) {
-  img.onload = () => {
-    img.style.display = 'block';
-    placeholder.style.display = 'none';
-  };
-  img.onerror = () => {
+  const showPlaceholder = () => {
     img.style.display = 'none';
     placeholder.style.display = 'flex';
   };
-  img.style.display = 'none';
-  placeholder.style.display = 'flex';
-  img.src = src;
+  const showImage = () => {
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+  };
+  img.onload = () => {
+    showImage();
+  };
+  img.onerror = () => {
+    showPlaceholder();
+  };
+  showPlaceholder();
+  if (!src) return;
+  if (location.protocol === 'file:') {
+    img.src = src;
+    return;
+  }
+  const token = Symbol(src);
+  img._loadToken = token;
+  fetch(src, { method: 'HEAD' })
+    .then(response => {
+      if (img._loadToken !== token) return;
+      if (response.ok) {
+        img.src = src;
+      } else {
+        img.removeAttribute('src');
+        showPlaceholder();
+      }
+    })
+    .catch(() => {
+      if (img._loadToken !== token) return;
+      img.removeAttribute('src');
+      showPlaceholder();
+    });
 }
 
 function updateLandmark() {
@@ -374,19 +602,20 @@ function updateLandmark() {
   openCampus = item.campus;
   const detailPage = $('#detailPage');
   const keepState = pageIndex === 3;
-  detailPage.className = `page detail detail-${item.mode}${keepState ? ' active page-ready' : ''}`;
+  detailPage.className = `page detail detail-${item.mode} detail-flow-${detailFlowFor(item)}${keepState ? ' active page-ready' : ''}`;
+  applyDetailFlow(item);
   $('#landmarkGroup').textContent = `${item.campus}｜${item.group}`;
   $('#landmarkName').textContent = `${String(item.id).padStart(2, '0')} ${item.name}`;
   $('#landmarkIntro').textContent = item.intro;
-  $('#identityCopy').textContent = `${identity.lensTitle}｜${item.copies[currentIdentity]} ${identity.lensCopy}`;
-  $('#nowFileName').textContent = `${String(item.id).padStart(2, '0')}_now.jpg`;
-  $('#futureFileName').textContent = `${String(item.id).padStart(2, '0')}_future.jpg`;
-  const bgPath = `assets/generated/landmark_bg/${String(item.id).padStart(2, '0')}.png`;
+  $('#identityCopy').textContent = `${routeProgressLabel(item)}｜${identity.lensTitle}｜${item.copies[currentIdentity]} ${identity.lensCopy}`;
+  $('#nowFileName').textContent = `${landmarkStem(item)}_now.jpg`;
+  $('#futureFileName').textContent = getFutureFileName(item);
+  const bgPath = `assets/generated/landmark_bg/${landmarkStem(item)}.png`;
   detailPage.style.setProperty('--landmark-bg', `url("${bgPath}")`);
-  updateImage($('#nowImage'), $('#nowPlaceholder'), item.now);
-  updateImage($('#futureImage'), $('#futurePlaceholder'), item.future);
-  renderInteraction(item);
+  updateImage($('#nowImage'), $('#nowPlaceholder'), getNowSrc(item));
+  updateImage($('#futureImage'), $('#futurePlaceholder'), getFutureSrc(item));
   resetLandmarkTask(item);
+  renderInteraction(item);
   renderRoute();
 }
 
@@ -404,24 +633,34 @@ function setCompareFromClientX(clientX) {
 }
 
 function taskRequirement(item) {
-  const map = {
-    timegate: 2,
-    book: 2,
-    nature: 2,
-    classroom: 5,
-    science: 4,
-    medicine: 1
+  if (currentIdentity === 'alumni') return 3;
+  const byLandmark = {
+    1: 1,
+    2: 2,
+    3: 1,
+    4: 2,
+    5: 2,
+    6: 4,
+    7: 2,
+    8: 3,
+    9: 3,
+    10: 1,
+    11: 2,
+    12: 2,
+    13: 1
   };
-  return map[item.mode] || 2;
+  return byLandmark[item.id] || 2;
 }
 
 function resetLandmarkTask(item) {
   clearTimeout(autoAdvanceTimer);
+  const completed = unlocked.has(item.id);
+  const required = taskRequirement(item);
   taskState = {
     id: item.id,
-    done: 0,
-    required: taskRequirement(item),
-    completed: unlocked.has(item.id)
+    done: completed ? required : 0,
+    required,
+    completed
   };
   $('#detailPage').classList.toggle('task-complete', taskState.completed);
   $('#sceneOverlay').innerHTML = '';
@@ -430,11 +669,12 @@ function resetLandmarkTask(item) {
   setCompare(taskState.completed ? 0 : 100);
   void futureLayer.offsetWidth;
   futureLayer.style.transition = '';
-  updateTaskStatus(taskState.completed ? '这个坐标已经点亮，可从地图继续选择地标。' : `${identities[currentIdentity].taskLead}，未来图景会在任务完成后展开。`);
+  updateTaskStatus(taskState.completed ? '这个坐标已经点亮，可停留查看未来图景，也可以手动继续。' : `${identities[currentIdentity].taskLead}，未来图景会在任务完成后展开。`);
 }
 
 function updateTaskStatus(message) {
   const identity = identities[currentIdentity];
+  const item = landmarks[landmarkIndex];
   const status = $('#taskStatus');
   if (status) {
     status.innerHTML = `
@@ -445,10 +685,23 @@ function updateTaskStatus(message) {
   }
   const hint = $('#imageHintLine');
   if (hint) {
-    hint.textContent = taskState.completed
-      ? '未来图景已解锁，正在保存这处喻园坐标'
-      : `${message} 默认保留现在图，完成任务后自动显现未来。`;
+    hint.textContent = '';
   }
+  const nextBtn = $('#taskNextBtn');
+  if (nextBtn) {
+    nextBtn.hidden = !taskState.completed;
+    if (taskState.completed) {
+      const nextIndex = nextRouteIndexAfterCurrent();
+      if (!isIdentityRouteLandmark(item)) {
+        nextBtn.textContent = '返回路线图';
+      } else if (nextIndex === null) {
+        nextBtn.textContent = '查看集章册';
+      } else {
+        nextBtn.textContent = `前往下一站：${landmarks[nextIndex].name}`;
+      }
+    }
+  }
+  updateGuideBubble();
 }
 
 function taskProgressRatio() {
@@ -478,16 +731,20 @@ function completeLandmarkTask() {
   updateIdentityPreview();
   updateTaskStatus(`${identities[currentIdentity].completeToast}。`);
   showToast(identities[currentIdentity].completeToast);
-  autoAdvanceTimer = setTimeout(goNextLandmarkFromTask, 1450);
 }
 
 function goNextLandmarkFromTask() {
   if (pageIndex !== 3) return;
-  if (landmarkIndex >= landmarks.length - 1) {
+  if (!isIdentityRouteLandmark(landmarks[landmarkIndex])) {
+    goTo(2);
+    return;
+  }
+  const nextIndex = nextRouteIndexAfterCurrent();
+  if (nextIndex === null) {
     goTo(4);
     return;
   }
-  landmarkIndex += 1;
+  landmarkIndex = nextIndex;
   updateLandmark();
   showToast(`下一站：${landmarks[landmarkIndex].name}`);
 }
@@ -530,85 +787,186 @@ function bindCompareDrag() {
 function renderInteraction(item) {
   const module = $('#interactionModule');
   const identity = identities[currentIdentity];
-  if (item.mode === 'timegate') {
-    module.innerHTML = `
-      <div class="interaction-card timegate-module">
-        <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
-        <div class="timegate-cards task-grid">
-          <button class="timegate-card task-step" data-message="记忆线索已收集：旧照片正在和此刻对齐。"><b>记忆</b><small>收集旧照片与初见线索</small></button>
-          <button class="timegate-card task-step" data-message="此刻坐标已确认：真实校园成为未来入口。"><b>此刻</b><small>确认现在的校园坐标</small></button>
-          <button class="timegate-card task-step" data-message="未来入口已打开：智慧导览与精神坐标开始叠加。"><b>未来</b><small>打开属于你的未来入口</small></button>
-        </div>
-        <p class="module-copy" id="moduleCopy">${identity.taskLead}：至少点亮两张时空卡，未来图景会自动展开。</p>
-      </div>
-    `;
-    bindTaskSteps();
-  } else if (item.mode === 'book') {
-    module.innerHTML = `
-      <div class="interaction-card book-module">
-        <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
-        <div class="book-stack" id="bookStack">
-          <button class="book-page task-step" data-message="纸页已翻开：知识从安静处开始沉淀。"><b>纸页</b><br>翻开真实学习的一页</button>
-          <button class="book-page task-step" data-message="云端索引已连接：AI 把检索变成对话。"><b>云端</b><br>连接未来知识云库</button>
-          <button class="book-page task-step" data-message="长期主义已记录：未来学习仍需要专注。"><b>长期主义</b><br>保存一条学习信念</button>
-        </div>
-        <p class="module-copy" id="moduleCopy">${identity.taskLead}：翻开两页，图书馆会从现在进入未来。</p>
-      </div>
-    `;
-    bindTaskSteps((btn) => {
-      btn.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-14deg)' }, { transform: 'rotateY(0deg)' }], { duration: 420, easing: 'ease-out' });
-    });
-  } else if (item.mode === 'nature') {
-    const seasons = ['春', '夏', '秋', '冬'];
-    module.innerHTML = `
-      <div class="interaction-card nature-module">
-        <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
-        <div class="season-wheel">
-          ${seasons.map(s => `<button class="season-btn task-step ${s === currentSeason ? 'active' : ''}" data-season="${s}" data-message="${s}季光影已收集：校园自然正在生长。">${s}</button>`).join('')}
-        </div>
-        <p class="module-copy" id="moduleCopy">${identity.taskLead}：收集两种季节光影，让未来生态校园显现。</p>
-      </div>
-    `;
-    bindTaskSteps((btn) => {
-      currentSeason = btn.dataset.season;
-      $$('.season-btn').forEach(b => b.classList.toggle('active', b === btn));
-      popSeasonDots();
-    });
-  } else if (item.mode === 'classroom') {
-    module.innerHTML = `
-      <div class="interaction-card classroom-module">
-        <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
-        <div class="window-grid" id="windowGrid">${Array.from({ length: 32 }, (_, i) => `<button class="window-dot ${i % 7 === 0 || i === 18 ? 'on locked' : ''}" aria-label="教室灯光"></button>`).join('')}</div>
-        <p class="module-copy" id="moduleCopy">${identity.taskLead}：点亮 5 个教室/实验格，把日常学习推向未来协作空间。</p>
-      </div>
-    `;
-    $$('.window-dot').forEach(dot => dot.addEventListener('click', () => {
-      if (dot.classList.contains('locked') || dot.classList.contains('on')) return;
-      dot.classList.toggle('on');
-      const nextCount = Math.min(taskState.required, taskState.done + 1);
-      registerTaskStep(`已新增点亮 ${nextCount}/${taskState.required} 个教室/实验格：每一格都代表一次讨论、实验或灵感。`);
-    }));
-  } else if (item.mode === 'medicine') {
-    module.innerHTML = `
-      <div class="interaction-card medicine-module">
-        <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
-        <div class="pulse-strip" id="pulseStrip"></div>
-        <p class="module-copy" id="moduleCopy">${identity.taskLead}：触发生命脉冲，未来医学图景会自动展开。</p>
-      </div>
-    `;
-    $('#pulseStrip').addEventListener('click', () => {
-      registerTaskStep('仁心、严谨、责任、生命温度，是医学未来最重要的底色。');
-    });
-  } else {
-    module.innerHTML = `
-      <div class="interaction-card science-module">
-        <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
-        <div class="constellation" id="constellation">${starHtml('science')}</div>
-        <p class="module-copy" id="moduleCopy">${identity.taskLead}：点亮 4 颗星点，把公式变成探索坐标。</p>
-      </div>
-    `;
-    bindStars('科学精神不是一条直线，而是不断被点亮的好奇心。');
+  if (currentIdentity === 'alumni') {
+    renderAlumniMemoryTask(module, item, identity);
+    return;
   }
+  if (item.id === 1) return renderGateTask(module, item, identity);
+  if (item.id === 3) return renderHistoryQuiz(module, item, identity);
+  if (item.id === 5) return renderCanteenTask(module, item, identity);
+  if (item.id === 4) return renderYouthTask(module, item, identity);
+  if (item.id === 7) return renderPavilionTask(module, item, identity);
+  if (item.id === 6) return renderClassroomTask(module, item, identity, '点亮未来课堂窗格', 30);
+  if (item.id === 8) return renderDongjiuTask(module, item, identity);
+  if (item.id === 9) return renderScienceTask(module, item, identity);
+  if (item.id === 11) return renderCorridorTask(module, item, identity);
+  if (item.mode === 'medicine') return renderMedicineTask(module, item, identity);
+  return renderLibraryTask(module, item, identity);
+}
+
+function moduleShell(item, identity, className, body, copy) {
+  return `
+    <div class="interaction-card ${className}">
+      <div class="module-head"><h3>${item.moduleTitle}</h3><span>${identity.lensTitle}</span></div>
+      ${body}
+      <p class="module-copy" id="moduleCopy">${copy}</p>
+    </div>
+  `;
+}
+
+function renderGateTask(module, item, identity) {
+  const cardLabel = currentIdentity === 'highschool' ? '未来入园卡' : currentIdentity === 'public' ? '开放导览票' : '校园通行卡';
+  module.innerHTML = moduleShell(item, identity, 'gate-module', `
+    <div class="gate-swipe">
+      <div class="gate-reader"><span></span><b>SCAN</b></div>
+      <button class="gate-pass task-step" data-message="${cardLabel}已刷入，校门未来图景正在展开。">
+        <small>${cardLabel}</small><strong>${identities[currentIdentity].label}</strong><i>刷卡入园</i>
+      </button>
+    </div>
+  `, `${identity.taskLead}：点击或轻触入园卡完成刷卡。`);
+  bindTaskSteps((btn) => btn.classList.add('swiped'));
+}
+
+function renderHistoryQuiz(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'quiz-module', `
+    <div class="quiz-card">
+      <strong>华中科技大学成立于哪一年？</strong>
+      <div class="quiz-options">
+        <button class="quiz-option" data-correct="true">2000年</button>
+        <button class="quiz-option">2001年</button>
+        <button class="quiz-option">1999年</button>
+      </div>
+    </div>
+  `, '选择正确答案，点亮校史馆时间坐标。');
+  $$('.quiz-option').forEach(btn => btn.addEventListener('click', () => {
+    if (taskState.completed || btn.classList.contains('done')) return;
+    if (btn.dataset.correct === 'true') {
+      btn.classList.add('done', 'correct');
+      $('#moduleCopy').textContent = '回答正确：2000 年，华科新的校史坐标已点亮。';
+      registerTaskStep('回答正确：2000 年，华科新的校史坐标已点亮。');
+    } else {
+      btn.classList.add('wrong');
+      $('#moduleCopy').textContent = '还差一点，再看一次校史时间线。';
+      btn.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], { duration: 260 });
+    }
+  }));
+}
+
+function renderLibraryTask(module, item, identity) {
+  const options = currentIdentity === 'student'
+    ? [['自习', '今日自习模式已选择'], ['检索', '数字检索已接入'], ['讨论', '小组讨论坐标已记录'], ['阅读', '阅读状态已保存']]
+    : currentIdentity === 'public'
+      ? [['知识中心', '知识中心已点亮'], ['数字服务', '数字阅读服务已记录'], ['安静力量', '学习空间观察已完成']]
+      : [['未来书', '第一本大学书已翻开'], ['专业词条', '专业词条已收藏'], ['夜读灯光', '夜读灯光已点亮']];
+  module.innerHTML = moduleShell(item, identity, 'book-module', `
+    <div class="book-stack">
+      ${options.map(([title, msg]) => `<button class="book-page task-step" data-message="${msg}。"><b>${title}</b><br>${msg}</button>`).join('')}
+    </div>
+  `, `${identity.taskLead}：选择 ${taskState.required} 个阅读状态，图书馆会切换到身份专属未来图。`);
+  bindTaskSteps((btn) => {
+    btn.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-14deg)' }, { transform: 'rotateY(0deg)' }], { duration: 420, easing: 'ease-out' });
+  });
+}
+
+function renderCanteenTask(module, item, identity) {
+  const canteenOptions = currentIdentity === 'highschool'
+    ? [['未来菜单', '选择未来大学第一顿饭'], ['生活关键词', '生成我的大学生活关键词'], ['同桌邀请', '想象第一次食堂聊天']]
+    : currentIdentity === 'student'
+      ? [['今日能量', '补充赶课续航'], ['治愈套餐', '记录今天吃什么'], ['状态条', '生成今日校园状态']]
+      : [['食堂窗口', '观察大学日常生活'], ['公共餐桌', '理解校园公共空间'], ['导览记录', '保存真实烟火气']];
+  module.innerHTML = moduleShell(item, identity, 'canteen-module', `
+    <div class="canteen-tray task-grid">
+      ${canteenOptions.map(([title, text]) => `<button class="meal-card task-step" data-message="${text}：百景园的能量正在补充。"><b>${title}</b><small>${text}</small></button>`).join('')}
+    </div>
+  `, `${identity.taskLead}：点两份“菜单”，让未来校园生活显现。`);
+  bindTaskSteps((btn) => {
+    btn.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-8px) rotate(-2deg)' }, { transform: 'translateY(0)' }], { duration: 420, easing: 'ease-out' });
+  });
+}
+
+function renderYouthTask(module, item, identity) {
+  const words = currentIdentity === 'highschool'
+    ? ['社团', '朋友', '热爱', '自由']
+    : currentIdentity === 'student'
+      ? ['松弛', '运动', '灵感', '同行']
+      : ['开放', '活力', '公共空间', '青年气质'];
+  module.innerHTML = moduleShell(item, identity, 'keyword-module', `
+    <div class="keyword-cloud">
+      ${words.map(word => `<button class="keyword-chip task-step" data-message="已选择「${word}」：校园生活能量正在生成。">${word}</button>`).join('')}
+    </div>
+  `, `${identity.taskLead}：选择 ${taskState.required} 个关键词。`);
+  bindTaskSteps();
+}
+
+function renderPavilionTask(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'pavilion-module', `
+    <div class="ripple-board">
+      <button class="ripple-point task-step" data-message="第一圈水纹展开：片刻休息被保存。"></button>
+      <button class="ripple-point task-step" data-message="第二圈水纹展开：亭影未来场景已接近完成。"></button>
+    </div>
+  `, `${identity.taskLead}：轻触两圈水纹，切换片刻休息场景。`);
+  bindTaskSteps((btn) => btn.classList.add('ripple-on'));
+}
+
+function renderClassroomTask(module, item, identity, title, count = 32) {
+  module.innerHTML = moduleShell(item, identity, 'classroom-module', `
+    <div class="window-grid" id="windowGrid">${Array.from({ length: count }, (_, i) => `<button class="window-dot ${i % 8 === 0 || i === 13 ? 'on locked' : ''}" aria-label="教室灯光"></button>`).join('')}</div>
+  `, `${identity.taskLead}：${title}，完成 ${taskState.required} 格即可进入未来课堂。`);
+  $$('.window-dot').forEach(dot => dot.addEventListener('click', () => {
+    if (dot.classList.contains('locked') || dot.classList.contains('on')) return;
+    dot.classList.add('on', 'done');
+    const nextCount = Math.min(taskState.required, taskState.done + 1);
+    registerTaskStep(`已点亮 ${nextCount}/${taskState.required} 个课堂窗格。`);
+  }));
+}
+
+function renderDongjiuTask(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'lab-module', `
+    <div class="lab-steps">
+      ${['课程状态', '实验记录', '协作讨论'].map(text => `<button class="lab-step task-step" data-message="${text}已记录：问题正在变成答案。"><b>${text}</b><small>点亮</small></button>`).join('')}
+    </div>
+  `, `${identity.taskLead}：选择今天的学习/实验状态。`);
+  bindTaskSteps();
+}
+
+function renderScienceTask(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'science-module', `
+    <div class="constellation" id="constellation">${starHtml('science')}</div>
+  `, `${identity.taskLead}：点亮 3 颗创新星点，生成今日成长关键词。`);
+  bindStars('创新星点已点亮：好奇心正在变成探索坐标。');
+}
+
+function renderMedicineTask(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'medicine-module', `
+    <button class="pulse-strip" id="pulseStrip" aria-label="触发生命脉冲"></button>
+  `, `${identity.taskLead}：触发生命脉冲，进入医学人文支线。`);
+  $('#pulseStrip').addEventListener('click', () => {
+    registerTaskStep('仁心、严谨、责任、生命温度，是医学未来最重要的底色。');
+  });
+}
+
+function renderCorridorTask(module, item, identity) {
+  module.innerHTML = moduleShell(item, identity, 'corridor-module', `
+    <div class="guide-line-task">
+      <button class="guide-stop task-step" data-message="导览线第一段已完成：医学人文空间被记录。">起点</button>
+      <button class="guide-stop task-step" data-message="导览线第二段已完成：开放校园路线闭合。">终点</button>
+    </div>
+  `, `${identity.taskLead}：滑动式导览线先用两段路线预留，后续可接入真实导览动画。`);
+  bindTaskSteps();
+}
+
+function renderAlumniMemoryTask(module, item, identity) {
+  const texts = item.id === 5
+    ? [['旧饭卡', '旧饭卡已刷开'], ['常点菜单', '那年常点的一餐已浮现'], ['同窗一桌', '返校味道已收藏']]
+    : item.id === 7
+      ? [['水纹', '亭边水纹已扩散'], ['晚风', '那阵晚风已回来'], ['停留', '青春片段已保存']]
+      : [['初见', '第一段返校记忆已唤起'], ['旧路', '第二段校园记忆已唤起'], ['重逢', '第三段母校记忆已唤起']];
+  module.innerHTML = moduleShell(item, identity, 'memory-module', `
+    <div class="memory-strip">
+      ${texts.map(([title, msg]) => `<button class="memory-chip task-step" data-message="${msg}。"><b>${title}</b><small>点击收藏</small></button>`).join('')}
+    </div>
+  `, `${identity.taskLead}：校友路线需点亮 3 段记忆后，未来母校图景才会展开。`);
+  bindTaskSteps();
 }
 
 function bindTaskSteps(extraAction) {
@@ -649,7 +1007,7 @@ function popSeasonDots() {
 
 function renderStamps() {
   $('#stampWall').innerHTML = landmarks.map((item, idx) => `
-    <button class="stamp ${unlocked.has(item.id) ? 'unlocked' : ''}" data-index="${idx}" style="--rot:${idx % 2 ? 1.3 : -1.2}deg">
+    <button class="stamp ${unlocked.has(item.id) ? 'unlocked' : ''} ${isIdentityRouteLandmark(item) ? 'route-member' : 'free-explore'}" data-index="${idx}" data-order="${routeOrderFor(item) || '彩'}" style="--rot:${idx % 2 ? 1.3 : -1.2}deg">
       <div class="stamp-icon">${unlocked.has(item.id) ? '✓' : item.icon}</div>
       <strong>${item.name}</strong>
     </button>
@@ -691,6 +1049,7 @@ function goTo(index) {
   }
   pageIndex = target;
   updatePageTransform();
+  $('#stage').dataset.page = pages[pageIndex].dataset.page;
   $('#pageNow').textContent = String(pageIndex + 1).padStart(2, '0');
   $('#pageTotal').textContent = String(pages.length).padStart(2, '0');
   pages.forEach((page, idx) => {
@@ -699,6 +1058,7 @@ function goTo(index) {
   });
   if (pages[pageIndex].dataset.page === 'collection') renderStamps();
   if (pages[pageIndex].dataset.page === 'ending') updateIdentityPreview();
+  updateGuideBubble();
   requestAnimationFrame(() => requestAnimationFrame(() => pages[pageIndex].classList.add('page-ready')));
 }
 
@@ -716,6 +1076,11 @@ function resetExperience() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.display = 'none';
   }
+  const download = $('#downloadPoster');
+  if (download) {
+    download.hidden = true;
+    download.removeAttribute('href');
+  }
 
   renderIdentities();
   renderRoute();
@@ -725,17 +1090,74 @@ function resetExperience() {
   goTo(0);
 }
 
-function makePoster() {
+function loadCanvasImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+function drawCoverImage(ctx, img, x, y, width, height) {
+  const imageRatio = img.width / img.height;
+  const targetRatio = width / height;
+  let sx = 0;
+  let sy = 0;
+  let sw = img.width;
+  let sh = img.height;
+  if (imageRatio > targetRatio) {
+    sw = img.height * targetRatio;
+    sx = (img.width - sw) / 2;
+  } else {
+    sh = img.width / targetRatio;
+    sy = (img.height - sh) / 2;
+  }
+  ctx.drawImage(img, sx, sy, sw, sh, x, y, width, height);
+}
+
+function wrapTextLimited(ctx, text, x, y, maxWidth, lineHeight, maxLines = Infinity) {
+  let line = '';
+  let lines = 0;
+  for (let i = 0; i < text.length; i++) {
+    const test = line + text[i];
+    const isLastLine = lines === maxLines - 1;
+    if (ctx.measureText(test).width > maxWidth && i > 0) {
+      if (isLastLine) {
+        ctx.fillText(`${line.slice(0, Math.max(0, line.length - 1))}…`, x, y);
+        return y + lineHeight;
+      }
+      ctx.fillText(line, x, y);
+      line = text[i];
+      y += lineHeight;
+      lines += 1;
+    } else {
+      line = test;
+    }
+  }
+  ctx.fillText(line, x, y);
+  return y + lineHeight;
+}
+
+async function makePoster() {
   const canvas = $('#posterCanvas');
   const ctx = canvas.getContext('2d');
   const w = canvas.width;
   const h = canvas.height;
   const id = identities[currentIdentity];
-  const grad = ctx.createLinearGradient(0, 0, w, h);
-  grad.addColorStop(0, '#0c2f68');
-  grad.addColorStop(.52, '#0b4ea2');
-  grad.addColorStop(1, '#e8d5a8');
-  ctx.fillStyle = grad;
+  const bg = await loadCanvasImage('assets/generated/identity-entry-bg.jpg');
+  if (bg) {
+    drawCoverImage(ctx, bg, 0, 0, w, h);
+  } else {
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#0c2f68');
+    grad.addColorStop(.52, '#0b4ea2');
+    grad.addColorStop(1, '#e8d5a8');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  ctx.fillStyle = 'rgba(5, 19, 33, .46)';
   ctx.fillRect(0, 0, w, h);
 
   ctx.globalAlpha = .18;
@@ -749,32 +1171,45 @@ function makePoster() {
   }
   ctx.globalAlpha = 1;
 
-  roundRect(ctx, 56, 74, 528, 780, 42, true, false, 'rgba(255,248,232,.92)');
+  roundRect(ctx, 50, 70, 540, 806, 36, true, false, 'rgba(255,248,232,.93)');
+  roundRect(ctx, 76, 100, 188, 42, 21, true, false, id.accent);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 18px sans-serif';
+  ctx.fillText(id.label, 104, 128);
+
   ctx.fillStyle = '#0b4ea2';
   ctx.font = '900 24px sans-serif';
-  ctx.fillText('HUST TIME PASS', 86, 134);
+  ctx.fillText('HUST TIME PASS', 86, 178);
   ctx.fillStyle = 'rgba(22,48,76,.52)';
-  ctx.font = '20px sans-serif';
-  ctx.fillText(`身份：${id.label}`, 86, 174);
+  ctx.font = '19px sans-serif';
+  ctx.fillText('时空喻园：现在，遇见未来', 86, 212);
 
   ctx.fillStyle = '#16304c';
-  ctx.font = '900 56px sans-serif';
-  wrapText(ctx, id.endingTitle, 86, 280, 470, 66);
+  ctx.font = '900 48px sans-serif';
+  wrapTextLimited(ctx, id.endingTitle, 86, 296, 470, 58, 2);
 
   ctx.fillStyle = 'rgba(22,48,76,.68)';
-  ctx.font = '28px sans-serif';
-  wrapText(ctx, id.endingText, 86, 452, 470, 42);
+  ctx.font = '22px sans-serif';
+  wrapTextLimited(ctx, id.endingText, 86, 426, 470, 32, 5);
 
-  roundRect(ctx, 86, 650, 205, 110, 24, true, false, 'rgba(11,78,162,.10)');
-  roundRect(ctx, 320, 650, 205, 110, 24, true, false, 'rgba(11,78,162,.10)');
+  roundRect(ctx, 78, 600, 484, 88, 22, true, false, 'rgba(11,78,162,.08)');
+  ctx.fillStyle = id.accent;
+  ctx.font = '900 20px sans-serif';
+  ctx.fillText('身份路线', 104, 636);
+  ctx.fillStyle = 'rgba(22,48,76,.68)';
+  ctx.font = '16px sans-serif';
+  wrapTextLimited(ctx, id.routeSummary, 104, 666, 430, 24, 1);
+
+  roundRect(ctx, 86, 720, 205, 100, 24, true, false, 'rgba(11,78,162,.10)');
+  roundRect(ctx, 320, 720, 205, 100, 24, true, false, 'rgba(11,78,162,.10)');
   ctx.fillStyle = '#0b4ea2';
   ctx.font = '900 34px sans-serif';
-  ctx.fillText(`${unlocked.size}/12`, 116, 706);
-  ctx.fillText(id.routeType, 350, 706);
+  ctx.fillText(`${unlocked.size}/${totalLandmarkCount()}`, 116, 774);
+  ctx.fillText(id.routeType, 350, 774);
   ctx.fillStyle = 'rgba(22,48,76,.58)';
   ctx.font = '22px sans-serif';
-  ctx.fillText('点亮地标', 116, 742);
-  ctx.fillText('路线类型', 350, 742);
+  ctx.fillText('点亮地标', 116, 808);
+  ctx.fillText('路线类型', 350, 808);
 
   ctx.fillStyle = 'rgba(255,255,255,.86)';
   ctx.font = '24px sans-serif';
@@ -783,6 +1218,12 @@ function makePoster() {
   ctx.font = '18px sans-serif';
   ctx.fillText('AI 生成内容已标注｜真实照片请使用团队拍摄或授权图片', 70, 956);
   canvas.style.display = 'block';
+  const download = $('#downloadPoster');
+  if (download) {
+    download.href = canvas.toDataURL('image/png');
+    download.hidden = false;
+  }
+  showToast('分享海报已生成，可点击保存');
 }
 
 function roundRect(ctx, x, y, width, height, radius, fill, stroke, fillStyle) {
@@ -825,6 +1266,8 @@ function bindEvents() {
     if (!card) return;
     currentIdentity = card.dataset.identity;
     identityChosen = true;
+    landmarkIndex = firstRouteIndexForIdentity();
+    openCampus = landmarks[landmarkIndex].campus;
     $$('#identityDesk .role-card').forEach(node => node.classList.toggle('active', node === card));
     updateIdentityPreview();
     updateLandmark();
@@ -834,6 +1277,9 @@ function bindEvents() {
   if (identityConfirm) {
     identityConfirm.addEventListener('click', () => {
       if (!identityChosen) return;
+      landmarkIndex = firstRouteIndexForIdentity();
+      openCampus = landmarks[landmarkIndex].campus;
+      updateLandmark();
       goTo(2);
     });
   }
@@ -841,7 +1287,7 @@ function bindEvents() {
   $('#campusAccordion').addEventListener('click', e => {
     const target = e.target.closest('.map-pin, .landmark-chip');
     if (target) {
-      selectLandmark(target.dataset.index, true);
+      selectLandmark(target.dataset.index, false);
       return;
     }
     const toggle = e.target.closest('[data-campus-toggle]');
@@ -855,6 +1301,22 @@ function bindEvents() {
   $('#prevPage').addEventListener('click', () => goTo(pageIndex - 1));
   $('#nextPage').addEventListener('click', () => goTo(pageIndex + 1));
   $('#goHome').addEventListener('click', () => goTo(0));
+  $('#musicToggle').addEventListener('click', async () => {
+    const audio = $('#bgmAudio');
+    const toggle = $('#musicToggle');
+    if (!audio || !audio.src) return;
+    if (audio.paused) {
+      try {
+        await audio.play();
+        toggle.classList.add('playing');
+      } catch {
+        showToast('轻触后即可播放背景音乐');
+      }
+    } else {
+      audio.pause();
+      toggle.classList.remove('playing');
+    }
+  });
   $('#backRoute').addEventListener('click', () => goTo(2));
   $('#compareRange').addEventListener('input', e => {
     setCompare(e.target.value);
@@ -871,6 +1333,7 @@ function bindEvents() {
     landmarkIndex = Math.floor(Math.random() * landmarks.length);
     updateLandmark();
   });
+  $('#taskNextBtn').addEventListener('click', goNextLandmarkFromTask);
   $('#unlockAll').addEventListener('click', () => {
     landmarks.forEach(item => unlocked.add(item.id));
     renderStamps();
@@ -884,7 +1347,7 @@ function bindEvents() {
     updateLandmark();
     goTo(3);
   });
-  $('#makePoster').addEventListener('click', makePoster);
+  $('#makePoster').addEventListener('click', () => { makePoster(); });
   $('#restart').addEventListener('click', resetExperience);
 
   let touchStartY = 0;
