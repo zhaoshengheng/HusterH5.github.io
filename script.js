@@ -358,7 +358,7 @@ function guidePoseFor(pageName, item = landmarks[landmarkIndex]) {
 function guideMessageFor(pageName, item = landmarks[landmarkIndex]) {
   const identity = identities[currentIdentity];
   if (pageName === 'cover') return '从 1037 号森林出发，准备进入喻园时空路线。';
-  if (pageName === 'identity') return '我在绝望坡旁边等你，选一张入园卡就出发。';
+  if (pageName === 'identity') return '拖住我可以挪位置。选一张入园卡，我带你走专属路线。';
   if (pageName === 'route') {
     return `${identity.label}路线已高亮。点一下地标，我先把说明和照片给你看。`;
   }
@@ -381,9 +381,13 @@ function guideMessageFor(pageName, item = landmarks[landmarkIndex]) {
       7: '点一圈水纹，把片刻休息留给自己。'
     },
     alumni: {
-      1: '校友路线会收集三段记忆，慢慢刷开返校入口。',
-      5: '旧饭卡、常点菜单、同窗一桌，三段都点亮才算返校成功。',
-      7: '亭边的风适合慢一点，找回三片青春碎片。'
+      1: '刷一张校友卡，从南大门重新回到喻园。',
+      3: '答对校史小题，把个人记忆接回学校的时间线。',
+      2: '翻开旧日书页，看看那些自习夜晚还亮不亮。',
+      5: '旧饭卡、常点菜单、同窗一桌，这一站用味道重返母校。',
+      7: '点开亭边水纹，让晚风把那段青春带回来。',
+      4: '拖动青年园能量条，把旧日活动和朋友重新唤醒。',
+      9: '点亮科学星点，母校仍在未来继续发问。'
     },
     public: {
       13: '这里进入同济医学人文支线，后半程会更有医学温度。',
@@ -713,7 +717,6 @@ function setCompareFromClientX(clientX) {
 
 function taskRequirement(item) {
   if (item.id === 1) return 1;
-  if (currentIdentity === 'alumni') return 3;
   const byLandmark = {
     1: 1,
     2: 2,
@@ -914,10 +917,6 @@ function renderInteraction(item) {
   const identity = identities[currentIdentity];
   if (item.id === 1) return renderGateTask(module, item, identity);
   if (item.mode === 'book') return renderLibraryTask(module, item, identity);
-  if (currentIdentity === 'alumni') {
-    renderAlumniMemoryTask(module, item, identity);
-    return;
-  }
   if (item.id === 3) return renderHistoryQuiz(module, item, identity);
   if (item.id === 5) return renderCanteenTask(module, item, identity);
   if (item.id === 4) return renderYouthTask(module, item, identity);
@@ -991,9 +990,11 @@ function renderHistoryQuiz(module, item, identity) {
 function renderLibraryTask(module, item, identity) {
   const options = currentIdentity === 'student'
     ? [['自习', '今日自习模式已选择'], ['检索', '数字检索已接入'], ['讨论', '小组讨论坐标已记录'], ['阅读', '阅读状态已保存']]
+    : currentIdentity === 'alumni'
+      ? [['旧日书页', '旧日书页已翻开'], ['自习座位', '曾经的自习座位已找到'], ['借阅回声', '借阅回声已被唤起'], ['夜读灯光', '那盏夜读灯光已点亮']]
     : currentIdentity === 'public'
-      ? [['知识中心', '知识中心已点亮'], ['数字服务', '数字阅读服务已记录'], ['安静力量', '学习空间观察已完成']]
-      : [['未来书', '第一本大学书已翻开'], ['专业词条', '专业词条已收藏'], ['夜读灯光', '夜读灯光已点亮']];
+      ? [['知识中心', '知识中心已点亮'], ['数字服务', '数字阅读服务已记录'], ['安静力量', '学习空间观察已完成'], ['开放书架', '开放书架观察已记录']]
+      : [['未来书', '第一本大学书已翻开'], ['专业词条', '专业词条已收藏'], ['夜读灯光', '夜读灯光已点亮'], ['云端书签', '云端书签已保存']];
   module.innerHTML = moduleShell(item, identity, 'book-module', `
     <div class="book-flip-task">
       <div class="book-spine" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -1023,6 +1024,8 @@ function renderCanteenTask(module, item, identity) {
     ? [['未来菜单', '选择未来大学第一顿饭'], ['生活关键词', '生成我的大学生活关键词'], ['同桌邀请', '想象第一次食堂聊天']]
     : currentIdentity === 'student'
       ? [['今日能量', '补充赶课续航'], ['治愈套餐', '记录今天吃什么'], ['状态条', '生成今日校园状态']]
+      : currentIdentity === 'alumni'
+        ? [['旧饭卡', '刷开记忆里的食堂入口'], ['常点菜单', '那年常点的一餐已浮现'], ['同窗一桌', '同窗一桌的返校味道已收藏']]
       : [['食堂窗口', '观察大学日常生活'], ['公共餐桌', '理解校园公共空间'], ['导览记录', '保存真实烟火气']];
   module.innerHTML = moduleShell(item, identity, 'canteen-module', `
     <div class="canteen-tray task-grid">
@@ -1039,6 +1042,8 @@ function renderYouthTask(module, item, identity) {
     ? ['社团', '朋友', '热爱', '自由']
     : currentIdentity === 'student'
       ? ['松弛', '运动', '灵感', '同行']
+      : currentIdentity === 'alumni'
+        ? ['旧活动', '老朋友', '操场风', '再相逢']
       : ['开放', '活力', '公共空间', '青年气质'];
   const startValue = taskState.completed ? 100 : 18;
   module.innerHTML = moduleShell(item, identity, 'keyword-module', `
@@ -1054,10 +1059,12 @@ function renderYouthTask(module, item, identity) {
 }
 
 function renderPavilionTask(module, item, identity) {
+  const ripples = currentIdentity === 'alumni'
+    ? [['旧日水纹', '旧日水纹展开：亭边回忆被保存。'], ['黄昏晚风', '黄昏晚风吹回：青春片段已点亮。']]
+    : [['第一圈水纹', '第一圈水纹展开：片刻休息被保存。'], ['第二圈水纹', '第二圈水纹展开：亭影未来场景已接近完成。']];
   module.innerHTML = moduleShell(item, identity, 'pavilion-module', `
     <div class="ripple-board">
-      <button class="ripple-point task-step" data-message="第一圈水纹展开：片刻休息被保存。"></button>
-      <button class="ripple-point task-step" data-message="第二圈水纹展开：亭影未来场景已接近完成。"></button>
+      ${ripples.map(([label, msg]) => `<button class="ripple-point task-step" data-message="${msg}"><span>${label}</span></button>`).join('')}
     </div>
   `, `${identity.taskLead}：轻触两圈水纹，切换片刻休息场景。`);
   bindTaskSteps((btn) => btn.classList.add('ripple-on'));
@@ -1133,7 +1140,7 @@ function renderDigitalLibraryTask(module, item, identity) {
     <div class="book-flip-task medical-book-task">
       <div class="book-spine" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="book-pages">
-        ${['医学检索', '电子阅览', '智慧借阅'].map((text, index) => `
+        ${['医学检索', '电子阅览', '智慧借阅', '生命文献'].map((text, index) => `
           <button class="book-page task-step flip-page" style="--page:${index}" data-message="${text}已接入：同济医学知识云库正在点亮。">
             <span>MED ${String(index + 1).padStart(2, '0')}</span>
             <b>${text}</b>
@@ -1799,7 +1806,7 @@ function bindGuideDrag() {
   };
   bear.addEventListener('pointerdown', e => {
     const pageName = pages[pageIndex]?.dataset.page || '';
-    if (!['route', 'detail', 'collection'].includes(pageName)) return;
+    if (!['identity', 'route', 'detail', 'collection'].includes(pageName)) return;
     guideDrag = {
       pointerId: e.pointerId,
       startX: e.clientX,

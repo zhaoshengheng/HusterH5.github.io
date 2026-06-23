@@ -5113,3 +5113,142 @@ body {
     align-content: center !important;
   }
 }
+
+/* v20 alumni task variety, card aspect and larger draggable guide */
+.book-pages {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.book-flip-task {
+  min-height: 276px;
+}
+
+.book-page.flip-page {
+  min-height: 126px;
+}
+
+.gate-pass {
+  grid-template-columns: minmax(0, 292px) minmax(118px, 1fr) !important;
+}
+
+.gate-card-art {
+  width: min(100%, 292px) !important;
+  height: auto !important;
+  aspect-ratio: 10 / 7;
+  justify-self: center;
+  background-size: 300% 100% !important;
+}
+
+.ripple-point {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.ripple-point span {
+  display: block;
+  width: 78px;
+  transform: translateY(48px);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.15;
+  pointer-events: none;
+}
+
+.ripple-point.done span {
+  color: var(--identity-accent);
+}
+
+.h5-stage[data-page="identity"] .guide-bear,
+.h5-stage[data-page="route"] .guide-bear,
+.h5-stage[data-page="detail"] .guide-bear,
+.h5-stage[data-page="collection"] .guide-bear {
+  width: 178px !important;
+}
+
+.h5-stage[data-page="identity"] .guide-bear img,
+.h5-stage[data-page="route"] .guide-bear img,
+.h5-stage[data-page="detail"] .guide-bear img,
+.h5-stage[data-page="collection"] .guide-bear img {
+  width: 150px !important;
+}
+
+.h5-stage[data-page="identity"] .guide-bear {
+  right: 16px !important;
+  bottom: 18px !important;
+}
+
+.h5-stage[data-page="identity"] .guide-bubble {
+  display: block !important;
+  right: 112px !important;
+  bottom: 92px !important;
+  width: 258px !important;
+  padding: 13px 16px !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+
+.h5-stage[data-page="route"] .guide-bubble,
+.h5-stage[data-page="detail"] .guide-bubble,
+.h5-stage[data-page="collection"] .guide-bubble {
+  width: 252px !important;
+  padding: 13px 16px !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .book-flip-task {
+    min-height: 252px !important;
+  }
+
+  .book-pages {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .book-page.flip-page {
+    min-height: 116px !important;
+  }
+
+  .gate-pass {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+  }
+
+  .gate-card-art {
+    width: min(100%, 306px) !important;
+    height: auto !important;
+  }
+
+  .gate-pass-copy {
+    width: min(100%, 306px);
+    justify-self: center;
+  }
+
+  .h5-stage[data-page="identity"] .guide-bear,
+  .h5-stage[data-page="route"] .guide-bear,
+  .h5-stage[data-page="detail"] .guide-bear,
+  .h5-stage[data-page="collection"] .guide-bear {
+    width: 164px !important;
+  }
+
+  .h5-stage[data-page="identity"] .guide-bear img,
+  .h5-stage[data-page="route"] .guide-bear img,
+  .h5-stage[data-page="detail"] .guide-bear img,
+  .h5-stage[data-page="collection"] .guide-bear img {
+    width: 138px !important;
+  }
+
+  .h5-stage[data-page="identity"] .guide-bubble,
+  .h5-stage[data-page="route"] .guide-bubble,
+  .h5-stage[data-page="detail"] .guide-bubble,
+  .h5-stage[data-page="collection"] .guide-bubble {
+    width: 228px !important;
+    font-size: 13px !important;
+  }
+
+  .h5-stage[data-page="identity"] .guide-bubble {
+    right: 104px !important;
+    bottom: 86px !important;
+  }
+}
