@@ -5252,3 +5252,205 @@ body {
     bottom: 86px !important;
   }
 }
+
+/* v21 HUST emblem loader and immersive pavilion water task */
+.loader-emblem {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  overflow: visible;
+  background:
+    radial-gradient(circle, rgba(255,255,255,.94) 0 52%, rgba(255,255,255,.12) 53% 100%);
+  border: 1px solid rgba(255,255,255,.55);
+  letter-spacing: 0;
+  animation: emblemPulse 2.4s ease-in-out infinite alternate;
+}
+
+.loader-emblem img {
+  position: relative;
+  z-index: 2;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(41,197,216,.34));
+}
+
+.loader-emblem::before,
+.loader-emblem::after,
+.loader-orbit {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.loader-emblem::before {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255,255,255,.96) 0 3px, transparent 4px),
+    radial-gradient(circle at 76% 20%, rgba(41,197,216,.95) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 82%, rgba(184,229,150,.88) 0 2px, transparent 3px);
+  animation: orbitSpin 4.8s linear infinite;
+}
+
+.loader-emblem::after {
+  inset: -20px;
+  background: conic-gradient(from 90deg, transparent, rgba(41,197,216,.72), transparent 36%, rgba(255,255,255,.58), transparent 62%, rgba(184,229,150,.48), transparent);
+  filter: blur(2px);
+  opacity: .74;
+  animation: orbitSpin 7s linear infinite reverse;
+}
+
+.loader-orbit {
+  border: 1px solid rgba(255,255,255,.25);
+  transform: rotateX(68deg) rotateZ(20deg);
+}
+
+.loader-orbit-b {
+  inset: -18px;
+  border-color: rgba(41,197,216,.28);
+  transform: rotateX(64deg) rotateZ(-38deg);
+  animation: orbitGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes emblemPulse {
+  from { transform: scale(.97); box-shadow: 0 0 38px rgba(41,197,216,.30), inset 0 0 34px rgba(255,255,255,.10); }
+  to { transform: scale(1.04); box-shadow: 0 0 58px rgba(41,197,216,.46), inset 0 0 40px rgba(255,255,255,.18); }
+}
+
+@keyframes orbitSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitGlow {
+  from { opacity: .45; }
+  to { opacity: .95; }
+}
+
+.ripple-surface {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 176px;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(22,48,76,.12);
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255,255,255,.62), transparent 22%),
+    radial-gradient(circle at 72% 62%, rgba(41,197,216,.32), transparent 28%),
+    linear-gradient(145deg, #103b63, #1a788f 58%, #e8f5f6);
+}
+
+.ripple-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    repeating-radial-gradient(ellipse at 30% 56%, rgba(255,255,255,.24) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(170deg, rgba(255,255,255,.18) 0 1px, transparent 1px 16px);
+  opacity: .62;
+  filter: url(#pavilionWaterFilter);
+  animation: waterFlow 5.6s ease-in-out infinite alternate;
+}
+
+.ripple-surface::after {
+  content: "";
+  position: absolute;
+  inset: -30% -10%;
+  z-index: 2;
+  background: linear-gradient(105deg, transparent 22%, rgba(255,255,255,.32) 44%, transparent 62%);
+  transform: translateX(-38%);
+  animation: waterSheen 3.8s ease-in-out infinite;
+}
+
+.water-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 34% 54%, rgba(11,78,162,.40), transparent 30%),
+    radial-gradient(ellipse at 68% 48%, rgba(255,248,232,.30), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,.20), rgba(7,24,46,.18));
+  filter: url(#pavilionWaterFilter);
+  animation: waterBreathe 4.6s ease-in-out infinite alternate;
+}
+
+.water-label {
+  position: absolute;
+  z-index: 3;
+  bottom: 16px;
+  min-width: 106px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(7,24,46,.42);
+  border: 1px solid rgba(255,255,255,.32);
+  box-shadow: 0 12px 26px rgba(7,24,46,.20);
+  font-size: 13px;
+  font-weight: 900;
+  backdrop-filter: blur(10px);
+  transition: transform .28s ease, background .28s ease;
+}
+
+.water-label:nth-of-type(2) { left: 18px; }
+.water-label:nth-of-type(3) { right: 18px; }
+.ripple-surface.wave-1 .water-label:nth-of-type(2),
+.ripple-surface.wave-2 .water-label:nth-of-type(3) {
+  background: color-mix(in srgb, var(--identity-accent) 74%, rgba(7,24,46,.46));
+  transform: translateY(-4px);
+}
+
+.water-tap {
+  position: absolute;
+  z-index: 4;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.92);
+  box-shadow: 0 0 18px rgba(41,197,216,.75);
+  pointer-events: none;
+  animation: waterTap 1.15s ease-out forwards;
+}
+
+@keyframes waterFlow {
+  from { transform: translate3d(-10px, -4px, 0) scale(1.02); opacity: .46; }
+  to { transform: translate3d(12px, 8px, 0) scale(1.06); opacity: .78; }
+}
+
+@keyframes waterSheen {
+  0%, 22% { transform: translateX(-46%) rotate(2deg); opacity: 0; }
+  52% { opacity: .72; }
+  100% { transform: translateX(54%) rotate(2deg); opacity: 0; }
+}
+
+@keyframes waterBreathe {
+  from { transform: translateY(-4px) scale(1.02); }
+  to { transform: translateY(7px) scale(1.06); }
+}
+
+@keyframes waterTap {
+  0% { opacity: .9; transform: scale(.28); }
+  68% { opacity: .62; }
+  100% { opacity: 0; transform: scale(9.4); }
+}
+
+@media (max-width: 640px), (max-height: 1030px) {
+  .loader-emblem {
+    width: 128px;
+    height: 128px;
+  }
+
+  .loader-emblem img {
+    width: 106px;
+    height: 106px;
+  }
+
+  .ripple-surface {
+    min-height: 164px;
+  }
+}

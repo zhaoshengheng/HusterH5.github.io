@@ -1060,14 +1060,42 @@ function renderYouthTask(module, item, identity) {
 
 function renderPavilionTask(module, item, identity) {
   const ripples = currentIdentity === 'alumni'
-    ? [['旧日水纹', '旧日水纹展开：亭边回忆被保存。'], ['黄昏晚风', '黄昏晚风吹回：青春片段已点亮。']]
-    : [['第一圈水纹', '第一圈水纹展开：片刻休息被保存。'], ['第二圈水纹', '第二圈水纹展开：亭影未来场景已接近完成。']];
+    ? ['旧日水纹展开：亭边回忆被保存。', '黄昏晚风吹回：青春片段已点亮。']
+    : ['第一圈水纹展开：片刻休息被保存。', '第二圈水纹展开：亭影未来场景已接近完成。'];
+  const labels = currentIdentity === 'alumni'
+    ? ['旧日水纹', '黄昏晚风']
+    : ['第一圈水纹', '第二圈水纹'];
   module.innerHTML = moduleShell(item, identity, 'pavilion-module', `
-    <div class="ripple-board">
-      ${ripples.map(([label, msg]) => `<button class="ripple-point task-step" data-message="${msg}"><span>${label}</span></button>`).join('')}
-    </div>
-  `, `${identity.taskLead}：轻触两圈水纹，切换片刻休息场景。`);
-  bindTaskSteps((btn) => btn.classList.add('ripple-on'));
+    <button class="ripple-board ripple-surface" id="pavilionRipple" aria-label="轻触醉晚亭水面">
+      <svg class="ripple-filter" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="pavilionWaterFilter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.018 0.055" numOctaves="2" seed="7">
+            <animate attributeName="baseFrequency" dur="7s" values="0.016 0.048;0.028 0.066;0.016 0.048" repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" scale="10" />
+        </filter>
+      </svg>
+      <span class="water-sheen"></span>
+      <span class="water-label">${labels[0]}</span>
+      <span class="water-label">${labels[1]}</span>
+    </button>
+  `, `${identity.taskLead}：轻触水面两次，水纹会在点击位置展开。`);
+  const surface = $('#pavilionRipple');
+  surface.addEventListener('click', e => {
+    if (taskState.completed) return;
+    const step = Math.min(ripples.length - 1, Number(surface.dataset.step || 0));
+    const rect = surface.getBoundingClientRect();
+    const wave = document.createElement('span');
+    wave.className = 'water-tap';
+    wave.style.left = `${e.clientX - rect.left}px`;
+    wave.style.top = `${e.clientY - rect.top}px`;
+    surface.appendChild(wave);
+    setTimeout(() => wave.remove(), 1200);
+    surface.dataset.step = String(step + 1);
+    surface.classList.add(`wave-${step + 1}`);
+    $('#moduleCopy').textContent = ripples[step];
+    registerTaskStep(ripples[step]);
+  });
 }
 
 function renderClassroomTask(module, item, identity, title, count = 32) {
