@@ -1067,24 +1067,20 @@ function renderPavilionTask(module, item, identity) {
     : ['第一圈水纹', '第二圈水纹'];
   module.innerHTML = moduleShell(item, identity, 'pavilion-module', `
     <button class="ripple-board ripple-surface" id="pavilionRipple" aria-label="轻触醉晚亭水面">
-      <svg class="ripple-filter" width="0" height="0" aria-hidden="true" focusable="false">
-        <filter id="pavilionWaterFilter">
-          <feTurbulence type="fractalNoise" baseFrequency="0.018 0.055" numOctaves="2" seed="7">
-            <animate attributeName="baseFrequency" dur="7s" values="0.016 0.048;0.028 0.066;0.016 0.048" repeatCount="indefinite" />
-          </feTurbulence>
-          <feDisplacementMap in="SourceGraphic" scale="10" />
-        </filter>
-      </svg>
       <span class="water-sheen"></span>
-      <span class="water-label">${labels[0]}</span>
-      <span class="water-label">${labels[1]}</span>
+      <span class="water-ring water-ring-a"></span>
+      <span class="water-ring water-ring-b"></span>
+      <span class="water-label water-label-a">${labels[0]}</span>
+      <span class="water-label water-label-b">${labels[1]}</span>
     </button>
   `, `${identity.taskLead}：轻触水面两次，水纹会在点击位置展开。`);
   const surface = $('#pavilionRipple');
   surface.addEventListener('click', e => {
     if (taskState.completed) return;
-    const step = Math.min(ripples.length - 1, Number(surface.dataset.step || 0));
+    const step = Number(surface.dataset.step || 0);
+    if (step >= ripples.length) return;
     const rect = surface.getBoundingClientRect();
+    surface.querySelectorAll('.water-tap').forEach(node => node.remove());
     const wave = document.createElement('span');
     wave.className = 'water-tap';
     wave.style.left = `${e.clientX - rect.left}px`;
@@ -1095,6 +1091,7 @@ function renderPavilionTask(module, item, identity) {
     surface.classList.add(`wave-${step + 1}`);
     $('#moduleCopy').textContent = ripples[step];
     registerTaskStep(ripples[step]);
+    if (taskState.completed) surface.classList.add('complete');
   });
 }
 
