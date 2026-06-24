@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --hust-blue: #0b4ea2;
   --deep-blue: #0c2f68;
   --ink: #16304c;
@@ -5510,4 +5510,30 @@ body {
   .ripple-surface {
     min-height: 164px;
   }
+}
+
+/* === v23: 身份选择页 — 新屋熊贴合对话框右下角，整体置于校友卡片下方 === */
+.h5-stage[data-page="identity"] .guide-bear {
+  left: 30px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 174px !important;
+  width: 280px !important;
+  z-index: 16 !important;
+}
+.h5-stage[data-page="identity"] .guide-bear img {
+  width: 108px !important;
+}
+.h5-stage[data-page="identity"] .guide-bubble {
+  display: block !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 40px !important;
+  width: 192px !important;
+  padding: 11px 14px !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  border-radius: 18px 18px 5px 18px !important;
 }
