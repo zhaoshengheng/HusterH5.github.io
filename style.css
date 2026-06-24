@@ -5261,10 +5261,18 @@ body {
 }
 
 .h5-stage[data-page="identity"] .guide-bubble {
-  left: -296px !important;
-  right: auto !important;
-  bottom: 118px !important;
-  width: 272px !important;
+  left: auto !important;
+  right: 120px !important;
+  bottom: 92px !important;
+  width: 252px !important;
+}
+
+.h5-stage[data-page="identity"] .guide-bear {
+  left: auto !important;
+  right: 10px !important;
+  bottom: 18px !important;
+  width: 126px;
+  z-index: 16;
 }
 
 /* v21 HUST emblem loader and immersive pavilion water task */
