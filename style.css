@@ -5263,15 +5263,15 @@ body {
 .h5-stage[data-page="identity"] .guide-bubble {
   left: auto !important;
   right: 120px !important;
-  bottom: 92px !important;
-  width: 252px !important;
+  bottom: 320px !important;
+  width: 242px !important;
 }
 
 .h5-stage[data-page="identity"] .guide-bear {
   left: auto !important;
-  right: 10px !important;
-  bottom: 18px !important;
-  width: 126px;
+  right: 8px !important;
+  bottom: 290px !important;
+  width: 110px;
   z-index: 16;
 }
 
