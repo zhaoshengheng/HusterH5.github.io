@@ -5260,19 +5260,21 @@ body {
   bottom: 132px !important;
 }
 
-.h5-stage[data-page="identity"] .guide-bubble {
-  left: auto !important;
-  right: 120px !important;
-  bottom: 320px !important;
-  width: 242px !important;
+.h5-stage[data-page="identity"] .guide-bear {
+  left: 26px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 258px !important;
+  width: 96px;
+  z-index: 16;
 }
 
-.h5-stage[data-page="identity"] .guide-bear {
-  left: auto !important;
-  right: 8px !important;
-  bottom: 290px !important;
-  width: 110px;
-  z-index: 16;
+.h5-stage[data-page="identity"] .guide-bubble {
+  left: 96px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 286px !important;
+  width: 220px !important;
 }
 
 /* v21 HUST emblem loader and immersive pavilion water task */
