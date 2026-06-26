@@ -1508,8 +1508,17 @@ function resetExperience() {
 function loadCanvasImage(src) {
   return new Promise(resolve => {
     const img = new Image();
+    img.crossOrigin = 'anonymous';
     img.onload = () => resolve(img);
-    img.onerror = () => resolve(null);
+    img.onerror = () => {
+      // fallback: 尝试绝对路径
+      const absImg = new Image();
+      absImg.crossOrigin = 'anonymous';
+      absImg.onload = () => resolve(absImg);
+      absImg.onerror = () => { console.warn('[poster] 图片加载失败:', src); resolve(null); };
+      const base = location.href.substring(0, location.href.lastIndexOf('/') + 1);
+      absImg.src = base + src;
+    };
     img.src = src;
   });
 }
