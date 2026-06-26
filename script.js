@@ -924,54 +924,47 @@ function bindCompareDrag() {
   const box = $('#imageLayers');
   let downX = 0, downY = 0, moved = false;
   let clickShowsFuture = false;
-  let dragStarted = false;
-  let pressTimer = null;
-  let longPressed = false;
-  const LONG_PRESS_MS = 350;
   const MOVE_THRESHOLD = 8;
+  // 手柄热区：手柄中心 ±40px 的竖向条带视为"拖动手柄"
+  const HANDLE_HIT_WIDTH = 40;
 
   box.addEventListener('pointerdown', e => {
     downX = e.clientX;
     downY = e.clientY;
     moved = false;
-    dragStarted = false;
-    longPressed = false;
     const rect = box.getBoundingClientRect();
-    const clickPct = ((e.clientX - rect.left) / rect.width) * 100;
+    const clickX = e.clientX - rect.left;
     const handlePct = parseFloat($('#compareRange').value) || 100;
-    clickShowsFuture = clickPct > handlePct;
+    const handleX = (handlePct / 100) * rect.width;
+    // 判断按下点是否在手柄热区内
+    const onHandle = Math.abs(clickX - handleX) <= HANDLE_HIT_WIDTH;
+    clickShowsFuture = clickX > handleX;
     box.setPointerCapture?.(e.pointerId);
 
-    // 长按计时器：长按后才激活拖动滑动线
-    pressTimer = window.setTimeout(() => {
-      longPressed = true;
+    if (onHandle) {
+      // 按在手柄上 → 立即激活拖动，零延迟
       draggingCompare = true;
       document.body.classList.add('dragging-compare');
       setCompareFromClientX(e.clientX);
-    }, LONG_PRESS_MS);
+    }
+    // 按在图片区域 → 不激活拖动，pointerup 时若未移动则查看图片
   });
 
   box.addEventListener('pointermove', e => {
-    // 位移超过阈值才算 moved
     if (Math.abs(e.clientX - downX) > MOVE_THRESHOLD || Math.abs(e.clientY - downY) > MOVE_THRESHOLD) {
       moved = true;
     }
-    // 长按已激活 或 已开始拖动，才移动滑动线
-    if (longPressed && draggingCompare) {
+    if (draggingCompare) {
       setCompareFromClientX(e.clientX);
-    } else if (moved) {
-      // 短按期间移动超过阈值，取消长按计时（视为滑动取消，不触发拖动也不触发点击）
-      if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
     }
   });
 
   const endDrag = (allowClick) => {
-    if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
     const wasDragging = draggingCompare;
     draggingCompare = false;
     document.body.classList.remove('dragging-compare');
-    // 单击（未长按、未移动）→ 查看图片
-    if (allowClick && !longPressed && !moved) {
+    // 非拖动 + 未移动 → 查看图片
+    if (allowClick && !wasDragging && !moved) {
       openImageViewer(clickShowsFuture);
     }
   };
@@ -1610,6 +1603,31 @@ async function makePoster(showMessage = true) {
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 18px "Microsoft YaHei", sans-serif';
   ctx.fillText(id.label, 104, 128);
+
+  // 二维码：右上角空白区域
+  const qrImg = await loadCanvasImage('assets/generated/二维码.jpg');
+  if (qrImg && token === posterRenderToken) {
+    const qrSize = 120;
+    const qrX = w - 44 - qrSize; // 右侧留 44px 边距
+    const qrY = 90;
+    const qrR = 12;
+    // 白底圆角矩形
+    ctx.save();
+    roundRect(ctx, qrX - 10, qrY - 10, qrSize + 20, qrSize + 20, qrR, true, false, '#fff');
+    ctx.shadowColor = 'rgba(0,0,0,.14)';
+    ctx.shadowBlur = 16;
+    ctx.shadowOffsetY = 4;
+    roundRect(ctx, qrX - 10, qrY - 10, qrSize + 20, qrSize + 20, qrR, true, false, '#fff');
+    ctx.restore();
+    // 二维码图片
+    ctx.drawImage(qrImg, qrX, qrY, qrSize, qrSize);
+    // 扫码提示文字
+    ctx.fillStyle = 'rgba(22,48,76,.52)';
+    ctx.font = '11px "Microsoft YaHei", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('扫码体验', qrX + qrSize / 2, qrY + qrSize + 28);
+    ctx.textAlign = 'left';
+  }
 
   const posterTitleGradient = ctx.createLinearGradient(86, 0, 520, 0);
   posterTitleGradient.addColorStop(0, '#0b4ea2');

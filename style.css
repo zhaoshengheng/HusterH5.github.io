@@ -237,8 +237,8 @@ button:active { transform: scale(.98); }
 .photo-slot span { color: #e7d098; font-size: 12px; letter-spacing: .2em; font-weight: 900; }
 .photo-slot strong { font-size: 25px; margin: 8px 0 4px; }
 .photo-slot small { color: rgba(255,255,255,.72); }
-.cover-now { left: 2px; top: 76px; width: 310px; height: 370px; transform: rotate(-3.8deg); background: linear-gradient(145deg, #63805b, #153b68); }
-.cover-future { right: 4px; top: 20px; width: 300px; height: 390px; transform: rotate(5deg); background: linear-gradient(145deg, #1666a6, #16a6b2 52%, #506f58); }
+.cover-now { left: 2px; top: 76px; width: 310px; height: 370px; transform: rotate(-3.8deg); background: url('./图片/梧桐大道-now.jpg') center/cover; }
+.cover-future { right: 4px; top: 20px; width: 300px; height: 390px; transform: rotate(5deg); background: url('./图片/梧桐大道-future.png') center/cover; }
 .time-ribbon {
   position: absolute;
   left: 56px;
@@ -951,7 +951,14 @@ button:active { transform: scale(.98); }
   height: 52px;
   background: radial-gradient(circle, rgba(255,255,255,.46), rgba(255,255,255,.16));
   box-shadow: 0 10px 28px rgba(0,0,0,.20), 0 0 28px rgba(41,197,216,.45);
+  animation: handlePulse 2.4s ease-in-out infinite;
 }
+@keyframes handlePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 10px 28px rgba(0,0,0,.20), 0 0 24px rgba(11,78,162,.40); }
+  50% { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,.20), 0 0 36px rgba(11,78,162,.70); }
+}
+/* 拖动中暂停脉冲，避免视觉抖动 */
+body.dragging-compare .compare-handle i { animation: none; }
 
 .story-card {
   position: relative;
@@ -1699,6 +1706,8 @@ body.dragging-compare * { cursor: ew-resize !important; }
   box-shadow: 0 22px 58px rgba(0,0,0,.18);
   backdrop-filter: blur(8px) saturate(1.08);
 }
+.cover-now { background: url('./图片/梧桐大道-now.jpg') center/cover !important; }
+.cover-future { background: url('./图片/梧桐大道-future.png') center/cover !important; }
 .photo-slot::after { background: linear-gradient(0deg, rgba(4,18,31,.46), rgba(4,18,31,.05) 64%); }
 .cover-copy {
   padding: 0 4px;
@@ -2357,7 +2366,7 @@ body.dragging-compare * { cursor: ew-resize !important; }
 .primary-btn::after,
 .route-enter-btn::after,
 .task-next-btn::after,
-.interaction-module button:not(.done):not(.wrong)::after {
+.interaction-module button:not(.done):not(.wrong):not(.ripple-surface)::after {
   content: "";
   position: absolute;
   inset: 3px;
@@ -5368,11 +5377,12 @@ body {
   border-radius: 999px;
   color: #fff;
   background: rgba(7,24,46,.52);
-  border: 1px solid rgba(255,255,255,.32);
+  border: none;
   box-shadow: 0 12px 26px rgba(7,24,46,.20);
   font-size: 13px;
   font-weight: 900;
   transition: transform .28s ease, background .28s ease;
+  animation: none;
 }
 
 .ripple-surface.wave-1 .water-label {
@@ -6065,6 +6075,62 @@ body {
   animation: actionGlow 2s ease-in-out infinite;
   z-index: 2;
 }
+/* v33d：醉晚亭水纹任务去除磨砂 + 边框呼吸 */
+.ripple-surface::after,
+.ripple-surface::before {
+  animation: none !important;
+}
+.ripple-surface {
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 16px 28px rgba(23,42,64,.12) !important;
+}
+.ripple-surface .water-label {
+  border: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 12px 26px rgba(7,24,46,.20) !important;
+}
 .primary-btn:active,
 .task-next-btn:active,
 .route-enter-btn:active { filter: brightness(.94); }
+
+/* ============================================================
+   v33 身份卡片右上角徽章统一优化
+   v33c：去掉圆形徽章底，只展示图标本身
+   ============================================================ */
+.role-card::after {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 0 !important;
+  right: 16px !important;
+  top: 16px !important;
+  opacity: 1 !important;
+  border: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  background-color: transparent !important;
+  background-size: 48px 48px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+.role-card.highschool::after {
+  content: "";
+  background-image: url('./assets/generated/录取通知书.png') !important;
+}
+.role-card.student::after {
+  content: "";
+  background-image: url('./assets/generated/校园卡.png') !important;
+}
+.role-card.alumni::after {
+  content: "";
+  background-image: url('./assets/generated/旧相册.png') !important;
+}
+.role-card.public::after {
+  content: "";
+  background-image: url('./assets/generated/导览票.png') !important;
+}
+/* 选中态：图标微放大 */
+.role-card.active::after {
+  transform: scale(1.12);
+}
