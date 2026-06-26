@@ -15,7 +15,7 @@
         <div class="loader-emblem" aria-label="华中科技大学校徽">
           <span class="loader-orbit loader-orbit-a"></span>
           <span class="loader-orbit loader-orbit-b"></span>
-          <img src="./assets/generated/hust-emblem-loader.png" alt="" />
+          <img src="./图片/华中科技大学校徽.png" alt="" />
         </div>
         <div class="loader-title">正在整理喻园时空档案</div>
         <div class="loader-sub" id="loaderSub">读取：南大门—毛主席像</div>
@@ -146,6 +146,7 @@
                 <small>完成任务将自动点亮坐标</small>
               </div>
               <button class="primary-btn task-next-btn" id="taskNextBtn" hidden>前往下一站</button>
+              <button class="ghost-btn task-stamp-btn" id="taskStampBtn" hidden>返回集章册</button>
             </div>
           </div>
 
@@ -202,7 +203,7 @@
           <div class="page-title">
             <p class="eyebrow dark">提交信息</p>
             <h2>作品简介与 AI 标注</h2>
-            <p>保留比赛提交需要的简介、提示词与 AI 生成说明。</p>
+            <p>本作品的简介、提示词与 AI 生成说明如下。</p>
           </div>
           <div class="info-panel">
             <h3>200–300 字作品简介</h3>
@@ -210,7 +211,7 @@
           </div>
           <div class="info-panel">
             <h3>AI 生成说明</h3>
-            <p>未来场景图、局部视觉光效和海报背景可由 AI 辅助生成；真实照片由团队拍摄或获得授权。页面中的未来视觉统一标注为“未来 · AI 生成”，提交材料需包含每张 AI 未来图对应的完整提示词、生成工具、生成时间与必要的人工修改说明。</p>
+            <p>本作品中，未来场景图、局部视觉光效和海报背景由 AI 辅助生成；真实照片由团队拍摄或获得授权。页面中的未来视觉统一标注为“未来 · AI 生成”。每张 AI 未来图对应的完整提示词、生成工具、生成时间与必要的人工修改说明，均已随本作品一并提交。</p>
           </div>
           <button class="primary-btn wide" id="restart">重新体验</button>
         </section>
@@ -220,6 +221,12 @@
         <button id="prevPage" aria-label="上一页">↑</button>
         <button id="nextPage" aria-label="下一页">↓</button>
       </nav>
+
+      <div class="image-viewer" id="imageViewer" aria-hidden="true">
+        <img id="imageViewerImg" alt="图片查看" />
+        <div class="image-viewer-label" id="imageViewerLabel"></div>
+        <div class="image-viewer-hint">再次点击关闭</div>
+      </div>
 
       <audio id="bgmAudio" preload="none" loop></audio>
     </div>

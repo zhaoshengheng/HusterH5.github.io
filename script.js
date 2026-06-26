@@ -1,7 +1,7 @@
 ﻿const landmarks = [
   {
     id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 16, y: 31,
-    now: '图片/1南大门2.jpg', future: 'assets/landmarks/01_future.jpg',
+    now: '图片/1南大门1.jpg', future: 'assets/landmarks/01_future.jpg',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
     moduleTitle: '刷入园卡：开启未来校门',
     moduleText: '把校门处理成“时空入口”，适合高中生的憧憬、在读生的出发、校友的回望。',
@@ -27,7 +27,7 @@
   },
   {
     id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 48, y: 32,
-    now: '图片/3校史馆1.jpg', future: 'assets/landmarks/03_future.jpg',
+    now: '图片/3校史馆2.jpg', future: 'assets/landmarks/03_future.jpg',
     intro: '历史不是静止的展陈，而是通向未来的坐标轴。',
     moduleTitle: '校史答题：从过去走向未来',
     moduleText: '用时间轴而不是普通卡片承载校史馆，让“现在—未来”主题更自然。',
@@ -53,7 +53,7 @@
   },
   {
     id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 76, y: 39,
-    now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
+    now: '图片/5.百景园 2.jpg', future: 'assets/landmarks/05_future.jpg',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
     moduleTitle: '选择菜单：补充喻园能量',
     moduleText: '把百景园定位为食堂体验点，用菜品、饭卡和能量条承接真实大学生活。',
@@ -79,7 +79,7 @@
   },
   {
     id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 44, y: 58,
-    now: '图片/7.醉晚亭1.jpg', future: 'assets/landmarks/07_future.jpg',
+    now: '图片/7.醉晚亭 3.jpg', future: 'assets/landmarks/07_future.jpg',
     intro: '水面、亭影与晚风，把喻园的诗意留在此刻。',
     moduleTitle: '轻触水纹：让亭影扩散',
     moduleText: '醉晚亭适合做水纹、晚风和诗句，不建议套同一种硬科技组件。',
@@ -131,7 +131,7 @@
   },
   {
     id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 49, y: 75,
-    now: '图片/11.碧珠长廊1.png', future: 'assets/landmarks/11_future.jpg',
+    now: '图片/11.碧珠长廊3.jpg', future: 'assets/landmarks/11_future.jpg',
     intro: '长廊连接的不只是空间，也连接着医学、人文与日常步履。',
     moduleTitle: '滑动导览线：记录长廊光影',
     moduleText: '长廊以光影和步行感为核心，让交互更温和、更有人文气质。',
@@ -170,7 +170,7 @@
   },
   {
     id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 42, y: 82,
-    now: 'assets/landmarks/14_now.jpg', future: 'assets/landmarks/14_future.jpg',
+    now: '图片/14.水塔.jpg', future: 'assets/landmarks/14_future.jpg',
     intro: '水塔像同济校区的时间标尺，把老建筑、树影与医学记忆一起留在校园天际线里。',
     moduleTitle: '拨动水塔刻度：点亮同济记忆',
     moduleText: '水塔作为同济校区自由探索地标，适合承载时间感、空间识别和医学人文记忆。',
@@ -191,6 +191,7 @@ const identities = {
     route: [1, 3, 2, 6, 5, 4, 9],
     routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 西十二教学楼 → 百景园（食堂） → 青年园 → 爱因斯坦广场',
     visual: 'assets/generated/identity/highschool.jpg',
+    bg: 'assets/generated/背景-高中生.png',
     bgm: 'assets/audio/highschool.mp3',
     accent: '#d8a85b', soft: '#fff4d4',
     lensTitle: '看见未来的自己',
@@ -206,6 +207,7 @@ const identities = {
     route: [8, 6, 2, 5, 4, 7, 9],
     routeSummary: '东九教学楼 → 西十二教学楼 → 主校区图书馆 → 百景园（食堂） → 青年园 → 醉晚亭 → 爱因斯坦广场',
     visual: 'assets/generated/identity/student.jpg',
+    bg: 'assets/generated/背景-在读生.png',
     bgm: 'assets/audio/student.mp3',
     accent: '#0b4ea2', soft: '#eaf3ff',
     lensTitle: '正在发生的日常',
@@ -221,6 +223,7 @@ const identities = {
     route: [1, 3, 2, 5, 7, 4, 9],
     routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 百景园（食堂） → 醉晚亭 → 青年园 → 爱因斯坦广场',
     visual: 'assets/generated/identity/alumni.jpg',
+    bg: 'assets/generated/背景-校友.png',
     bgm: 'assets/audio/alumni.mp3',
     accent: '#b98252', soft: '#f7e7d2',
     lensTitle: '重回母校',
@@ -236,6 +239,7 @@ const identities = {
     route: [1, 3, 2, 9, 13, 10, 12, 11],
     routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 爱因斯坦广场 → 同济医学院大门 → 裘法祖像 → 同济校区图书馆 → 碧珠长廊',
     visual: 'assets/generated/identity/public.jpg',
+    bg: 'assets/generated/背景-社会大众.png',
     bgm: 'assets/audio/public.mp3',
     accent: '#5a8f69', soft: '#e8f3df',
     lensTitle: '开放导览',
@@ -476,11 +480,13 @@ function applyIdentityTheme() {
   stage.style.setProperty('--identity-visual', `url("${item.visual}")`);
   stage.style.setProperty('--identity-accent', item.accent);
   stage.style.setProperty('--identity-soft', item.soft);
+  stage.style.setProperty('--identity-bg', `url("${item.bg}")`);
   stage.dataset.identity = currentIdentity;
   document.body.dataset.identity = currentIdentity;
   document.body.style.setProperty('--identity-visual', `url("${item.visual}")`);
   document.body.style.setProperty('--identity-accent', item.accent);
   document.body.style.setProperty('--identity-soft', item.soft);
+  document.body.style.setProperty('--identity-bg', `url("${item.bg}")`);
   updateBgmSource();
 }
 
@@ -520,7 +526,8 @@ function renderRoute() {
     const list = landmarks.filter(item => item.campus === campus);
     const isOpen = openCampus === campus;
     const selectedInCampus = landmarks[landmarkIndex].campus === campus;
-    const campusShort = campus === '主校区' ? 'MAIN' : 'TJ';
+    const campusShort = campus === '主校区' ? '' : '';
+    const campusEmblem = campus === '主校区' ? './图片/华中科技大学校徽.png' : './图片/同济医学院院徽.png';
     const routeCount = list.filter(item => routeIds.includes(item.id)).length;
     const desc = `身份路线 ${routeCount} 站 · 自由探索 ${list.length - routeCount} 处`;
     const pins = list.map(item => {
@@ -534,7 +541,7 @@ function renderRoute() {
     return `
       <article class="campus-card ${isOpen ? 'open' : ''} ${selectedInCampus ? 'selected' : ''}" data-campus="${campus}">
         <button class="campus-head" data-campus-toggle="${campus}" aria-expanded="${isOpen}">
-          <span class="campus-mark">${campusShort}</span>
+          <span class="campus-mark">${campusShort}<img class="campus-emblem" src="${campusEmblem}" alt="" /></span>
           <span class="campus-meta"><span>${list.length} 个坐标 · ${selectedInCampus ? '当前路线' : '点击展开'}</span><strong>${campus}</strong><small>${desc}</small></span>
           <i class="campus-toggle">⌄</i>
         </button>
@@ -581,6 +588,16 @@ function updateRouteCard() {
     goTo(3);
   });
   updateImage($('#routePreviewImage'), $('#routePreviewPlaceholder'), getNowSrc(item));
+  const previewImg = $('#routePreviewImage');
+  if (previewImg) {
+    previewImg.style.cursor = 'zoom-in';
+    previewImg.addEventListener('click', () => {
+      const src = previewImg.src;
+      if (src) {
+        openImageViewer(false, src, `${item.name} · 实景原图`);
+      }
+    });
+  }
   refreshRouteSelection();
   updateGuideBubble();
 }
@@ -604,6 +621,12 @@ function refreshRouteSelection() {
       if (span) {
         span.textContent = `${item.group}｜${isIdentityRouteLandmark(item) ? identities[currentIdentity].taskLead : '自由探索坐标，完成后同样会进入集章册。'}`;
       }
+    } else {
+      tag.textContent = '地图导览';
+      const strong = note.querySelector('strong');
+      const span = note.querySelector('span');
+      if (strong) strong.textContent = '点击地图中的标记选择地标';
+      if (span) span.textContent = '高亮点为当前身份路线，浅色点为自由探索或彩蛋地标。';
     }
   });
 }
@@ -648,17 +671,18 @@ function updateImage(img, placeholder, src) {
   };
   showPlaceholder();
   if (!src) return;
+  const safeSrc = encodeURI(src);
   if (location.protocol === 'file:') {
-    img.src = src;
+    img.src = safeSrc;
     return;
   }
-  const token = Symbol(src);
+  const token = Symbol(safeSrc);
   img._loadToken = token;
-  fetch(src, { method: 'HEAD' })
+  fetch(safeSrc, { method: 'HEAD' })
     .then(response => {
       if (img._loadToken !== token) return;
       if (response.ok) {
-        img.src = src;
+        img.src = safeSrc;
       } else {
         img.removeAttribute('src');
         showPlaceholder();
@@ -805,6 +829,10 @@ function updateTaskStatus(message) {
       }
     }
   }
+  const stampBtn = $('#taskStampBtn');
+  if (stampBtn) {
+    stampBtn.hidden = !taskState.completed;
+  }
   updateGuideBubble();
 }
 
@@ -894,22 +922,81 @@ function launchTaskEffect(strong = false) {
 
 function bindCompareDrag() {
   const box = $('#imageLayers');
-  const start = x => {
+  let downX = 0, downY = 0, moved = false;
+  let clickShowsFuture = false;
+  box.addEventListener('pointerdown', e => {
+    downX = e.clientX;
+    downY = e.clientY;
+    moved = false;
+    const rect = box.getBoundingClientRect();
+    const clickPct = ((e.clientX - rect.left) / rect.width) * 100;
+    const handlePct = parseFloat($('#compareRange').value) || 100;
+    clickShowsFuture = clickPct > handlePct;
     draggingCompare = true;
-    setCompareFromClientX(x);
+    setCompareFromClientX(e.clientX);
     document.body.classList.add('dragging-compare');
-  };
-  const move = x => { if (draggingCompare) setCompareFromClientX(x); };
-  const end = () => {
+    box.setPointerCapture?.(e.pointerId);
+  });
+  box.addEventListener('pointermove', e => {
+    if (!draggingCompare) return;
+    if (Math.abs(e.clientX - downX) > 5 || Math.abs(e.clientY - downY) > 5) {
+      moved = true;
+    }
+    setCompareFromClientX(e.clientX);
+  });
+  const endDrag = (allowClick) => {
     if (!draggingCompare) return;
     draggingCompare = false;
     document.body.classList.remove('dragging-compare');
+    if (allowClick && !moved) {
+      openImageViewer(clickShowsFuture);
+    }
   };
-  box.addEventListener('pointerdown', e => { start(e.clientX); box.setPointerCapture?.(e.pointerId); });
-  box.addEventListener('pointermove', e => move(e.clientX));
-  box.addEventListener('pointerup', end);
-  box.addEventListener('pointercancel', end);
-  box.addEventListener('mouseleave', end);
+  box.addEventListener('pointerup', () => endDrag(true));
+  box.addEventListener('pointercancel', () => endDrag(false));
+  box.addEventListener('mouseleave', () => endDrag(false));
+}
+
+function openImageViewer(showFuture = false, directSrc = null, directLabel = null) {
+  const viewer = $('#imageViewer');
+  const viewerImg = $('#imageViewerImg');
+  if (!viewer || !viewerImg) return;
+  let src = '';
+  let kind = 'now';
+  let labelText = '现在 · 实景原图';
+  if (directSrc) {
+    src = directSrc;
+    kind = directLabel && directLabel.includes('未来') ? 'future' : 'now';
+    labelText = directLabel || '现在 · 实景原图';
+  } else {
+    if (showFuture && !taskState.completed) {
+      showFuture = false;
+    }
+    const targetImg = showFuture ? $('#futureImage') : $('#nowImage');
+    const label = showFuture ? '未来图' : '原图';
+    if (!targetImg.src || targetImg.style.display === 'none') {
+      showToast(`${label}暂未加载`);
+      return;
+    }
+    src = targetImg.src;
+    kind = showFuture ? 'future' : 'now';
+    labelText = showFuture ? '未来 · AI 生成' : '现在 · 实景原图';
+  }
+  viewerImg.src = src;
+  viewerImg.dataset.kind = kind;
+  const labelEl = $('#imageViewerLabel');
+  if (labelEl) {
+    labelEl.textContent = labelText;
+  }
+  viewer.classList.add('show');
+}
+
+function closeImageViewer() {
+  const viewer = $('#imageViewer');
+  if (!viewer) return;
+  viewer.classList.remove('show');
+  const viewerImg = $('#imageViewerImg');
+  if (viewerImg) viewerImg.removeAttribute('src');
 }
 
 function renderInteraction(item) {
@@ -1725,6 +1812,8 @@ function bindEvents() {
     updateLandmark();
   });
   $('#taskNextBtn').addEventListener('click', goNextLandmarkFromTask);
+  $('#taskStampBtn').addEventListener('click', () => goTo(4));
+  $('#imageViewer').addEventListener('click', closeImageViewer);
   $('#unlockAll').addEventListener('click', () => {
     landmarks.forEach(item => unlocked.add(item.id));
     renderStamps();

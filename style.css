@@ -84,7 +84,7 @@ button:active { transform: scale(.98); }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 22px;
   color: #fff;
   background:
     radial-gradient(circle at 48% 34%, rgba(41,197,216,.26), transparent 32%),
@@ -106,10 +106,10 @@ button:active { transform: scale(.98); }
   animation: breathe 1.8s ease-in-out infinite alternate;
 }
 @keyframes breathe { from { transform: scale(.96); } to { transform: scale(1.04); } }
-.loader-title { font-size: 24px; font-weight: 900; letter-spacing: .05em; }
-.loader-sub { font-size: 15px; color: rgba(255,255,255,.72); }
-.loader-line { width: 318px; height: 7px; border-radius: 99px; background: rgba(255,255,255,.14); overflow: hidden; }
-.loader-line span { display: block; height: 100%; width: 0%; border-radius: inherit; background: linear-gradient(90deg, #fff, var(--cyan), #b8e596); transition: width .2s ease; }
+.loader-title { font-size: 23px; font-weight: 800; letter-spacing: .12em; text-shadow: 0 2px 10px rgba(0,0,0,.4); }
+.loader-sub { font-size: 14px; color: rgba(255,255,255,.78); letter-spacing: .04em; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+.loader-line { width: 280px; height: 5px; border-radius: 99px; background: rgba(255,255,255,.16); overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.3); }
+.loader-line span { display: block; height: 100%; width: 0%; border-radius: inherit; background: linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,.7)); transition: width .2s ease; box-shadow: 0 0 8px rgba(255,255,255,.4); }
 
 .topbar {
   position: absolute;
@@ -237,8 +237,8 @@ button:active { transform: scale(.98); }
 .photo-slot span { color: #e7d098; font-size: 12px; letter-spacing: .2em; font-weight: 900; }
 .photo-slot strong { font-size: 25px; margin: 8px 0 4px; }
 .photo-slot small { color: rgba(255,255,255,.72); }
-.cover-now { left: 2px; top: 76px; width: 310px; height: 370px; transform: rotate(-3.8deg); background: linear-gradient(145deg, #63805b, #153b68); }
-.cover-future { right: 4px; top: 20px; width: 300px; height: 390px; transform: rotate(5deg); background: linear-gradient(145deg, #1666a6, #16a6b2 52%, #506f58); }
+.cover-now { left: 2px; top: 76px; width: 310px; height: 370px; transform: rotate(-3.8deg); background: transparent; }
+.cover-future { right: 4px; top: 20px; width: 300px; height: 390px; transform: rotate(5deg); background: transparent; }
 .time-ribbon {
   position: absolute;
   left: 56px;
@@ -329,47 +329,6 @@ button:active { transform: scale(.98); }
 
 /* ROUTE: map + preview + filmstrip */
 .route { background: linear-gradient(180deg, #f7f1e0, #edf3f1); }
-.route-board { margin-top: 18px; position: relative; height: 650px; }
-.route-map {
-  position: absolute;
-  inset: 0 0 130px 0;
-  border-radius: 34px;
-  background:
-    radial-gradient(circle at 25% 25%, rgba(90,143,105,.18), transparent 26%),
-    radial-gradient(circle at 70% 66%, rgba(41,197,216,.16), transparent 25%),
-    linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,255,255,.38));
-  border: 1px solid rgba(22,48,76,.12);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.route-map::before {
-  content: "";
-  position: absolute;
-  inset: 34px;
-  border-radius: 30px;
-  border: 1px dashed rgba(22,48,76,.22);
-}
-.route-map::after {
-  content: "主校区\A\A\A\A\A\A\A\A\A 同济校区";
-  white-space: pre;
-  position: absolute;
-  left: 30px;
-  top: 28px;
-  color: rgba(22,48,76,.2);
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: .12em;
-  line-height: 1.5;
-}
-.route-path {
-  position: absolute;
-  height: 3px;
-  transform-origin: left center;
-  background: linear-gradient(90deg, rgba(11,78,162,.16), rgba(11,78,162,.65), rgba(90,143,105,.7));
-  box-shadow: 0 0 18px rgba(41,197,216,.22);
-}
-.route-path.main { left: 64px; top: 180px; width: 430px; transform: rotate(16deg); }
-.route-path.tongji { left: 150px; bottom: 96px; width: 300px; transform: rotate(-6deg); }
 .map-pin {
   position: absolute;
   width: 38px;
@@ -388,40 +347,6 @@ button:active { transform: scale(.98); }
 }
 .map-pin.active { transform: scale(1.22); background: var(--hust-blue); color: #fff; }
 .map-pin.unlocked { border-color: rgba(90,143,105,.7); box-shadow: 0 0 0 5px rgba(90,143,105,.12), 0 12px 26px rgba(23,42,64,.16); }
-.route-card {
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 16px;
-  min-height: 176px;
-  padding: 22px 22px 20px;
-  border-radius: 28px;
-  background: rgba(255,248,232,.90);
-  border: 1px solid rgba(22,48,76,.12);
-  box-shadow: 0 22px 52px rgba(23,42,64,.18);
-}
-.route-card span { color: var(--hust-blue); font-size: 12px; letter-spacing: .14em; font-weight: 900; }
-.route-card h3 { margin: 8px 0 8px; font-size: 25px; }
-.route-card p { margin: 0 0 14px; color: var(--muted); line-height: 1.55; font-size: 14px; }
-.route-strip {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 4px 2px 10px;
-  scrollbar-width: none;
-}
-.route-strip::-webkit-scrollbar { display: none; }
-.strip-item {
-  min-width: 108px;
-  padding: 10px;
-  border-radius: 18px;
-  background: rgba(255,255,255,.62);
-  border: 1px solid rgba(22,48,76,.11);
-  text-align: left;
-}
-.strip-item.active { background: var(--hust-blue); color: #fff; }
-.strip-item span { display: block; font-size: 12px; font-weight: 900; margin-bottom: 4px; }
-.strip-item small { color: inherit; opacity: .68; line-height: 1.25; }
 
 /* DETAIL: dynamic visual language */
 .detail { background: linear-gradient(180deg, #fbf3df, #edf3f1); padding-bottom: 66px; }
@@ -440,7 +365,7 @@ button:active { transform: scale(.98); }
   box-shadow: var(--shadow);
 }
 .layer { position: absolute; inset: 0; overflow: hidden; }
-.layer img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.layer img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: none; }
 .future-layer { clip-path: inset(0 0 0 48%); transition: clip-path .08s linear; }
 .placeholder {
   position: absolute;
@@ -512,9 +437,9 @@ button:active { transform: scale(.98); }
 
 /* detail mode overlays */
 .detail-timegate .image-layers { border-radius: 34px 34px 16px 16px; }
-.detail-timegate .scene-overlay::before { content: ""; position: absolute; left: 36px; right: 36px; top: 50%; height: 2px; background: linear-gradient(90deg, transparent, rgba(216,168,91,.9), transparent); }
+.detail-timegate .scene-overlay::before { content: none; }
 .detail-book .image-layers { border-radius: 18px 38px 38px 18px; box-shadow: inset 18px 0 28px rgba(0,0,0,.08), var(--shadow); }
-.detail-book .scene-overlay::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,.54); box-shadow: 0 0 20px rgba(0,0,0,.18); }
+.detail-book .scene-overlay::before { content: none; }
 .detail-nature .image-layers { border-radius: 45px; }
 .detail-nature .scene-overlay::before, .detail-nature .scene-overlay::after { content: ""; position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 1px solid rgba(255,255,255,.48); bottom: 40px; left: 38px; animation: ripple 2.6s linear infinite; }
 .detail-nature .scene-overlay::after { animation-delay: .8s; transform: scale(.7); }
@@ -522,7 +447,7 @@ button:active { transform: scale(.98); }
 .detail-classroom .scene-overlay { background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 54px 54px; mix-blend-mode: screen; }
 .detail-science .scene-overlay::before { content: "E=mc²  ·  求是创新  ·  AI + HUST"; position: absolute; left: -120px; top: 48%; color: rgba(255,255,255,.58); letter-spacing: .18em; font-weight: 900; animation: marquee 9s linear infinite; white-space: nowrap; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(360px); } }
-.detail-medicine .scene-overlay::before { content: ""; position: absolute; left: 34px; right: 34px; top: 52%; height: 2px; background: linear-gradient(90deg, transparent, #fff, #e95b69, #fff, transparent); animation: pulseLine 1.4s ease-in-out infinite; }
+.detail-medicine .scene-overlay::before { content: none; }
 @keyframes pulseLine { 0%,100% { opacity: .38; transform: scaleX(.84); } 50% { opacity: 1; transform: scaleX(1); } }
 
 /* modules */
@@ -790,12 +715,15 @@ button:active { transform: scale(.98); }
   height: 46px;
   display: grid;
   place-items: center;
-  border-radius: 18px;
-  color: #fff;
-  background: linear-gradient(135deg, var(--hust-blue), #1ba1b5);
-  box-shadow: 0 12px 26px rgba(11,78,162,.25), inset 0 1px 0 rgba(255,255,255,.28);
-  font-weight: 900;
-  letter-spacing: .05em;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,.08);
+}
+.campus-mark img.campus-emblem {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 .campus-meta span { display: block; color: var(--hust-blue); font-size: 12px; font-weight: 900; letter-spacing: .16em; }
 .campus-meta strong { display: block; margin-top: 4px; font-size: 21px; color: var(--ink); }
@@ -951,8 +879,6 @@ button:active { transform: scale(.98); }
 .map-pin.active { transform: scale(1.18); background: #0b4ea2; color: #fff; }
 .map-pin.active::after { border-color: rgba(41,197,216,.55); }
 @keyframes pinPulse { 0% { transform: scale(.72); opacity: .72; } 80%,100% { transform: scale(1.25); opacity: 0; } }
-.route-strip { display: none !important; }
-.route-board { display: none !important; }
 
 /* Details: keep now/future compare, but move controls into the image and vary the feel */
 .image-stage { position: relative; }
@@ -1216,7 +1142,7 @@ button:active { transform: scale(.98); }
 .bottom-nav { position: absolute; z-index: 22; }
 .loading { position: absolute; z-index: 50; }
 .campus-head { padding: 14px 16px; grid-template-columns: 42px 1fr auto; }
-.campus-mark { width: 42px; height: 42px; border-radius: 16px; }
+.campus-mark { width: 42px; height: 42px; border-radius: 50%; }
 .campus-meta strong { font-size: 20px; }
 .campus-meta small { display: block; margin-top: 2px; color: rgba(22,48,76,.52); font-size: 12px; line-height: 1.25; }
 .campus-map { height: 202px; }
@@ -1631,8 +1557,8 @@ body.dragging-compare * { cursor: ew-resize !important; }
   --identity-soft: #f7e2c9;
 }
 .h5-stage.theme-public {
-  --identity-accent: #5a8f69;
-  --identity-soft: #e5f2df;
+  --identity-accent: #6f8f6a;
+  --identity-soft: #e8f0e2;
 }
 .mini-label,
 .module-head span,
@@ -2877,11 +2803,22 @@ body[data-h5-page="ending"] {
 /* final mobile-H5 submission overrides */
 .loading {
   background:
-    radial-gradient(circle at 48% 36%, rgba(41,197,216,.22), transparent 30%),
-    linear-gradient(180deg, rgba(5,19,33,.18), rgba(5,19,33,.86)),
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,.10), transparent 42%),
+    linear-gradient(180deg, rgba(8,24,48,.62), rgba(5,16,32,.88)),
     url("./assets/generated/loading-hust-gate-mao.png") center/cover no-repeat,
     #07182e;
 }
+
+.loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,.32) 100%);
+  z-index: 0;
+}
+
+.loading > * { position: relative; z-index: 1; }
 
 .route-preview-card {
   display: block !important;
@@ -4454,7 +4391,7 @@ body {
 .ending.poster-ready .ticket {
   display: block !important;
   width: min(100%, 552px) !important;
-  padding: 28px 28px 26px;
+  padding: 28px 28px 76px;
   border-radius: 32px;
   background:
     linear-gradient(180deg, rgba(255,248,232,.95), rgba(255,248,232,.88)),
@@ -5049,8 +4986,8 @@ body {
 .ticket-footer {
   left: 42px !important;
   right: 42px !important;
-  bottom: 22px !important;
-  padding-top: 12px !important;
+  bottom: 14px !important;
+  padding-top: 14px !important;
   font-size: 12px !important;
   opacity: .78;
 }
@@ -5280,23 +5217,25 @@ body {
 /* v21 HUST emblem loader and immersive pavilion water task */
 .loader-emblem {
   position: relative;
-  width: 136px;
-  height: 136px;
+  width: 148px;
+  height: 148px;
   overflow: visible;
-  background:
-    radial-gradient(circle, rgba(255,255,255,.94) 0 52%, rgba(255,255,255,.12) 53% 100%);
-  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(255,255,255,.62);
   letter-spacing: 0;
-  animation: emblemPulse 2.4s ease-in-out infinite alternate;
+  box-shadow: 0 8px 30px rgba(0,0,0,.28), 0 0 26px rgba(255,255,255,.18);
+  animation: emblemPulse 2.8s ease-in-out infinite alternate;
 }
 
 .loader-emblem img {
   position: relative;
   z-index: 2;
-  width: 112px;
-  height: 112px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 14px rgba(41,197,216,.34));
+  width: 124px;
+  height: 124px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.18));
 }
 
 .loader-emblem::before,
@@ -5312,35 +5251,36 @@ body {
 
 .loader-emblem::before {
   background:
-    radial-gradient(circle at 18% 28%, rgba(255,255,255,.96) 0 3px, transparent 4px),
-    radial-gradient(circle at 76% 20%, rgba(41,197,216,.95) 0 2px, transparent 3px),
-    radial-gradient(circle at 64% 82%, rgba(184,229,150,.88) 0 2px, transparent 3px);
-  animation: orbitSpin 4.8s linear infinite;
+    radial-gradient(circle at 18% 28%, rgba(255,255,255,.92) 0 3px, transparent 4px),
+    radial-gradient(circle at 76% 20%, rgba(255,255,255,.85) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 82%, rgba(255,255,255,.78) 0 2px, transparent 3px),
+    radial-gradient(circle at 24% 78%, rgba(255,255,255,.70) 0 2px, transparent 3px);
+  animation: orbitSpin 5.6s linear infinite;
 }
 
 .loader-emblem::after {
-  inset: -20px;
-  background: conic-gradient(from 90deg, transparent, rgba(41,197,216,.72), transparent 36%, rgba(255,255,255,.58), transparent 62%, rgba(184,229,150,.48), transparent);
+  inset: -22px;
+  background: conic-gradient(from 90deg, transparent, rgba(255,255,255,.55), transparent 34%, rgba(255,255,255,.42), transparent 64%, rgba(255,255,255,.50), transparent);
   filter: blur(2px);
-  opacity: .74;
-  animation: orbitSpin 7s linear infinite reverse;
+  opacity: .66;
+  animation: orbitSpin 9s linear infinite reverse;
 }
 
 .loader-orbit {
-  border: 1px solid rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.22);
   transform: rotateX(68deg) rotateZ(20deg);
 }
 
 .loader-orbit-b {
   inset: -18px;
-  border-color: rgba(41,197,216,.28);
+  border-color: rgba(255,255,255,.20);
   transform: rotateX(64deg) rotateZ(-38deg);
-  animation: orbitGlow 2s ease-in-out infinite alternate;
+  animation: orbitGlow 2.4s ease-in-out infinite alternate;
 }
 
 @keyframes emblemPulse {
-  from { transform: scale(.97); box-shadow: 0 0 38px rgba(41,197,216,.30), inset 0 0 34px rgba(255,255,255,.10); }
-  to { transform: scale(1.04); box-shadow: 0 0 58px rgba(41,197,216,.46), inset 0 0 40px rgba(255,255,255,.18); }
+  from { transform: scale(.97); box-shadow: 0 8px 30px rgba(0,0,0,.28), 0 0 26px rgba(255,255,255,.18); }
+  to { transform: scale(1.03); box-shadow: 0 10px 38px rgba(0,0,0,.32), 0 0 40px rgba(255,255,255,.28); }
 }
 
 @keyframes orbitSpin {
@@ -5498,13 +5438,13 @@ body {
 
 @media (max-width: 640px), (max-height: 1030px) {
   .loader-emblem {
-    width: 128px;
-    height: 128px;
+    width: 134px;
+    height: 134px;
   }
 
   .loader-emblem img {
-    width: 106px;
-    height: 106px;
+    width: 112px;
+    height: 112px;
   }
 
   .ripple-surface {
@@ -5537,3 +5477,522 @@ body {
   line-height: 1.45 !important;
   border-radius: 18px 18px 5px 18px !important;
 }
+
+/* === v24: 原图点击查看弹层 + 返回集章册按钮 === */
+.image-viewer {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 19, 33, .94);
+  backdrop-filter: blur(10px);
+  cursor: zoom-out;
+  animation: viewerFadeIn .28s ease both;
+}
+.image-viewer.show {
+  display: flex;
+}
+.image-viewer img {
+  max-width: 92%;
+  max-height: 88%;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+  pointer-events: none;
+}
+.image-viewer-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 9px 20px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .88);
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .26);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+.image-viewer-label {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 22px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(11, 78, 162, .72);
+  border: 1px solid rgba(255, 255, 255, .32);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.image-viewer[data-kind="future"] .image-viewer-label,
+.image-viewer img[data-kind="future"] ~ .image-viewer-label {
+  background: rgba(216, 168, 91, .72);
+}
+@keyframes viewerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.task-stamp-btn {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.task-stamp-btn[hidden] {
+  display: none !important;
+}
+.task-stamp-btn::after {
+  content: none !important;
+}
+.task-stamp-btn::before {
+  content: "📁";
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* === v25d: 重新设计背景 — 完整铺满 + 不裁切校徽校训 === */
+/* 图片比例 0.622 ≈ 页面比例 0.621，用 100% 100% 拉伸填满视口，变形 <0.2% 肉眼不可见 */
+/* 用默认 scroll（非 local）：背景固定铺满视口，内容在背景上滚动，校徽校训始终完整可见 */
+
+/* 中和旧的 ::before / ::after 背景层 */
+.page.route::before,
+.page.route::after,
+.page.detail::before,
+.page.detail::after,
+.page.collection::before,
+.page.collection::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* 背景图拉伸填满整个视口（padding box），不裁切；蒙层保证文字可读 */
+.page.route.active,
+.page.detail.active,
+.page.collection.active {
+  background-image:
+    linear-gradient(180deg, rgba(246,240,223,.10), rgba(246,240,223,.22)),
+    var(--identity-bg) !important;
+  background-size: 100% 100%, 100% 100% !important;
+  background-position: center center, center center !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-attachment: scroll, scroll !important;
+  background-color: var(--paper) !important;
+}
+
+/* 详情页蒙层稍轻（内容区有自己的底色） */
+.page.detail.active {
+  background-image:
+    linear-gradient(180deg, rgba(246,240,223,.08), rgba(237,243,241,.18)),
+    var(--identity-bg) !important;
+}
+
+/* 让原有 .paper-noise 等装饰保持在背景之上但不挡内容 */
+.page.route .paper-noise,
+.page.detail .paper-noise,
+.page.collection .paper-noise {
+  z-index: 1;
+}
+
+/* 详情页内容卡片保持可读 */
+.page.detail .story-card,
+.page.detail .interaction-card,
+.page.detail .detail-header {
+  position: relative;
+  z-index: 2;
+}
+.page.detail .story-card {
+  background: rgba(255,248,232,.92) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* ============================================================
+   v26 视觉收敛：字重层级 + 局部细节
+   原则：标题 800 / 副标 600 / 正文 500 / 标签 700，去掉满屏 900
+   ============================================================ */
+
+/* —— 字重层级 —— */
+.eyebrow, .eyebrow.dark { font-weight: 700; }
+.topbar-brand, .progress-pill { font-weight: 700; }
+.photo-slot span { font-weight: 700; }
+.role-card span { font-weight: 700; }
+.mini-label { font-weight: 700; }
+.module-head span { font-weight: 700; }
+.image-badge { font-weight: 700; }
+.campus-meta span { font-weight: 700; }
+.ticket-top { font-weight: 700; }
+.tool { font-weight: 700; }
+.season-btn { font-weight: 700; }
+.stamp strong { font-weight: 600; }
+.route-preview-card span { font-weight: 700; }
+.map-note-tag { font-weight: 700; }
+.landmark-chip b { font-weight: 700; }
+
+/* 主标题保留分量但不顶满 */
+.page-title h2 { font-weight: 800; }
+.compact-title h2 { font-weight: 800; }
+.cover h1 { font-weight: 800; }
+.cover h2 { font-weight: 500; }
+.ticket h2 { font-weight: 800; }
+.detail-header h2 { font-weight: 800; }
+.route-preview-card h3 { font-weight: 800; }
+
+/* 按钮从 900 降到 800，仍醒目但不笨重 */
+.primary-btn, .ghost-btn, .small-btn { font-weight: 800; }
+
+/* 正文/副标降到 500-600 */
+.lead { font-weight: 500; }
+.route-preview-card p { font-weight: 500; }
+.story-card p { font-weight: 500; }
+.module-copy { font-weight: 500; }
+.ticket p { font-weight: 500; }
+.campus-meta small { font-weight: 500; }
+.info-panel p { font-weight: 500; }
+
+/* —— 局部细节 —— */
+
+/* 1. 详情页图片区底色：灰蓝绿 → 暖纸色，贴合手账调性 */
+.image-layers { background: #ece2c8; }
+
+/* 2. 集章册未点亮 stamp 提亮，避免大面积灰暗 */
+.stamp {
+  color: rgba(22, 48, 76, .50);
+  background: rgba(255, 255, 255, .62);
+}
+.stamp-icon { opacity: .55; }
+
+/* 3. 结尾票根挖孔：深蓝实心 → 深褐灰，与纸色票根过渡更自然 */
+.ticket::before, .ticket::after { background: #3a322a; }
+
+/* 4. 封面 time-ribbon 渐变线去掉青绿，收敛为白+金 */
+.time-ribbon i {
+  background: linear-gradient(90deg, #fff, #d8a85b);
+  box-shadow: 0 0 14px rgba(216, 168, 91, .6);
+}
+
+/* ============================================================
+   v27 配色收敛：华科蓝 + 纸金 为主，弱化青/绿/红的科技感
+   原则：保留 --hust-blue / --paper / --warm 为主色系
+        --cyan / --green / --red 降级为低饱和辅助或替换
+   手法：用末尾覆盖块统一改，不动多版本历史定义
+   ============================================================ */
+
+/* —— 1. 收敛 CSS 变量：青/绿降饱和，主色更聚焦 —— */
+:root {
+  --cyan: #6b9cc4;          /* 青绿 → 柔和蓝灰，仅作 hover/辅助 */
+  --green: #6f8f6a;          /* 翠绿 → 哑光橄榄，配合纸金调性 */
+}
+
+/* —— 2. body 外圈氛围光斑：去掉青绿，改深蓝 + 暖灰 —— */
+body {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(11, 78, 162, .22), transparent 30%),
+    radial-gradient(circle at 90% 85%, rgba(120, 96, 60, .18), transparent 30%),
+    #0a1a2e;
+}
+
+/* —— 3. 加载页背景光斑：青 → 蓝 —— */
+.loading {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(11, 78, 162, .20), transparent 42%),
+    linear-gradient(180deg, rgba(8,24,48,.62), rgba(5,16,32,.88)),
+    url("./assets/generated/loading-hust-gate-mao.png") center/cover no-repeat,
+    #07182e;
+}
+
+/* —— 4. 封面背景：青绿光斑 → 蓝金 —— */
+.cover {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(11, 78, 162, .42), transparent 30%),
+    radial-gradient(circle at 76% 36%, rgba(216, 168, 91, .34), transparent 30%),
+    linear-gradient(160deg, #0c2f68 0%, #0c2f68 38%, #07182e 100%);
+}
+
+/* —— 5. 主按钮渐变：三色 → 蓝金双色 —— */
+.primary-btn {
+  background: linear-gradient(135deg, #0b4ea2, #1d6fb8 55%, #d8a85b);
+  box-shadow: 0 14px 32px rgba(11, 78, 162, .26);
+}
+
+/* —— 6. 交互元素：青色发光 → 蓝色发光 —— */
+.compare-handle {
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 0 18px rgba(11, 78, 162, .7);
+}
+.star.on {
+  background: var(--hust-blue);
+  box-shadow: 0 0 20px rgba(11, 78, 162, .8);
+}
+.window-dot.on {
+  background: #f0c060;
+  box-shadow: 0 0 14px rgba(240, 192, 96, .72);
+}
+
+/* —— 7. 未来图占位：青绿底 → 蓝金底 —— */
+.future-placeholder {
+  background:
+    linear-gradient(135deg, rgba(11, 78, 162, .42), rgba(216, 168, 91, .20)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .26) 0 1px, transparent 1px 24px),
+    #0c2f68;
+  color: #fff;
+}
+
+/* —— 8. 标题渐变：青色终点 → 金色终点（各身份统一） —— */
+:root { --title-gradient: linear-gradient(100deg, #16304c 0%, #0b4ea2 58%, #d8a85b 100%); }
+.h5-stage.theme-highschool { --title-gradient: linear-gradient(100deg, #16304c 0%, #d8a85b 62%, #b8893a 100%); }
+.h5-stage.theme-student    { --title-gradient: linear-gradient(100deg, #0c2f68 0%, #0b4ea2 55%, #6b9cc4 100%); }
+.h5-stage.theme-alumni     { --title-gradient: linear-gradient(100deg, #16304c 0%, #b98b61 58%, #d8a85b 100%); }
+.h5-stage.theme-public     { --title-gradient: linear-gradient(100deg, #16304c 0%, #6f8f6a 58%, #d8a85b 100%); }
+
+/* —— 9. 已解锁地标 / 季节按钮：绿 → 哑光橄榄（更贴纸金调） —— */
+.map-pin.unlocked { border-color: rgba(111, 143, 106, .7); box-shadow: 0 0 0 5px rgba(111, 143, 106, .14), 0 12px 26px rgba(23, 42, 64, .16); }
+.season-btn.active { background: var(--green); color: #fff; }
+
+/* —— 10. 身份主题色：社会大众 绿 → 哑光橄榄（已在变量层调整） —— */
+/* theme-public 的 --identity-accent 自动跟随 --green 变化，无需单独改 */
+
+/* ============================================================
+   v28 学术金箔配色：按钮 + 集章册 + 票根 精修
+   色板：Ink Navy #0f1a24 / Scholar Blue #1f3a4a / Leaf Gold #b08a2e
+        Linen Cream #f4efe6 / Archive White #f2f4f5
+   ============================================================ */
+
+/* —— 主按钮：三色重渐变 → Scholar Blue 实色 + 金色细边 —— */
+.primary-btn {
+  background: #1f3a4a;
+  box-shadow: 0 8px 24px rgba(31, 58, 74, .22), inset 0 1px 0 rgba(255,255,255,.12);
+  border: 1px solid rgba(176, 138, 46, .28);
+}
+.primary-btn:active {
+  background: #162b36;
+}
+
+/* —— ghost 按钮：暖白底 + 金灰边 —— */
+.ghost-btn {
+  background: rgba(244, 239, 230, .82);
+  border: 1px solid rgba(176, 138, 46, .20);
+  color: #1f3a4a;
+}
+
+/* —— small-btn：深蓝 → Scholar Blue —— */
+.small-btn {
+  background: #1f3a4a;
+  color: #fff;
+}
+.small-btn.muted {
+  background: rgba(31, 58, 74, .08);
+  color: #1f3a4a;
+  border: 1px solid rgba(31, 58, 74, .14);
+}
+
+/* —— 集章册：纸黄底 → Linen Cream 暖亚麻 —— */
+.notebook {
+  background:
+    linear-gradient(90deg, rgba(59, 53, 47, .06) 1px, transparent 1px),
+    linear-gradient(#faf6ee, #f0e8d8);
+  border: 1px solid rgba(176, 138, 46, .18);
+  box-shadow: 0 18px 48px rgba(59, 53, 47, .14);
+}
+.notebook-ring {
+  background: repeating-linear-gradient(180deg, rgba(59, 53, 47, .28) 0 18px, transparent 18px 38px);
+}
+
+/* —— stamp 未点亮：更柔和的亚麻底 —— */
+.stamp {
+  color: rgba(59, 53, 47, .42);
+  background: rgba(250, 246, 238, .68);
+  border: 1px dashed rgba(176, 138, 46, .22);
+}
+.stamp-icon {
+  border: 1px dashed rgba(176, 138, 46, .20);
+  opacity: .50;
+}
+
+/* —— stamp 已解锁：Scholar Blue + Leaf Gold 描边 —— */
+.stamp.unlocked {
+  color: #1f3a4a;
+  background: #faf6ee;
+  border: 2px solid rgba(176, 138, 46, .48);
+  box-shadow: 0 8px 20px rgba(59, 53, 47, .10);
+}
+.stamp.unlocked .stamp-icon {
+  color: #fff;
+  background: #1f3a4a;
+  border: 0;
+}
+
+/* —— 集章册页面底色：统一 Linen Cream —— */
+.collection {
+  background: linear-gradient(180deg, #f4efe6, #ece4d4);
+}
+
+/* —— 票根：暖白 → Linen Cream，挖孔改暖灰 —— */
+.ticket {
+  background: linear-gradient(145deg, rgba(250, 246, 238, .94), rgba(240, 232, 216, .88));
+  box-shadow: 0 24px 60px rgba(15, 26, 36, .28);
+}
+.ticket::before, .ticket::after {
+  background: #2b2419;
+}
+.ticket-stats div {
+  background: rgba(31, 58, 74, .06);
+}
+.ticket-stats strong {
+  color: #1f3a4a;
+}
+.ticket-top {
+  color: #b08a2e;
+}
+.ticket-footer {
+  border-top: 1px dashed rgba(59, 53, 47, .20);
+  color: rgba(59, 53, 47, .48);
+}
+
+/* —— 结尾页背景：纯深蓝 → Ink Navy 渐变 —— */
+.ending {
+  background: linear-gradient(180deg, #0f1a24, #0a1320);
+}
+
+/* —— topbar/progress 胶囊：暖白 → Linen Cream —— */
+.topbar-brand, .progress-pill {
+  background: rgba(250, 246, 238, .80);
+  border: 1px solid rgba(176, 138, 46, .16);
+  color: #1f3a4a;
+}
+
+/* —— 底部导航圆钮：深蓝 → Ink Navy —— */
+.bottom-nav button {
+  background: #1f3a4a;
+  box-shadow: 0 8px 22px rgba(15, 26, 36, .28);
+}
+
+/* —— map-pin active：华科蓝 → Scholar Blue —— */
+.map-pin.active {
+  background: #1f3a4a;
+  color: #fff;
+}
+
+/* —— eyebrow/标签色：华科蓝 → Scholar Blue —— */
+.eyebrow.dark { color: #1f3a4a; }
+.mini-label { color: #1f3a4a; }
+.module-head span { color: #1f3a4a; }
+.campus-meta span { color: #b08a2e; }
+.campus-meta strong { color: #1f3a4a; }
+.route-preview-card span { color: #b08a2e; }
+.image-badge { background: rgba(15, 26, 36, .52); }
+
+/* ============================================================
+   v29 四套身份配色 + 修复"下一站"纯黑感
+   每个身份一套契合背景图的配色，按钮随身份变化
+   ============================================================ */
+
+/* —— 高中生：琥珀金（契合金色背景图，朝气/录取通知感） —— */
+.h5-stage.theme-highschool {
+  --identity-accent: #c8932e;
+  --identity-soft: #fbf0d6;
+  --title-gradient: linear-gradient(100deg, #3a2c12 0%, #c8932e 58%, #e8c878 100%);
+}
+.h5-stage.theme-highschool .route,
+.h5-stage.theme-highschool .detail,
+.h5-stage.theme-highschool .collection {
+  background: linear-gradient(180deg, #fbf3df, #f4ead0);
+}
+
+/* —— 在读生：学院蓝（契合蓝色背景图，专注/学术感） —— */
+.h5-stage.theme-student {
+  --identity-accent: #1f5a9c;
+  --identity-soft: #e6f0fb;
+  --title-gradient: linear-gradient(100deg, #0c2f68 0%, #1f5a9c 55%, #7eb0e0 100%);
+}
+.h5-stage.theme-student .route,
+.h5-stage.theme-student .detail,
+.h5-stage.theme-student .collection {
+  background: linear-gradient(180deg, #eef4fb, #e4edf6);
+}
+
+/* —— 校友：暖棕红木（契合棕色背景图，怀旧/温润感） —— */
+.h5-stage.theme-alumni {
+  --identity-accent: #9a6b3e;
+  --identity-soft: #f3e6d4;
+  --title-gradient: linear-gradient(100deg, #2c1f12 0%, #9a6b3e 58%, #d4a878 100%);
+}
+.h5-stage.theme-alumni .route,
+.h5-stage.theme-alumni .detail,
+.h5-stage.theme-alumni .collection {
+  background: linear-gradient(180deg, #f5ecdf, #ecdfca);
+}
+
+/* —— 社会大众：橄榄墨绿（契合绿色背景图，开放/人文感） —— */
+.h5-stage.theme-public {
+  --identity-accent: #5d7d56;
+  --identity-soft: #e8efe2;
+  --title-gradient: linear-gradient(100deg, #1f2c1c 0%, #5d7d56 58%, #9bb28a 100%);
+}
+.h5-stage.theme-public .route,
+.h5-stage.theme-public .public,
+.h5-stage.theme-public .detail,
+.h5-stage.theme-public .collection {
+  background: linear-gradient(180deg, #eef2e8, #e2ead8);
+}
+
+/* —— 修复"下一站"纯黑感：按钮随身份主色，调亮，去厚重 —— */
+.primary-btn,
+.task-next-btn {
+  background: var(--identity-accent, #1f5a9c);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--identity-accent, #1f5a9c) 28%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, .22);
+  border: 1px solid color-mix(in srgb, var(--identity-accent, #1f5a9c) 60%, #fff);
+}
+.primary-btn:active,
+.task-next-btn:active {
+  background: color-mix(in srgb, var(--identity-accent, #1f5a9c) 85%, #000);
+}
+
+/* —— route-enter-btn 同步随身份 —— */
+.route-enter-btn {
+  background: var(--identity-accent, #1f5a9c);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--identity-accent, #1f5a9c) 26%, transparent);
+}
+
+/* —— small-btn 随身份（非固定深色） —— */
+.small-btn {
+  background: var(--identity-accent, #1f5a9c);
+  color: #fff;
+}
+
+/* —— 标签/eyebrow 随身份主色，不再统一 Scholar Blue —— */
+.eyebrow.dark { color: var(--identity-accent, #1f5a9c); }
+.mini-label { color: var(--identity-accent, #1f5a9c); }
+.module-head span { color: var(--identity-accent, #1f5a9c); }
+.campus-meta strong { color: var(--identity-accent, #1f5a9c); }
+
+/* —— map-pin active 随身份 —— */
+.map-pin.active {
+  background: var(--identity-accent, #1f5a9c);
+  color: #fff;
+}
+
+/* —— stamp 已解锁随身份 —— */
+.stamp.unlocked {
+  color: var(--identity-accent, #1f5a9c);
+  border: 2px solid color-mix(in srgb, var(--identity-accent, #1f5a9c) 52%, transparent);
+}
+.stamp.unlocked .stamp-icon {
+  background: var(--identity-accent, #1f5a9c);
+}
+
+/* —— ticket-top / stats 随身份 —— */
+.ticket-top { color: var(--identity-accent, #1f5a9c); }
+.ticket-stats strong { color: var(--identity-accent, #1f5a9c); }
