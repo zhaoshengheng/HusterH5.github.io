@@ -1613,23 +1613,23 @@ async function makePoster(showMessage = true) {
   ctx.font = '900 18px "Microsoft YaHei", sans-serif';
   ctx.fillText(id.label, 104, 128);
 
-  // 二维码：右上角空白区域（以白底框为基准，确保不超出卡片右边界）
+  // 二维码：右上角空白区域（整体在白色卡片右边界内，含投影不溢出）
   const qrImg = await loadCanvasImage('assets/generated/二维码.jpg');
   if (qrImg && token === posterRenderToken) {
-    const qrSize = 110;
-    const qrPad = 10;            // 二维码图片相对白底的内边距
-    const cardRight = 44 + 552;  // 白色卡片右边界 = 596
-    const gapRight = 24;         // 白底框距卡片右边的留白
-    const qrBoxW = qrSize + qrPad * 2; // 130 白底框宽
-    const qrBoxX = cardRight - gapRight - qrBoxW; // 白底框左上 x
-    const qrX = qrBoxX + qrPad;  // 二维码图片 x
-    const qrY = 96;
-    const qrR = 12;
+    const qrSize = 100;            // 二维码图片尺寸（缩小避免溢出）
+    const qrPad = 8;               // 二维码图片相对白底的内边距
+    const cardRight = 44 + 552;    // 白色卡片右边界 = 596
+    const gapRight = 18;           // 白底框距卡片右边的留白
+    const qrBoxW = qrSize + qrPad * 2; // 116 白底框宽
+    const qrBoxX = cardRight - gapRight - qrBoxW; // 白底框左上 x = 462
+    const qrX = qrBoxX + qrPad;    // 二维码图片 x = 470
+    const qrY = 100;
+    const qrR = 10;
     // 白底圆角矩形 + 投影
     ctx.save();
     ctx.shadowColor = 'rgba(0,0,0,.14)';
-    ctx.shadowBlur = 16;
-    ctx.shadowOffsetY = 4;
+    ctx.shadowBlur = 12;
+    ctx.shadowOffsetY = 3;
     roundRect(ctx, qrBoxX, qrY - qrPad, qrBoxW, qrBoxW, qrR, true, false, '#fff');
     ctx.restore();
     // 二维码图片

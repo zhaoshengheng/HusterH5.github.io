@@ -5223,7 +5223,7 @@ body {
   position: relative;
   width: 148px;
   height: 148px;
-  overflow: visible;
+  overflow: hidden;
   border-radius: 50%;
   background: #ffffff;
   border: 1px solid rgba(255,255,255,.62);
