@@ -1613,20 +1613,24 @@ async function makePoster(showMessage = true) {
   ctx.font = '900 18px "Microsoft YaHei", sans-serif';
   ctx.fillText(id.label, 104, 128);
 
-  // 二维码：右上角空白区域
+  // 二维码：右上角空白区域（以白底框为基准，确保不超出卡片右边界）
   const qrImg = await loadCanvasImage('assets/generated/二维码.jpg');
   if (qrImg && token === posterRenderToken) {
-    const qrSize = 120;
-    const qrX = w - 44 - qrSize; // 右侧留 44px 边距
-    const qrY = 90;
+    const qrSize = 110;
+    const qrPad = 10;            // 二维码图片相对白底的内边距
+    const cardRight = 44 + 552;  // 白色卡片右边界 = 596
+    const gapRight = 24;         // 白底框距卡片右边的留白
+    const qrBoxW = qrSize + qrPad * 2; // 130 白底框宽
+    const qrBoxX = cardRight - gapRight - qrBoxW; // 白底框左上 x
+    const qrX = qrBoxX + qrPad;  // 二维码图片 x
+    const qrY = 96;
     const qrR = 12;
-    // 白底圆角矩形
+    // 白底圆角矩形 + 投影
     ctx.save();
-    roundRect(ctx, qrX - 10, qrY - 10, qrSize + 20, qrSize + 20, qrR, true, false, '#fff');
     ctx.shadowColor = 'rgba(0,0,0,.14)';
     ctx.shadowBlur = 16;
     ctx.shadowOffsetY = 4;
-    roundRect(ctx, qrX - 10, qrY - 10, qrSize + 20, qrSize + 20, qrR, true, false, '#fff');
+    roundRect(ctx, qrBoxX, qrY - qrPad, qrBoxW, qrBoxW, qrR, true, false, '#fff');
     ctx.restore();
     // 二维码图片
     ctx.drawImage(qrImg, qrX, qrY, qrSize, qrSize);
@@ -1634,7 +1638,7 @@ async function makePoster(showMessage = true) {
     ctx.fillStyle = 'rgba(22,48,76,.52)';
     ctx.font = '11px "Microsoft YaHei", sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('扫码体验', qrX + qrSize / 2, qrY + qrSize + 28);
+    ctx.fillText('扫码体验', qrBoxX + qrBoxW / 2, qrY + qrSize + qrPad + 18);
     ctx.textAlign = 'left';
   }
 
