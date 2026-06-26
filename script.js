@@ -748,7 +748,7 @@ function taskRequirement(item) {
     4: 1,
     5: 2,
     6: 4,
-    7: 2,
+    7: 1,
     8: 3,
     9: 3,
     10: 1,
@@ -924,31 +924,54 @@ function bindCompareDrag() {
   const box = $('#imageLayers');
   let downX = 0, downY = 0, moved = false;
   let clickShowsFuture = false;
+  let dragStarted = false;
+  let pressTimer = null;
+  let longPressed = false;
+  const LONG_PRESS_MS = 350;
+  const MOVE_THRESHOLD = 8;
+
   box.addEventListener('pointerdown', e => {
     downX = e.clientX;
     downY = e.clientY;
     moved = false;
+    dragStarted = false;
+    longPressed = false;
     const rect = box.getBoundingClientRect();
     const clickPct = ((e.clientX - rect.left) / rect.width) * 100;
     const handlePct = parseFloat($('#compareRange').value) || 100;
     clickShowsFuture = clickPct > handlePct;
-    draggingCompare = true;
-    setCompareFromClientX(e.clientX);
-    document.body.classList.add('dragging-compare');
     box.setPointerCapture?.(e.pointerId);
+
+    // 长按计时器：长按后才激活拖动滑动线
+    pressTimer = window.setTimeout(() => {
+      longPressed = true;
+      draggingCompare = true;
+      document.body.classList.add('dragging-compare');
+      setCompareFromClientX(e.clientX);
+    }, LONG_PRESS_MS);
   });
+
   box.addEventListener('pointermove', e => {
-    if (!draggingCompare) return;
-    if (Math.abs(e.clientX - downX) > 5 || Math.abs(e.clientY - downY) > 5) {
+    // 位移超过阈值才算 moved
+    if (Math.abs(e.clientX - downX) > MOVE_THRESHOLD || Math.abs(e.clientY - downY) > MOVE_THRESHOLD) {
       moved = true;
     }
-    setCompareFromClientX(e.clientX);
+    // 长按已激活 或 已开始拖动，才移动滑动线
+    if (longPressed && draggingCompare) {
+      setCompareFromClientX(e.clientX);
+    } else if (moved) {
+      // 短按期间移动超过阈值，取消长按计时（视为滑动取消，不触发拖动也不触发点击）
+      if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
+    }
   });
+
   const endDrag = (allowClick) => {
-    if (!draggingCompare) return;
+    if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
+    const wasDragging = draggingCompare;
     draggingCompare = false;
     document.body.classList.remove('dragging-compare');
-    if (allowClick && !moved) {
+    // 单击（未长按、未移动）→ 查看图片
+    if (allowClick && !longPressed && !moved) {
       openImageViewer(clickShowsFuture);
     }
   };
@@ -1146,26 +1169,22 @@ function renderYouthTask(module, item, identity) {
 }
 
 function renderPavilionTask(module, item, identity) {
-  const ripples = currentIdentity === 'alumni'
-    ? ['旧日水纹展开：亭边回忆被保存。', '黄昏晚风吹回：青春片段已点亮。']
-    : ['第一圈水纹展开：片刻休息被保存。', '第二圈水纹展开：亭影未来场景已接近完成。'];
-  const labels = currentIdentity === 'alumni'
-    ? ['旧日水纹', '黄昏晚风']
-    : ['第一圈水纹', '第二圈水纹'];
+  const rippleText = currentIdentity === 'alumni'
+    ? '旧日水纹展开：亭边回忆被保存。'
+    : '水纹展开：亭边片刻被保存。';
+  const label = currentIdentity === 'alumni' ? '旧日水纹' : '轻触水纹';
   module.innerHTML = moduleShell(item, identity, 'pavilion-module', `
     <button class="ripple-board ripple-surface" id="pavilionRipple" aria-label="轻触醉晚亭水面">
       <span class="water-sheen"></span>
       <span class="water-ring water-ring-a"></span>
-      <span class="water-ring water-ring-b"></span>
-      <span class="water-label water-label-a">${labels[0]}</span>
-      <span class="water-label water-label-b">${labels[1]}</span>
+      <span class="water-label water-label-a">${label}</span>
     </button>
-  `, `${identity.taskLead}：轻触水面两次，水纹会在点击位置展开。`);
+  `, `${identity.taskLead}：轻触水面，水纹会在点击位置展开。`);
   const surface = $('#pavilionRipple');
   surface.addEventListener('click', e => {
     if (taskState.completed) return;
     const step = Number(surface.dataset.step || 0);
-    if (step >= ripples.length) return;
+    if (step >= 1) return;
     const rect = surface.getBoundingClientRect();
     surface.querySelectorAll('.water-tap').forEach(node => node.remove());
     const wave = document.createElement('span');
@@ -1176,8 +1195,8 @@ function renderPavilionTask(module, item, identity) {
     setTimeout(() => wave.remove(), 1200);
     surface.dataset.step = String(step + 1);
     surface.classList.add(`wave-${step + 1}`);
-    $('#moduleCopy').textContent = ripples[step];
-    registerTaskStep(ripples[step]);
+    $('#moduleCopy').textContent = rippleText;
+    registerTaskStep(rippleText);
     if (taskState.completed) surface.classList.add('complete');
   });
 }
