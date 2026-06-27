@@ -1,13 +1,8 @@
-﻿// v61: jsDelivr CDN 加速 — 通过 <base> 标签统一处理，cdn() 仅返回相对路径
-const _IS_LOCAL = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-const CDN_BASE = _IS_LOCAL ? '' : 'https://cdn.jsdelivr.net/gh/zhaoshengheng/HusterH5.github.io@main';
+// v64: 移除 jsDelivr CDN（国内不稳定），所有资源由 Cloudflare Pages 直接服务
+// Cloudflare Pages 本身就是全球 CDN，国内有节点，比 jsDelivr 更稳定
 function cdn(path) {
   if (!path) return path;
-  // 已经是完整 URL 则不处理
   if (/^https?:\/\//.test(path)) return path;
-  // <base> 标签已设置时，直接返回相对路径，浏览器自动解析到 CDN
-  if (!_IS_LOCAL) return path.replace(/^\.\//, '');
-  // 本地环境也去掉 ./
   return path.replace(/^\.\//, '');
 }
 
@@ -2105,6 +2100,6 @@ function init() {
   goTo(0);
 }
 
-// v61: <base> 标签已将所有相对路径指向 jsDelivr CDN，无需 JS 重写
+// v64: 所有资源由 Cloudflare Pages 直接服务，无需 CDN 重写
 
 init();
