@@ -1,14 +1,46 @@
-Landmark image naming convention
+# 地标图片命名约定
 
-Now image:
-- 01_now.jpg
+> 本文件为历史命名约定参考。当前实际命名规则见 `README.md`。
 
-Identity-specific future images:
-- 01_future_highschool.jpg
-- 01_future_student.jpg
-- 01_future_alumni.jpg
-- 01_future_public.jpg
+## 现在图（真实照片）
 
-Repeat the same pattern for 02 through 13.
+存放在根目录 `图片/` 文件夹，命名因地标而异（含中文），在 `script.js` 的 `landmarks` 数组中通过 `now` 字段指定路径。
 
-The H5 falls back to placeholders when a file is missing, so you can add images gradually.
+示例：
+- `图片/1南大门1.jpg`
+- `图片/7.醉晚亭 3.jpg`
+- `图片/14.水塔.jpg`
+
+## 未来图（AI 生成，分身份）
+
+当前采用**分文件夹 + 中文身份名**的命名方式，存放在 `assets/landmarks/未来图片/` 下。
+
+### 目录结构
+```
+未来图片/{编号}{地标名}/{身份编号}{身份中文名}.png
+```
+
+### 身份编号对照
+| 编号 | key | 中文名（标准） |
+|------|-----|--------------|
+| 1 | highschool | 高中生 |
+| 2 | student | 在校生 |
+| 3 | alumni | 毕业校友 |
+| 4 | public | 社会大众 |
+
+### 特殊命名（历史遗留）
+- 南大门校友：`3已毕业校友.png`
+- 青年园公众：`4社会人士.png`
+
+### 旧版命名（已弃用，保留兼容）
+```
+01_now.jpg / 01_future.jpg
+01_future_highschool.jpg / 01_future_student.jpg / 01_future_alumni.jpg / 01_future_public.jpg
+```
+H5 在新目录找不到图时会回退到旧版命名，再缺失则显示占位框。
+
+## 修改图片时
+
+1. 替换 `未来图片/{文件夹}/` 下对应的 `.png` 文件即可，无需改代码
+2. 若新增地标或调整身份，需同步更新 `script.js` 中的 `futureFolders` 映射表
+3. 所有 AI 未来图在页面中统一标注"未来 · AI 生成"
