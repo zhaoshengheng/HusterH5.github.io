@@ -685,27 +685,10 @@ function updateImage(img, placeholder, src) {
   showPlaceholder();
   if (!src) return;
   const safeSrc = encodeURI(src);
-  if (location.protocol === 'file:') {
-    img.src = safeSrc;
-    return;
-  }
-  const token = Symbol(safeSrc);
-  img._loadToken = token;
-  fetch(safeSrc, { method: 'HEAD' })
-    .then(response => {
-      if (img._loadToken !== token) return;
-      if (response.ok) {
-        img.src = safeSrc;
-      } else {
-        img.removeAttribute('src');
-        showPlaceholder();
-      }
-    })
-    .catch(() => {
-      if (img._loadToken !== token) return;
-      img.removeAttribute('src');
-      showPlaceholder();
-    });
+  // v50b：直接设 src 加载图片，不再先 fetch HEAD
+  // 原因：fetch HEAD 对中文路径在某些环境会因 CORS/编码失败，
+  // 导致图片永远不加载。直接设 src 让浏览器自己加载，onerror 兜底。
+  img.src = safeSrc;
 }
 
 function updateLandmark() {
