@@ -1,6 +1,6 @@
 ﻿const landmarks = [
   {
-    id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 16, y: 31,
+    id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 48, y: 88,
     now: '图片/1南大门1.jpg', future: 'assets/landmarks/01_future.jpg',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
     moduleTitle: '刷入园卡：开启未来校门',
@@ -13,7 +13,7 @@
     }
   },
   {
-    id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 32, y: 24,
+    id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 50, y: 27,
     now: '图片/2图书馆1.jpg', future: 'assets/landmarks/02_future.jpg',
     intro: '书页、光影与数据星河，在这里汇成校园的知识中心。',
     moduleTitle: '翻开未来书：连接纸页与云端',
@@ -26,7 +26,7 @@
     }
   },
   {
-    id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 48, y: 32,
+    id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 58, y: 54,
     now: '图片/3校史馆2.jpg', future: 'assets/landmarks/03_future.jpg',
     intro: '历史不是静止的展陈，而是通向未来的坐标轴。',
     moduleTitle: '校史答题：从过去走向未来',
@@ -39,7 +39,7 @@
     }
   },
   {
-    id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 62, y: 29,
+    id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 37, y: 52,
     now: '图片/4青年园1.jpg', future: 'assets/landmarks/04_future.jpg',
     intro: '青年人的想法、社团、热爱与偶遇，在这里持续发生。',
     moduleTitle: '拖动能量：让热爱在这里发生',
@@ -52,7 +52,7 @@
     }
   },
   {
-    id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 76, y: 39,
+    id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 13, y: 43,
     now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
     moduleTitle: '选择菜单：补充喻园能量',
@@ -65,7 +65,7 @@
     }
   },
   {
-    id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 27, y: 54,
+    id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 16, y: 82,
     now: '图片/6.西十二教学楼.jpg', future: 'assets/landmarks/06_future.jpg',
     intro: '课堂、考试、自习与讨论，在楼体的灯光里不断切换。',
     moduleTitle: '点亮教室：唤醒课堂灵感',
@@ -78,7 +78,7 @@
     }
   },
   {
-    id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 44, y: 58,
+    id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 69, y: 55,
     now: '图片/7.醉晚亭 3.jpg', future: 'assets/landmarks/07_future.jpg',
     intro: '水面、亭影与晚风，把喻园的诗意留在此刻。',
     moduleTitle: '轻触水纹：让亭影扩散',
@@ -91,7 +91,7 @@
     }
   },
   {
-    id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 61, y: 57,
+    id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 87, y: 61,
     now: '图片/8.东九教学楼1.jpg', future: 'assets/landmarks/08_future.jpg',
     intro: '知识在这里进入实验、协作与真实问题。',
     moduleTitle: '点亮实验格：让问题变成答案',
@@ -104,7 +104,7 @@
     }
   },
   {
-    id: 9, name: '爱因斯坦广场', group: '科学之光', mode: 'science', campus: '主校区', icon: '科', x: 78, y: 63,
+    id: 9, name: '爱因斯坦广场', group: '科学之光', mode: 'science', campus: '主校区', icon: '科', x: 84, y: 31,
     now: '图片/9.爱因斯坦广场1.jpg', future: 'assets/landmarks/09_future.jpg',
     intro: '科学精神不是遥远的公式，而是敢于发问的校园气质。',
     moduleTitle: '点亮星点：生成探索坐标',
@@ -117,7 +117,7 @@
     }
   },
   {
-    id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '医', x: 26, y: 79,
+    id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '医', x: 52, y: 66,
     now: '图片/10.裘法祖像1.jpg', future: 'assets/landmarks/10_future.jpg',
     intro: '医学精神在此凝望，也在一代代同济人手中延续。',
     moduleTitle: '触发生命脉冲：理解医学温度',
@@ -130,7 +130,7 @@
     }
   },
   {
-    id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 49, y: 75,
+    id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 17, y: 56,
     now: '图片/11.碧珠长廊3.jpg', future: 'assets/landmarks/11_future.jpg',
     intro: '长廊连接的不只是空间，也连接着医学、人文与日常步履。',
     moduleTitle: '滑动导览线：记录长廊光影',
@@ -143,7 +143,7 @@
     }
   },
   {
-    id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '济', x: 70, y: 81,
+    id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '济', x: 67, y: 37,
     now: '图片/12.同济图书馆1.jpg', future: 'assets/landmarks/12_future.jpg',
     intro: '医学知识在这里沉淀，也在未来生命科学中重新生长。',
     moduleTitle: '翻开医学书：连接生命知识',
@@ -156,7 +156,7 @@
     }
   },
   {
-    id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 13, y: 78,
+    id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 17, y: 41,
     now: '图片/13.同济医学院大门.jpg', future: 'assets/landmarks/13_future.jpg',
     intro: '从这道门进入同济校区，也进入华科医学人文与生命科学的支线。',
     moduleTitle: '医学支线：理解医学精神',
@@ -169,7 +169,7 @@
     }
   },
   {
-    id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 42, y: 82,
+    id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 40, y: 17,
     now: '图片/14.水塔.jpg', future: 'assets/landmarks/14_future.jpg',
     intro: '水塔像同济校区的时间标尺，把老建筑、树影与医学记忆一起留在校园天际线里。',
     moduleTitle: '拨动水塔刻度：点亮同济记忆',
@@ -460,7 +460,11 @@ function initLoading() {
     $('#loaderBar').style.width = `${Math.min(progress, 100)}%`;
     if (progress >= 100) {
       clearInterval(timer);
-      setTimeout(() => $('#loading').classList.add('hide'), 320);
+      setTimeout(() => {
+        $('#loading').classList.add('hide');
+        // 加载界面隐藏后，再后台静默预加载地标图片（避免阻塞进入动画）
+        setTimeout(preloadLandmarkImages, 600);
+      }, 320);
     }
   }, 150);
 }
@@ -523,8 +527,8 @@ function updateBgmSource() {
 }
 
 function campusPinY(item) {
-  if (item.campus === '同济校区') return Math.max(18, Math.min(78, (item.y - 75) * 4.2 + 46));
-  return Math.max(16, Math.min(74, item.y + 1));
+  // 新地图坐标已直接使用百分比定位，无需额外转换
+  return Math.max(4, Math.min(94, item.y));
 }
 
 function campusMapKey(campus) {
@@ -2084,7 +2088,6 @@ function init() {
   bindButtonRipple();
   bindGuideDrag();
   updateBgmSource();      // 通用 BGM 从封面页就加载
-  preloadLandmarkImages(); // v50c：封面页期间后台预加载所有图片
   goTo(0);
 }
 

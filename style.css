@@ -767,25 +767,15 @@ button:active { transform: scale(.98); }
   position: absolute;
   inset: 0;
   background-image: inherit;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  opacity: .18;
+  background-repeat: no-repeat;
+  opacity: 1;
 }
-.campus-map[data-map="main"]::before { background-image: url("assets/maps/main-campus.jpg"); opacity: .36; }
-.campus-map[data-map="tongji"]::before { background-image: url("assets/maps/tongji-campus.jpg"); opacity: .36; }
+.campus-map[data-map="main"]::before { background-image: url("assets/maps/Main-map.jpg"); }
+.campus-map[data-map="tongji"]::before { background-image: url("assets/maps/TJ-map.png"); }
 .campus-map::after {
-  content: "地图占位 · 后续替换为团队校园地图";
-  position: absolute;
-  left: 18px;
-  bottom: 15px;
-  padding: 7px 11px;
-  border-radius: 999px;
-  color: rgba(22,48,76,.62);
-  background: rgba(255,255,255,.66);
-  border: 1px solid rgba(22,48,76,.10);
-  font-size: 12px;
-  font-weight: 800;
-  backdrop-filter: blur(8px);
+  display: none;
 }
 .campus-route-line {
   position: absolute;
