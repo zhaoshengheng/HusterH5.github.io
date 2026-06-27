@@ -1534,12 +1534,17 @@ function resetExperience() {
 function loadCanvasImage(src) {
   return new Promise(resolve => {
     const img = new Image();
-    img.crossOrigin = 'anonymous';
+    // file:// 协议下不设置 crossOrigin，否则浏览器会因 CORS 拒绝加载本地图片
+    if (location.protocol !== 'file:') {
+      img.crossOrigin = 'anonymous';
+    }
     img.onload = () => resolve(img);
     img.onerror = () => {
       // fallback: 尝试绝对路径
       const absImg = new Image();
-      absImg.crossOrigin = 'anonymous';
+      if (location.protocol !== 'file:') {
+        absImg.crossOrigin = 'anonymous';
+      }
       absImg.onload = () => resolve(absImg);
       absImg.onerror = () => { console.warn('[poster] 图片加载失败:', src); resolve(null); };
       const base = location.href.substring(0, location.href.lastIndexOf('/') + 1);
