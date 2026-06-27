@@ -445,7 +445,7 @@ button:active { transform: scale(.98); }
 .detail-nature .scene-overlay::after { animation-delay: .8s; transform: scale(.7); }
 @keyframes ripple { from { opacity: .9; transform: scale(.35); } to { opacity: 0; transform: scale(1.6); } }
 .detail-classroom .scene-overlay { background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 54px 54px; mix-blend-mode: screen; }
-.detail-science .scene-overlay::before { content: "E=mc²  ·  求是创新  ·  AI + HUST"; position: absolute; left: -120px; top: 48%; color: rgba(255,255,255,.58); letter-spacing: .18em; font-weight: 900; animation: marquee 9s linear infinite; white-space: nowrap; }
+.detail-science .scene-overlay::before { content: none; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(360px); } }
 .detail-medicine .scene-overlay::before { content: none; }
 @keyframes pulseLine { 0%,100% { opacity: .38; transform: scaleX(.84); } 50% { opacity: 1; transform: scaleX(1); } }
@@ -772,23 +772,23 @@ button:active { transform: scale(.98); }
   background-repeat: no-repeat;
   opacity: 1;
 }
+.campus-map[data-map="tongji"]::before { background-size: cover; }
 .campus-map[data-map="main"]::before { background-image: url("assets/maps/Main-map.jpg"); }
 .campus-map[data-map="tongji"]::before { background-image: url("assets/maps/TJ-map.png"); }
+/* v59: 主校区地图保持横向铺满，高度按图片比例自适应，去除上下空白 */
+.campus-map[data-map="main"] {
+  height: auto !important;
+  aspect-ratio: 1672 / 941 !important;
+}
+.campus-map[data-map="main"]::before {
+  background-size: 100% 100% !important;
+}
 .campus-map::after {
   display: none;
 }
 .campus-route-line {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 50%;
-  height: 3px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, rgba(11,78,162,.08), rgba(11,78,162,.72), rgba(90,143,105,.72));
-  box-shadow: 0 0 18px rgba(41,197,216,.26);
-  transform: rotate(10deg);
+  display: none !important;
 }
-.campus-card[data-campus="同济校区"] .campus-route-line { transform: rotate(-6deg); top: 55%; }
 .landmark-chip-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -869,6 +869,65 @@ button:active { transform: scale(.98); }
 .map-pin.active { transform: scale(1.18); background: #0b4ea2; color: #fff; }
 .map-pin.active::after { border-color: rgba(41,197,216,.55); }
 @keyframes pinPulse { 0% { transform: scale(.72); opacity: .72; } 80%,100% { transform: scale(1.25); opacity: 0; } }
+
+/* v56: Map labels — 更大透明圆圈按钮，选中仅波动 */
+.map-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .22s ease;
+  z-index: 5;
+}
+/* 隐藏自己生成的图标和文字，只保留透明点击区 */
+.map-label b,
+.map-label span {
+  display: none;
+}
+/* hover 浮起淡淡边框提示 */
+.map-label:hover {
+  border-color: rgba(11,78,162,.35);
+  background: rgba(11,78,162,.05);
+}
+/* 路线成员：淡淡圆形描边提示可点 */
+.map-label.route-member {
+  border-color: rgba(11,78,162,.25);
+}
+.map-label.route-member:hover {
+  background: rgba(11,78,162,.10);
+  border-color: rgba(11,78,162,.50);
+}
+/* 自由探索：更淡的虚线圆 */
+.map-label.free-explore {
+  border-color: rgba(22,48,76,.18);
+  border-style: dashed;
+}
+/* 已解锁 */
+.map-label.unlocked {
+  border-color: rgba(90,143,105,.45);
+}
+.map-label.unlocked:hover {
+  background: rgba(90,143,105,.10);
+  border-color: rgba(90,143,105,.65);
+}
+/* 选中状态：无边框，仅波动效果 */
+.map-label.active {
+  border-color: transparent;
+  background: transparent;
+  z-index: 6;
+  animation: labelPulse 1.4s ease-out infinite;
+}
+@keyframes labelPulse {
+  0% { box-shadow: 0 0 0 0 rgba(41,197,216,.55), 0 0 0 0 rgba(11,78,162,.35); }
+  50% { box-shadow: 0 0 0 8px rgba(41,197,216,.25), 0 0 0 14px rgba(11,78,162,.12); }
+  100% { box-shadow: 0 0 0 16px rgba(41,197,216,0), 0 0 0 28px rgba(11,78,162,0); }
+}
 
 /* Details: keep now/future compare, but move controls into the image and vary the feel */
 .image-stage { position: relative; }
@@ -1418,6 +1477,12 @@ body.dragging-compare * { cursor: ew-resize !important; }
 }
 .map-pin.active { transform: translate(-50%, -50%) rotate(-45deg) scale(1.12); }
 .map-pin.unlocked { box-shadow: 0 0 0 6px rgba(90,143,105,.14), 0 12px 26px rgba(23,42,64,.16); }
+
+/* v54: route page map-label 透明点击区 */
+.map-label {
+  transform: translate(-50%, -50%);
+}
+.map-label.active { transform: translate(-50%, -50%); }
 .route-preview-card { min-height: 164px; }
 
 /* detail page interaction safety */
@@ -4890,6 +4955,13 @@ body {
 .campus-map::before {
   background-size: contain !important;
   background-repeat: no-repeat !important;
+}
+.campus-map[data-map="tongji"]::before {
+  background-size: cover !important;
+}
+/* 主校区保持 100% 100% 填满（容器比例已匹配图片） */
+.campus-map[data-map="main"]::before {
+  background-size: 100% 100% !important;
 }
 
 .map-pin {

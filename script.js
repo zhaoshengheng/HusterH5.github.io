@@ -1,6 +1,6 @@
 ﻿const landmarks = [
   {
-    id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 48, y: 88,
+    id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 50, y: 82,
     now: '图片/1南大门1.jpg', future: 'assets/landmarks/01_future.jpg',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
     moduleTitle: '刷入园卡：开启未来校门',
@@ -13,7 +13,7 @@
     }
   },
   {
-    id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 50, y: 27,
+    id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 52, y: 34, size: 82,
     now: '图片/2图书馆1.jpg', future: 'assets/landmarks/02_future.jpg',
     intro: '书页、光影与数据星河，在这里汇成校园的知识中心。',
     moduleTitle: '翻开未来书：连接纸页与云端',
@@ -26,7 +26,7 @@
     }
   },
   {
-    id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 58, y: 54,
+    id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 60, y: 64,
     now: '图片/3校史馆2.jpg', future: 'assets/landmarks/03_future.jpg',
     intro: '历史不是静止的展陈，而是通向未来的坐标轴。',
     moduleTitle: '校史答题：从过去走向未来',
@@ -39,7 +39,7 @@
     }
   },
   {
-    id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 37, y: 52,
+    id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 32, y: 58, size: 82,
     now: '图片/4青年园1.jpg', future: 'assets/landmarks/04_future.jpg',
     intro: '青年人的想法、社团、热爱与偶遇，在这里持续发生。',
     moduleTitle: '拖动能量：让热爱在这里发生',
@@ -52,7 +52,7 @@
     }
   },
   {
-    id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 13, y: 43,
+    id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 13, y: 30, size: 82,
     now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
     moduleTitle: '选择菜单：补充喻园能量',
@@ -65,7 +65,7 @@
     }
   },
   {
-    id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 16, y: 82,
+    id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 14, y: 76, size: 82,
     now: '图片/6.西十二教学楼.jpg', future: 'assets/landmarks/06_future.jpg',
     intro: '课堂、考试、自习与讨论，在楼体的灯光里不断切换。',
     moduleTitle: '点亮教室：唤醒课堂灵感',
@@ -78,7 +78,7 @@
     }
   },
   {
-    id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 69, y: 55,
+    id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 75, y: 58,
     now: '图片/7.醉晚亭 3.jpg', future: 'assets/landmarks/07_future.jpg',
     intro: '水面、亭影与晚风，把喻园的诗意留在此刻。',
     moduleTitle: '轻触水纹：让亭影扩散',
@@ -91,7 +91,7 @@
     }
   },
   {
-    id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 87, y: 61,
+    id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 91, y: 60,
     now: '图片/8.东九教学楼1.jpg', future: 'assets/landmarks/08_future.jpg',
     intro: '知识在这里进入实验、协作与真实问题。',
     moduleTitle: '点亮实验格：让问题变成答案',
@@ -104,7 +104,7 @@
     }
   },
   {
-    id: 9, name: '爱因斯坦广场', group: '科学之光', mode: 'science', campus: '主校区', icon: '科', x: 84, y: 31,
+    id: 9, name: '爱因斯坦广场', group: '科学之光', mode: 'science', campus: '主校区', icon: '科', x: 88, y: 24, size: 82,
     now: '图片/9.爱因斯坦广场1.jpg', future: 'assets/landmarks/09_future.jpg',
     intro: '科学精神不是遥远的公式，而是敢于发问的校园气质。',
     moduleTitle: '点亮星点：生成探索坐标',
@@ -117,7 +117,7 @@
     }
   },
   {
-    id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '医', x: 52, y: 66,
+    id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '●', x: 52, y: 66, size: 82,
     now: '图片/10.裘法祖像1.jpg', future: 'assets/landmarks/10_future.jpg',
     intro: '医学精神在此凝望，也在一代代同济人手中延续。',
     moduleTitle: '触发生命脉冲：理解医学温度',
@@ -130,7 +130,7 @@
     }
   },
   {
-    id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 17, y: 56,
+    id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 22, y: 56, size: 82,
     now: '图片/11.碧珠长廊3.jpg', future: 'assets/landmarks/11_future.jpg',
     intro: '长廊连接的不只是空间，也连接着医学、人文与日常步履。',
     moduleTitle: '滑动导览线：记录长廊光影',
@@ -143,7 +143,7 @@
     }
   },
   {
-    id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '济', x: 67, y: 37,
+    id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '●', x: 59, y: 39, size: 82,
     now: '图片/12.同济图书馆1.jpg', future: 'assets/landmarks/12_future.jpg',
     intro: '医学知识在这里沉淀，也在未来生命科学中重新生长。',
     moduleTitle: '翻开医学书：连接生命知识',
@@ -156,7 +156,7 @@
     }
   },
   {
-    id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 17, y: 41,
+    id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 77, y: 82, size: 82,
     now: '图片/13.同济医学院大门.jpg', future: 'assets/landmarks/13_future.jpg',
     intro: '从这道门进入同济校区，也进入华科医学人文与生命科学的支线。',
     moduleTitle: '医学支线：理解医学精神',
@@ -169,7 +169,7 @@
     }
   },
   {
-    id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 40, y: 17,
+    id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 37, y: 27,
     now: '图片/14.水塔.jpg', future: 'assets/landmarks/14_future.jpg',
     intro: '水塔像同济校区的时间标尺，把老建筑、树影与医学记忆一起留在校园天际线里。',
     moduleTitle: '拨动水塔刻度：点亮同济记忆',
@@ -453,8 +453,9 @@ function resetGuideDrag() {
 function initLoading() {
   let progress = 0;
   const names = landmarks.map(item => item.name);
+  // v53: 加速 loading，从 ~1.8s 缩短到 ~1s（步长 +12~22 → +16~28）
   const timer = setInterval(() => {
-    progress += 9 + Math.random() * 12;
+    progress += 16 + Math.random() * 14;
     const idx = Math.min(names.length - 1, Math.floor((progress / 100) * names.length));
     $('#loaderSub').textContent = `读取：${names[idx]}`;
     $('#loaderBar').style.width = `${Math.min(progress, 100)}%`;
@@ -462,11 +463,12 @@ function initLoading() {
       clearInterval(timer);
       setTimeout(() => {
         $('#loading').classList.add('hide');
-        // 加载界面隐藏后，再后台静默预加载地标图片（避免阻塞进入动画）
-        setTimeout(preloadLandmarkImages, 600);
-      }, 320);
+        // 立即开始预加载关键资源
+        preloadCriticalAssets();
+        setTimeout(preloadLandmarkImages, 200);
+      }, 180);  // 缩短隐藏延迟 320ms → 180ms
     }
-  }, 150);
+  }, 90);   // 加快 tick 150ms → 90ms
 }
 
 function renderIdentities() {
@@ -551,7 +553,8 @@ function renderRoute() {
       const idx = landmarks.findIndex(l => l.id === item.id);
       const order = routeOrderFor(item);
       const routeClass = order > 0 ? 'route-member' : 'free-explore';
-      return `<button class="map-pin ${routeClass} ${idx === landmarkIndex ? 'active' : ''} ${unlocked.has(item.id) ? 'unlocked' : ''}" data-index="${idx}" data-order="${order || '彩'}" style="left:${item.x}%;top:${campusPinY(item)}%" aria-label="${item.name}"><span>${item.icon}</span></button>`;
+      const labelSize = item.size || 64;
+      return `<button class="map-label ${routeClass} ${idx === landmarkIndex ? 'active' : ''} ${unlocked.has(item.id) ? 'unlocked' : ''}" data-index="${idx}" data-order="${order || '彩'}" style="left:${item.x}%;top:${campusPinY(item)}%;width:${labelSize}px;height:${labelSize}px" aria-label="${item.name}"></button>`;
     }).join('');
     const activeItem = list.find(item => landmarks[landmarkIndex].id === item.id) || list[0];
     const activeLabel = selectedInCampus ? routeProgressLabel(activeItem) : '地图导览';
@@ -565,13 +568,7 @@ function renderRoute() {
         <div class="campus-body">
           <div class="campus-body-inner">
             <div class="campus-map" data-map="${campusMapKey(campus)}">
-              <div class="campus-route-line"></div>
               ${pins}
-            </div>
-            <div class="map-note">
-              <div class="map-note-tag">${activeLabel}</div>
-              <strong>${selectedInCampus ? activeItem.name : '点击地图中的标记选择地标'}</strong>
-              <span>${selectedInCampus ? `${activeItem.group}｜${isIdentityRouteLandmark(activeItem) ? identities[currentIdentity].taskLead : '自由探索坐标，完成后同样会进入集章册。'}` : '高亮点为当前身份路线，浅色点为自由探索或彩蛋地标。'}</span>
             </div>
           </div>
         </div>
@@ -621,30 +618,12 @@ function updateRouteCard() {
 
 function refreshRouteSelection() {
   const item = landmarks[landmarkIndex];
-  $$('.map-pin, .landmark-chip').forEach((node) => {
+  $$('.map-label, .map-pin, .landmark-chip').forEach((node) => {
     node.classList.toggle('active', Number(node.dataset.index) === landmarkIndex);
   });
   $$('.campus-card').forEach((card) => {
     const selected = card.dataset.campus === item.campus;
     card.classList.toggle('selected', selected);
-    const note = card.querySelector('.map-note');
-    const tag = card.querySelector('.map-note-tag');
-    if (!note || !tag) return;
-    if (selected) {
-      tag.textContent = routeProgressLabel(item);
-      const strong = note.querySelector('strong');
-      const span = note.querySelector('span');
-      if (strong) strong.textContent = item.name;
-      if (span) {
-        span.textContent = `${item.group}｜${isIdentityRouteLandmark(item) ? identities[currentIdentity].taskLead : '自由探索坐标，完成后同样会进入集章册。'}`;
-      }
-    } else {
-      tag.textContent = '地图导览';
-      const strong = note.querySelector('strong');
-      const span = note.querySelector('span');
-      if (strong) strong.textContent = '点击地图中的标记选择地标';
-      if (span) span.textContent = '高亮点为当前身份路线，浅色点为自由探索或彩蛋地标。';
-    }
   });
 }
 
@@ -1835,7 +1814,7 @@ function bindEvents() {
   }
 
   $('#campusAccordion').addEventListener('click', e => {
-    const target = e.target.closest('.map-pin, .landmark-chip');
+    const target = e.target.closest('.map-label, .map-pin, .landmark-chip');
     if (target) {
       selectLandmark(target.dataset.index, false);
       return;
@@ -1998,7 +1977,7 @@ function bindButtonRipple() {
   $('#stage').addEventListener('click', e => {
     const btn = e.target.closest('button');
     if (!btn || btn.disabled) return;
-    if (btn.classList.contains('map-pin') || btn.classList.contains('landmark-chip')) return;
+    if (btn.classList.contains('map-label') || btn.classList.contains('map-pin') || btn.classList.contains('landmark-chip')) return;
     const rect = btn.getBoundingClientRect();
     const ripple = document.createElement('span');
     ripple.className = 'btn-ripple';
@@ -2061,6 +2040,19 @@ function preloadImage(src) {
   const img = new Image();
   img.src = encodeURI(src);
 }
+// v53: 预加载关键大图（封面背景、地图、loading 背景、identity 背景）
+// 在 loading 消失后立即执行，确保用户翻页时图片已在缓存
+function preloadCriticalAssets() {
+  // 封面与全局背景
+  preloadImage('./assets/generated/cover-forest-hust.jpg');
+  preloadImage('./assets/generated/identity-entry-bg.jpg');
+  // loading 背景
+  preloadImage('./assets/generated/loading-hust-gate-mao.png');
+  // 两张地图
+  preloadImage('assets/maps/Main-map.jpg');
+  preloadImage('assets/maps/TJ-map.png');
+}
+
 function preloadLandmarkImages() {
   // 预加载所有地标的"现在"图（小图，加载快）
   landmarks.forEach(item => {
