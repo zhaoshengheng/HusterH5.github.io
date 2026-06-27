@@ -6,7 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#f6f0df" />
   <title>时空喻园：现在，遇见未来</title>
-  <link rel="stylesheet" href="./style.css?v=60" />
+  <script>
+    // v61: 线上环境用 <base> 将所有相对路径指向 jsDelivr CDN，一次性解决图片/CSS/JS 加载慢问题
+    (function() {
+      var isLocal = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+      if (!isLocal) {
+        document.write('<base href="https://cdn.jsdelivr.net/gh/zhaoshengheng/HusterH5.github.io@main/">');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="./style.css?v=61" />
 </head>
 <body>
   <div class="phone-shell" aria-label="H5 手机预览区域">

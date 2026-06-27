@@ -1,14 +1,14 @@
-﻿// v61: jsDelivr CDN 加速 — 本地开发用相对路径，线上用 CDN
+﻿// v61: jsDelivr CDN 加速 — 通过 <base> 标签统一处理，cdn() 仅返回相对路径
 const _IS_LOCAL = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const CDN_BASE = _IS_LOCAL ? '' : 'https://cdn.jsdelivr.net/gh/zhaoshengheng/HusterH5.github.io@main';
 function cdn(path) {
-  if (!path || !CDN_BASE) return path;
+  if (!path) return path;
   // 已经是完整 URL 则不处理
   if (/^https?:\/\//.test(path)) return path;
-  // 去掉开头的 ./
-  const clean = path.replace(/^\.\//, '');
-  // v61: 对中文路径进行 encodeURI，避免浏览器/jsDelivr 对中文解析失败
-  return `${CDN_BASE}/${encodeURI(clean)}`;
+  // <base> 标签已设置时，直接返回相对路径，浏览器自动解析到 CDN
+  if (!_IS_LOCAL) return path.replace(/^\.\//, '');
+  // 本地环境也去掉 ./
+  return path.replace(/^\.\//, '');
 }
 
 const landmarks = [
@@ -681,8 +681,6 @@ function updateImage(img, placeholder, src) {
   };
   showPlaceholder();
   if (!src) return;
-  // v61: cdn() 已对中文路径做 encodeURI，这里不再二次编码
-  // 之前的 safeSrc = encodeURI(src) 会对 CDN URL 中的 % 编码二次编码导致路径错误
   img.src = src;
 }
 
@@ -2051,7 +2049,6 @@ function preloadImage(src) {
   if (!src || _preloadCache.has(src)) return;
   _preloadCache.add(src);
   const img = new Image();
-  // v61: cdn() 内部已做 encodeURI，无需再次编码
   img.src = cdn(src);
 }
 // v53: 预加载关键大图（封面背景、地图、loading 背景、identity 背景）
@@ -2093,42 +2090,10 @@ function init() {
   bindCompareDrag();
   bindButtonRipple();
   bindGuideDrag();
-  rewriteCssUrls();      // v61: CSS background-image 切换到 CDN
-  rewriteHtmlImgs();     // v61: HTML 中的 img src 切换到 CDN
   updateBgmSource();      // 通用 BGM 从封面页就加载
   goTo(0);
 }
 
-// v61: 线上环境自动把 HTML 中 img[src] 的相对路径改为 jsDelivr CDN 路径
-function rewriteHtmlImgs() {
-  if (_IS_LOCAL) return;
-  document.querySelectorAll('img[src]').forEach(img => {
-    const src = img.getAttribute('src');
-    if (src && !/^https?:\/\//.test(src) && !src.startsWith('data:')) {
-      img.src = cdn(src);
-    }
-  });
-}
-
-// v61: 线上环境自动把 CSS 中的相对 url() 改为 jsDelivr CDN 路径
-function rewriteCssUrls() {
-  if (_IS_LOCAL) return;
-  for (const sheet of document.styleSheets) {
-    try {
-      for (const rule of sheet.cssRules) {
-        if (!rule.style) continue;
-        for (const prop of ['backgroundImage', 'background', 'listStyleImage']) {
-          const val = rule.style[prop];
-          if (!val || !val.includes('url(') || val.includes('http') || val.includes('data:')) continue;
-          const newVal = val.replace(/url\(\s*['"]?(?!https?:|data:|\/)([^'")]*)['"]?\s*\)/g, (m, path) => {
-            const clean = path.replace(/^\.\//, '');
-            return `url("${CDN_BASE}/${clean}")`;
-          });
-          if (newVal !== val) rule.style[prop] = newVal;
-        }
-      }
-    } catch(e) { /* cross-origin stylesheet, skip */ }
-  }
-}
+// v61: <base> 标签已将所有相对路径指向 jsDelivr CDN，无需 JS 重写
 
 init();
