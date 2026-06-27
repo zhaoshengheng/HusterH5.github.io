@@ -237,8 +237,8 @@ button:active { transform: scale(.98); }
 .photo-slot span { color: #e7d098; font-size: 12px; letter-spacing: .2em; font-weight: 900; }
 .photo-slot strong { font-size: 25px; margin: 8px 0 4px; }
 .photo-slot small { color: rgba(255,255,255,.72); }
-.cover-now { left: 2px; top: 76px; width: 310px; height: 370px; transform: rotate(-3.8deg); background: url('./图片/梧桐大道-now.jpg') center/cover; }
-.cover-future { right: 4px; top: 20px; width: 300px; height: 390px; transform: rotate(5deg); background: url('./图片/梧桐大道-future.png') center/cover; }
+.cover-now { left: 2px; top: 76px; width: 310px; height: 370px; transform: rotate(-3.8deg); background: url('./图片/梧桐大道-now.webp') center/cover; }
+.cover-future { right: 4px; top: 20px; width: 300px; height: 390px; transform: rotate(5deg); background: url('./图片/梧桐大道-future.webp') center/cover; }
 .time-ribbon {
   position: absolute;
   left: 56px;
@@ -819,8 +819,8 @@ button:active { transform: scale(.98); }
   opacity: 1;
 }
 .campus-map[data-map="tongji"]::before { background-size: cover; }
-.campus-map[data-map="main"]::before { background-image: url("assets/maps/Main-map.jpg"); }
-.campus-map[data-map="tongji"]::before { background-image: url("assets/maps/TJ-map.png"); }
+.campus-map[data-map="main"]::before { background-image: url("assets/maps/Main-map.webp"); }
+.campus-map[data-map="tongji"]::before { background-image: url("assets/maps/TJ-map.webp"); }
 /* v59: 主校区地图保持横向铺满，高度按图片比例自适应，去除上下空白 */
 .campus-map[data-map="main"] {
   height: auto !important;
@@ -1783,7 +1783,7 @@ body.dragging-compare * { cursor: ew-resize !important; }
 
 /* Forest university cover background */
 .cover {
-  background: #07182e url("./assets/generated/cover-forest-hust.jpg") center/cover no-repeat !important;
+  background: #07182e url("./assets/generated/cover-forest-hust.webp") center/cover no-repeat !important;
 }
 .cover::before {
   z-index: 0;
@@ -1807,8 +1807,8 @@ body.dragging-compare * { cursor: ew-resize !important; }
   box-shadow: 0 22px 58px rgba(0,0,0,.18);
   backdrop-filter: blur(8px) saturate(1.08);
 }
-.cover-now { background: url('./图片/梧桐大道-now.jpg') center/cover !important; }
-.cover-future { background: url('./图片/梧桐大道-future.png') center/cover !important; }
+.cover-now { background: url('./图片/梧桐大道-now.webp') center/cover !important; }
+.cover-future { background: url('./图片/梧桐大道-future.webp') center/cover !important; }
 .photo-slot::after { background: linear-gradient(0deg, rgba(4,18,31,.46), rgba(4,18,31,.05) 64%); }
 .cover-copy {
   padding: 0 4px;
@@ -1840,7 +1840,7 @@ body.dragging-compare * { cursor: ew-resize !important; }
 .identity {
   background:
     linear-gradient(180deg, rgba(255,255,255,.74), rgba(246,240,223,.86) 46%, rgba(238,243,241,.90)),
-    url("./assets/generated/identity-entry-bg.jpg") center/cover no-repeat !important;
+    url("./assets/generated/identity-entry-bg.webp") center/cover no-repeat !important;
 }
 .identity::before {
   content: "";
@@ -2954,14 +2954,14 @@ body.dragging-compare * { cursor: ew-resize !important; }
 body[data-h5-page="cover"] {
   background:
     linear-gradient(180deg, rgba(5,19,33,.08), rgba(5,19,33,.62)),
-    url("./assets/generated/cover-forest-hust.jpg") center/cover no-repeat,
+    url("./assets/generated/cover-forest-hust.webp") center/cover no-repeat,
     #07182e;
 }
 
 body[data-h5-page="identity"] {
   background:
     linear-gradient(180deg, rgba(255,255,255,.72), rgba(246,240,223,.92)),
-    url("./assets/generated/identity-entry-bg.jpg") center/cover no-repeat,
+    url("./assets/generated/identity-entry-bg.webp") center/cover no-repeat,
     #f6f0df;
 }
 
@@ -2987,7 +2987,7 @@ body[data-h5-page="ending"] {
   background:
     radial-gradient(circle at 50% 38%, rgba(255,255,255,.10), transparent 42%),
     linear-gradient(180deg, rgba(8,24,48,.62), rgba(5,16,32,.88)),
-    url("./assets/generated/loading-hust-gate-mao.png") center/cover no-repeat,
+    url("./assets/generated/loading-hust-gate-mao.webp") center/cover no-repeat,
     #07182e;
 }
 
@@ -3909,7 +3909,7 @@ body {
   border-radius: 28px;
   background:
     linear-gradient(180deg, rgba(7,24,46,.10), rgba(7,24,46,.18)),
-    url("assets/generated/science-starfield-panel.png") center/cover no-repeat;
+    url("assets/generated/science-starfield-panel.webp") center/cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), 0 18px 34px rgba(7,24,46,.20);
 }
 
@@ -5217,37 +5217,37 @@ body {
 }
 
 .memory-meal .memory-visual {
-  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-image: url("assets/generated/hust-memory-task-set.webp");
   background-size: 600% 100%;
   background-position: 0 center;
 }
 
 .memory-menu .memory-visual {
-  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-image: url("assets/generated/hust-memory-task-set.webp");
   background-size: 600% 100%;
   background-position: 20% center;
 }
 
 .memory-table .memory-visual {
-  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-image: url("assets/generated/hust-memory-task-set.webp");
   background-size: 600% 100%;
   background-position: 40% center;
 }
 
 .memory-ripple .memory-visual {
-  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-image: url("assets/generated/hust-memory-task-set.webp");
   background-size: 600% 100%;
   background-position: 60% center;
 }
 
 .memory-wind .memory-visual {
-  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-image: url("assets/generated/hust-memory-task-set.webp");
   background-size: 600% 100%;
   background-position: 80% center;
 }
 
 .memory-pause .memory-visual {
-  background-image: url("assets/generated/hust-memory-task-set.png");
+  background-image: url("assets/generated/hust-memory-task-set.webp");
   background-size: 600% 100%;
   background-position: 100% center;
 }
@@ -5576,7 +5576,7 @@ body {
   cursor: pointer;
   background:
     linear-gradient(180deg, rgba(255,255,255,.14), rgba(7,24,46,.10)),
-    url("assets/generated/pavilion-water-panel.png") center/cover no-repeat;
+    url("assets/generated/pavilion-water-panel.webp") center/cover no-repeat;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 16px 28px rgba(23,42,64,.12);
 }
 
@@ -5973,7 +5973,7 @@ body {
   background:
     radial-gradient(circle at 50% 38%, rgba(11, 78, 162, .20), transparent 42%),
     linear-gradient(180deg, rgba(8,24,48,.62), rgba(5,16,32,.88)),
-    url("./assets/generated/loading-hust-gate-mao.png") center/cover no-repeat,
+    url("./assets/generated/loading-hust-gate-mao.webp") center/cover no-repeat,
     #07182e;
 }
 
@@ -6452,19 +6452,19 @@ body {
 }
 .role-card.highschool::after {
   content: "";
-  background-image: url('./assets/generated/录取通知书.png') !important;
+  background-image: url('./assets/generated/录取通知书.webp') !important;
 }
 .role-card.student::after {
   content: "";
-  background-image: url('./assets/generated/校园卡.png') !important;
+  background-image: url('./assets/generated/校园卡.webp') !important;
 }
 .role-card.alumni::after {
   content: "";
-  background-image: url('./assets/generated/旧相册.png') !important;
+  background-image: url('./assets/generated/旧相册.webp') !important;
 }
 .role-card.public::after {
   content: "";
-  background-image: url('./assets/generated/导览票.png') !important;
+  background-image: url('./assets/generated/导览票.webp') !important;
 }
 /* 选中态：图标微放大 */
 .role-card.active::after {

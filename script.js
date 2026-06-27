@@ -14,7 +14,7 @@ function cdn(path) {
 const landmarks = [
   {
     id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 50, y: 82,
-    now: '图片/1南大门1.jpg', future: 'assets/landmarks/01_future.jpg',
+    now: '图片/1南大门1.webp', future: 'assets/landmarks/01_future.webp',
     intro: '从这里进入喻园，也从这里看见一所大学的精神坐标。',
     moduleTitle: '刷入园卡：开启未来校门',
     moduleText: '把校门处理成“时空入口”，适合高中生的憧憬、在读生的出发、校友的回望。',
@@ -27,7 +27,7 @@ const landmarks = [
   },
   {
     id: 2, name: '主校区图书馆', group: '知识云端', mode: 'book', campus: '主校区', icon: '书', x: 52, y: 34, size: 82,
-    now: '图片/2图书馆1.jpg', future: 'assets/landmarks/02_future.jpg',
+    now: '图片/2图书馆1.webp', future: 'assets/landmarks/02_future.webp',
     intro: '书页、光影与数据星河，在这里汇成校园的知识中心。',
     moduleTitle: '翻开未来书：连接纸页与云端',
     moduleText: '点击书页可随机切换知识关键词，弱化模板化科技风，让交互更像真实阅读。',
@@ -40,7 +40,7 @@ const landmarks = [
   },
   {
     id: 3, name: '校史馆', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '史', x: 60, y: 64,
-    now: '图片/3校史馆2.jpg', future: 'assets/landmarks/03_future.jpg',
+    now: '图片/3校史馆2.webp', future: 'assets/landmarks/03_future.webp',
     intro: '历史不是静止的展陈，而是通向未来的坐标轴。',
     moduleTitle: '校史答题：从过去走向未来',
     moduleText: '用时间轴而不是普通卡片承载校史馆，让“现在—未来”主题更自然。',
@@ -53,7 +53,7 @@ const landmarks = [
   },
   {
     id: 4, name: '青年园', group: '青春能量场', mode: 'nature', campus: '主校区', icon: '青', x: 32, y: 58, size: 82,
-    now: '图片/4青年园1.jpg', future: 'assets/landmarks/04_future.jpg',
+    now: '图片/4青年园1.webp', future: 'assets/landmarks/04_future.webp',
     intro: '青年人的想法、社团、热爱与偶遇，在这里持续发生。',
     moduleTitle: '拖动能量：让热爱在这里发生',
     moduleText: '自然类地标加入季节按钮和轻量水纹/叶片，让页面不再只有同一种图片比较。',
@@ -66,7 +66,7 @@ const landmarks = [
   },
   {
     id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 13, y: 30, size: 82,
-    now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
+    now: '图片/5.百景园1.webp', future: 'assets/landmarks/05_future.webp',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
     moduleTitle: '选择菜单：补充喻园能量',
     moduleText: '把百景园定位为食堂体验点，用菜品、饭卡和能量条承接真实大学生活。',
@@ -79,7 +79,7 @@ const landmarks = [
   },
   {
     id: 6, name: '西十二教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '课', x: 14, y: 76, size: 82,
-    now: '图片/6.西十二教学楼.jpg', future: 'assets/landmarks/06_future.jpg',
+    now: '图片/6.西十二教学楼.webp', future: 'assets/landmarks/06_future.webp',
     intro: '课堂、考试、自习与讨论，在楼体的灯光里不断切换。',
     moduleTitle: '点亮教室：唤醒课堂灵感',
     moduleText: '教学楼使用“点亮窗格”的交互，更贴近楼体和课堂场景。',
@@ -92,7 +92,7 @@ const landmarks = [
   },
   {
     id: 7, name: '醉晚亭', group: '喻园四季', mode: 'nature', campus: '主校区', icon: '亭', x: 75, y: 58,
-    now: '图片/7.醉晚亭 3.jpg', future: 'assets/landmarks/07_future.jpg',
+    now: '图片/7.醉晚亭 3.webp', future: 'assets/landmarks/07_future.webp',
     intro: '水面、亭影与晚风，把喻园的诗意留在此刻。',
     moduleTitle: '轻触水纹：让亭影扩散',
     moduleText: '醉晚亭适合做水纹、晚风和诗句，不建议套同一种硬科技组件。',
@@ -105,7 +105,7 @@ const landmarks = [
   },
   {
     id: 8, name: '东九教学楼', group: '课堂与实验场', mode: 'classroom', campus: '主校区', icon: '研', x: 91, y: 60,
-    now: '图片/8.东九教学楼1.jpg', future: 'assets/landmarks/08_future.jpg',
+    now: '图片/8.东九教学楼1.webp', future: 'assets/landmarks/08_future.webp',
     intro: '知识在这里进入实验、协作与真实问题。',
     moduleTitle: '点亮实验格：让问题变成答案',
     moduleText: '将东九处理成实验/协作空间，交互重点是点亮、协作和问题解决。',
@@ -118,7 +118,7 @@ const landmarks = [
   },
   {
     id: 9, name: '爱因斯坦广场', group: '科学之光', mode: 'science', campus: '主校区', icon: '科', x: 88, y: 24, size: 82,
-    now: '图片/9.爱因斯坦广场1.jpg', future: 'assets/landmarks/09_future.jpg',
+    now: '图片/9.爱因斯坦广场1.webp', future: 'assets/landmarks/09_future.webp',
     intro: '科学精神不是遥远的公式，而是敢于发问的校园气质。',
     moduleTitle: '点亮星点：生成探索坐标',
     moduleText: '科学地标使用星点/公式动效，体现求是创新，避免只做静态介绍。',
@@ -131,7 +131,7 @@ const landmarks = [
   },
   {
     id: 10, name: '裘法祖像', group: '医学之光', mode: 'medicine', campus: '同济校区', icon: '●', x: 52, y: 66, size: 82,
-    now: '图片/10.裘法祖像1.jpg', future: 'assets/landmarks/10_future.jpg',
+    now: '图片/10.裘法祖像1.webp', future: 'assets/landmarks/10_future.webp',
     intro: '医学精神在此凝望，也在一代代同济人手中延续。',
     moduleTitle: '触发生命脉冲：理解医学温度',
     moduleText: '医学地标不宜过度赛博化，重点是仁心、严谨和生命温度。',
@@ -144,7 +144,7 @@ const landmarks = [
   },
   {
     id: 11, name: '碧珠长廊', group: '医学人文长廊', mode: 'nature', campus: '同济校区', icon: '廊', x: 22, y: 56, size: 82,
-    now: '图片/11.碧珠长廊3.jpg', future: 'assets/landmarks/11_future.jpg',
+    now: '图片/11.碧珠长廊3.webp', future: 'assets/landmarks/11_future.webp',
     intro: '长廊连接的不只是空间，也连接着医学、人文与日常步履。',
     moduleTitle: '滑动导览线：记录长廊光影',
     moduleText: '长廊以光影和步行感为核心，让交互更温和、更有人文气质。',
@@ -157,7 +157,7 @@ const landmarks = [
   },
   {
     id: 12, name: '同济校区图书馆', group: '医学知识云库', mode: 'book', campus: '同济校区', icon: '●', x: 59, y: 39, size: 82,
-    now: '图片/12.同济图书馆1.jpg', future: 'assets/landmarks/12_future.jpg',
+    now: '图片/12.同济图书馆1.webp', future: 'assets/landmarks/12_future.webp',
     intro: '医学知识在这里沉淀，也在未来生命科学中重新生长。',
     moduleTitle: '翻开医学书：连接生命知识',
     moduleText: '同济图书馆与主校区图书馆共用书页逻辑，但内容强调医学知识和长期主义。',
@@ -170,7 +170,7 @@ const landmarks = [
   },
   {
     id: 13, name: '同济医学院大门', group: '医学门户', mode: 'medicine', campus: '同济校区', icon: '门', x: 77, y: 82, size: 82,
-    now: '图片/13.同济医学院大门.jpg', future: 'assets/landmarks/13_future.jpg',
+    now: '图片/13.同济医学院大门.webp', future: 'assets/landmarks/13_future.webp',
     intro: '从这道门进入同济校区，也进入华科医学人文与生命科学的支线。',
     moduleTitle: '医学支线：理解医学精神',
     moduleText: '同济医学院大门作为社会大众路线的转场节点，连接主校区导览与医学人文空间。',
@@ -183,7 +183,7 @@ const landmarks = [
   },
   {
     id: 14, name: '水塔', group: '同济记忆坐标', mode: 'timegate', campus: '同济校区', icon: '塔', x: 37, y: 27,
-    now: '图片/14.水塔.jpg', future: 'assets/landmarks/14_future.jpg',
+    now: '图片/14.水塔.webp', future: 'assets/landmarks/14_future.webp',
     intro: '水塔像同济校区的时间标尺，把老建筑、树影与医学记忆一起留在校园天际线里。',
     moduleTitle: '拨动水塔刻度：点亮同济记忆',
     moduleText: '水塔作为同济校区自由探索地标，适合承载时间感、空间识别和医学人文记忆。',
@@ -203,8 +203,8 @@ const identities = {
     endingTitle: '未来 HUSTer 预见者', routeType: '预见线',
     route: [1, 3, 2, 6, 5, 4, 9],
     routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 西十二教学楼 → 百景园（食堂） → 青年园 → 爱因斯坦广场',
-    visual: 'assets/generated/identity/highschool.jpg',
-    bg: 'assets/generated/背景-高中生.png',
+    visual: 'assets/generated/identity/highschool.webp',
+    bg: 'assets/generated/背景-高中生.webp',
     bgm: 'assets/audio/highschool.mp3',
     accent: '#0A73FD', soft: '#e6f2ff',
     lensTitle: '看见未来的自己',
@@ -219,8 +219,8 @@ const identities = {
     endingTitle: '今日 HUSTer 成长者', routeType: '成长线',
     route: [8, 6, 2, 5, 4, 7, 9],
     routeSummary: '东九教学楼 → 西十二教学楼 → 主校区图书馆 → 百景园（食堂） → 青年园 → 醉晚亭 → 爱因斯坦广场',
-    visual: 'assets/generated/identity/student.jpg',
-    bg: 'assets/generated/背景-在读生.png',
+    visual: 'assets/generated/identity/student.webp',
+    bg: 'assets/generated/背景-在读生.webp',
     bgm: 'assets/audio/student.mp3',
     accent: '#0b4ea2', soft: '#eaf3ff',
     lensTitle: '正在发生的日常',
@@ -235,8 +235,8 @@ const identities = {
     endingTitle: '喻园记忆重逢者', routeType: '返校线',
     route: [1, 3, 2, 5, 7, 4, 9],
     routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 百景园（食堂） → 醉晚亭 → 青年园 → 爱因斯坦广场',
-    visual: 'assets/generated/identity/alumni.jpg',
-    bg: 'assets/generated/背景-校友.png',
+    visual: 'assets/generated/identity/alumni.webp',
+    bg: 'assets/generated/背景-校友.webp',
     bgm: 'assets/audio/alumni.mp3',
     accent: '#c4965a', soft: '#f7ebdc',
     lensTitle: '重回母校',
@@ -251,8 +251,8 @@ const identities = {
     endingTitle: '开放华科导览者', routeType: '开放线',
     route: [1, 3, 2, 9, 13, 10, 12, 11],
     routeSummary: '南大门—毛主席像 → 校史馆 → 主校区图书馆 → 爱因斯坦广场 → 同济医学院大门 → 裘法祖像 → 同济校区图书馆 → 碧珠长廊',
-    visual: 'assets/generated/identity/public.jpg',
-    bg: 'assets/generated/背景-社会大众.png',
+    visual: 'assets/generated/identity/public.webp',
+    bg: 'assets/generated/背景-社会大众.webp',
     bgm: 'assets/audio/public.mp3',
     accent: '#5a8f69', soft: '#e8f3df',
     lensTitle: '开放导览',
@@ -333,13 +333,13 @@ function landmarkStem(item) {
 }
 
 function getNowSrc(item) {
-  const src = item.nowByIdentity?.[currentIdentity] || item.now || `assets/landmarks/${landmarkStem(item)}_now.jpg`;
+  const src = item.nowByIdentity?.[currentIdentity] || item.now || `assets/landmarks/${landmarkStem(item)}_now.webp`;
   return cdn(src);
 }
 
 function getFutureSrc(item) {
   if (item.futureByIdentity?.[currentIdentity]) return cdn(item.futureByIdentity[currentIdentity]);
-  // v43: 新未来图目录结构 assets/landmarks/未来图片/{folder}/{n}{身份名}.png
+  // v43: 新未来图目录结构 assets/landmarks/未来图片/{folder}/{n}{身份名}.webp
   // 文件夹按地标名称匹配（11-14 的文件夹编号与地标 id 不一致，按名称对应）
   const futureFolders = {
     1: '1南大门-毛主席像', 2: '2图书馆', 3: '3校史馆', 4: '4青年园',
@@ -356,9 +356,9 @@ function getFutureSrc(item) {
     const overrides = { 1: { alumni: '已毕业校友' }, 4: { public: '社会人士' } };
     const name = overrides[item.id]?.[currentIdentity] || nameMap[currentIdentity];
     const num = numMap[currentIdentity];
-    return cdn(`assets/landmarks/未来图片/${folder}/${num}${name}.png`);
+    return cdn(`assets/landmarks/未来图片/${folder}/${num}${name}.webp`);
   }
-  return cdn(`assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.jpg`);
+  return cdn(`assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.webp`);
 }
 
 function getFutureFileName(item) {
@@ -449,7 +449,7 @@ function updateGuideBubble() {
   const pageName = pages[pageIndex]?.dataset.page || 'cover';
   const item = landmarks[landmarkIndex] || landmarks[0];
   const pose = guidePoseFor(pageName, item);
-  if (img) img.src = cdn(`./assets/generated/guide-xinwuxiong-${pose}.png`);
+  if (img) img.src = cdn(`./assets/generated/guide-xinwuxiong-${pose}.webp`);
   bear.dataset.pose = pose;
   bubble.textContent = guideMessageFor(pageName, item);
   bear.classList.toggle('guide-hidden', pageName === 'cover');
@@ -560,7 +560,7 @@ function renderRoute() {
     const isOpen = openCampus === campus;
     const selectedInCampus = landmarks[landmarkIndex].campus === campus;
     const campusShort = campus === '主校区' ? '' : '';
-    const campusEmblem = campus === '主校区' ? cdn('./图片/华中科技大学校徽.png') : cdn('./图片/同济医学院院徽.png');
+    const campusEmblem = campus === '主校区' ? cdn('./图片/华中科技大学校徽.webp') : cdn('./图片/同济医学院院徽.webp');
     const routeCount = list.filter(item => routeIds.includes(item.id)).length;
     const desc = `身份路线 ${routeCount} 站 · 自由探索 ${list.length - routeCount} 处`;
     const pins = list.map(item => {
@@ -601,7 +601,7 @@ function updateRouteCard() {
       <img id="routePreviewImage" alt="${item.name}现在图片预览" />
       <div class="route-preview-placeholder" id="routePreviewPlaceholder">
         <strong>NOW</strong>
-        <small>${landmarkStem(item)}_now.jpg</small>
+        <small>${landmarkStem(item)}_now.webp</small>
       </div>
     </div>
     <div class="route-preview-copy">
@@ -710,9 +710,9 @@ function updateLandmark() {
   $('#landmarkName').textContent = `${String(item.id).padStart(2, '0')} ${item.name}`;
   $('#landmarkIntro').textContent = item.intro;
   $('#identityCopy').textContent = `${routeProgressLabel(item)}｜${identity.lensTitle}｜${item.copies[currentIdentity]} ${identity.lensCopy}`;
-  $('#nowFileName').textContent = `${landmarkStem(item)}_now.jpg`;
+  $('#nowFileName').textContent = `${landmarkStem(item)}_now.webp`;
   $('#futureFileName').textContent = getFutureFileName(item);
-  const bgPath = `assets/generated/landmark_bg/${landmarkStem(item)}.png`;
+  const bgPath = `assets/generated/landmark_bg/${landmarkStem(item)}.webp`;
   detailPage.style.setProperty('--landmark-bg', `url("${bgPath}")`);
   updateImage($('#nowImage'), $('#nowPlaceholder'), getNowSrc(item));
   updateImage($('#futureImage'), $('#futurePlaceholder'), getFutureSrc(item));
@@ -1074,10 +1074,10 @@ function avoidWidowText(text) {
 function renderGateTask(module, item, identity) {
   const cardLabel = currentIdentity === 'highschool' ? '未来 HUSTer 卡' : currentIdentity === 'student' ? '校园卡' : currentIdentity === 'alumni' ? '校友卡' : '开放导览卡';
   const cardImgMap = {
-    highschool: cdn('assets/generated/大门-未来HUSTer卡.png'),
-    student: cdn('assets/generated/大门-校园卡.png'),
-    alumni: cdn('assets/generated/大门-校友卡.png'),
-    public: cdn('assets/generated/大门-导览卡.png')
+    highschool: cdn('assets/generated/大门-未来HUSTer卡.webp'),
+    student: cdn('assets/generated/大门-校园卡.webp'),
+    alumni: cdn('assets/generated/大门-校友卡.webp'),
+    public: cdn('assets/generated/大门-导览卡.webp')
   };
   const cardSrc = cardImgMap[currentIdentity];
   module.innerHTML = moduleShell(item, identity, 'gate-module', `
@@ -1611,7 +1611,7 @@ async function makePoster(showMessage = true) {
   const w = designW;
   const h = designH;
   const id = identities[currentIdentity];
-  const bg = await loadCanvasImage(cdn('assets/generated/identity-entry-bg.jpg'));
+  const bg = await loadCanvasImage(cdn('assets/generated/identity-entry-bg.webp'));
   if (token !== posterRenderToken) return;
   if (bg) {
     drawCoverImage(ctx, bg, 0, 0, w, h);
@@ -1645,7 +1645,7 @@ async function makePoster(showMessage = true) {
   ctx.fillText(id.label, 104, 128);
 
   // 二维码：右上角空白区域（整体在白色卡片右边界内，含投影不溢出）
-  const qrImg = await loadCanvasImage(cdn('assets/generated/二维码.jpg'));
+  const qrImg = await loadCanvasImage(cdn('assets/generated/二维码.webp'));
   if (qrImg && token === posterRenderToken) {
     const qrSize = 100;            // 二维码图片尺寸（缩小避免溢出）
     const qrPad = 8;               // 二维码图片相对白底的内边距
@@ -2068,24 +2068,22 @@ function preloadImage(src) {
 // 在 loading 消失后立即执行，确保用户翻页时图片已在缓存
 function preloadCriticalAssets() {
   // 封面与全局背景
-  preloadImage('./assets/generated/cover-forest-hust.jpg');
-  preloadImage('./assets/generated/identity-entry-bg.jpg');
+  preloadImage('./assets/generated/cover-forest-hust.webp');
+  preloadImage('./assets/generated/identity-entry-bg.webp');
   // loading 背景
-  preloadImage('./assets/generated/loading-hust-gate-mao.png');
+  preloadImage('./assets/generated/loading-hust-gate-mao.webp');
   // 两张地图
-  preloadImage('assets/maps/Main-map.jpg');
-  preloadImage('assets/maps/TJ-map.png');
+  preloadImage('assets/maps/Main-map.webp');
+  preloadImage('assets/maps/TJ-map.webp');
 }
 
 function preloadLandmarkImages() {
-  // 预加载所有地标的"现在"图（小图，加载快）
+  // 预加载所有地标的"现在"图（压缩后很小，路线页缩略图要用）
   landmarks.forEach(item => {
     preloadImage(getNowSrc(item));
   });
-  // 预加载当前身份所有地标的"未来"图
-  landmarks.forEach(item => {
-    preloadImage(getFutureSrc(item));
-  });
+  // v63: 未来图改为懒加载——仅在用户进入对应地标详情页时才加载（updateImage 按需设置 src）
+  // 不再首屏预加载 14 张未来图，大幅减少首屏请求量和流量
 }
 
 function init() {
