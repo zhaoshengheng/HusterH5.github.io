@@ -386,6 +386,52 @@ button:active { transform: scale(.98); }
 .placeholder small { color: var(--muted); }
 .future-placeholder { background: linear-gradient(135deg, rgba(41,197,216,.38), rgba(90,143,105,.18)), repeating-linear-gradient(90deg, rgba(255,255,255,.26) 0 1px, transparent 1px 24px), #0c2f68; color: #fff; }
 .future-placeholder small { color: rgba(255,255,255,.72); }
+
+/* v62: 加载中状态 — 显示旋转加载动画 */
+.placeholder.loading::after {
+  content: "";
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(11,78,162,.18);
+  border-top-color: var(--hust-blue);
+  border-radius: 50%;
+  animation: imgSpin .8s linear infinite;
+  margin-top: 6px;
+}
+.placeholder.loading span,
+.placeholder.loading strong,
+.placeholder.loading small {
+  display: none;
+}
+.placeholder.loading::before {
+  content: "图片加载中…";
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--hust-blue);
+  letter-spacing: .04em;
+}
+.future-placeholder.loading::before {
+  color: rgba(255,255,255,.9);
+}
+.future-placeholder.loading::after {
+  border-color: rgba(255,255,255,.2);
+  border-top-color: rgba(255,255,255,.85);
+}
+@keyframes imgSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* v62: 加载失败状态 */
+.placeholder.error::before {
+  content: "图片加载失败";
+}
+.placeholder.error::after {
+  display: none;
+}
+.placeholder.error strong,
+.placeholder.error small {
+  display: none;
+}
 .scene-overlay { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
 .image-badge {
   position: absolute;
@@ -2264,6 +2310,24 @@ body.dragging-compare * { cursor: ew-resize !important; }
   font-weight: 900;
 }
 .route-preview-placeholder small { font-weight: 700; opacity: .72; }
+/* v62: 路线卡片预览图加载状态 */
+.route-preview-placeholder.loading::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(11,78,162,.18);
+  border-top-color: var(--hust-blue);
+  border-radius: 50%;
+  animation: imgSpin .8s linear infinite;
+  margin-top: 4px;
+}
+.route-preview-placeholder.loading strong,
+.route-preview-placeholder.loading small { display: none; }
+.route-preview-placeholder.loading::before {
+  content: "加载中…";
+  font-size: 12px;
+  font-weight: 700;
+}
 .route-preview-copy { min-width: 0; }
 .route-enter-btn,
 .primary-btn,

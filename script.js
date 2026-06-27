@@ -665,22 +665,35 @@ function updateLandmarkMetaOnly() {
 }
 
 function updateImage(img, placeholder, src) {
-  const showPlaceholder = () => {
+  // v62: 显示"加载中"状态而非占位符
+  const showLoading = () => {
     img.style.display = 'none';
     placeholder.style.display = 'flex';
+    placeholder.classList.add('loading');
   };
   const showImage = () => {
     img.style.display = 'block';
     placeholder.style.display = 'none';
+    placeholder.classList.remove('loading');
+  };
+  const showError = () => {
+    img.style.display = 'none';
+    placeholder.style.display = 'flex';
+    placeholder.classList.remove('loading');
+    placeholder.classList.add('error');
   };
   img.onload = () => {
     showImage();
   };
   img.onerror = () => {
-    showPlaceholder();
+    showError();
   };
-  showPlaceholder();
-  if (!src) return;
+  showLoading();
+  placeholder.classList.remove('error');
+  if (!src) {
+    showError();
+    return;
+  }
   img.src = src;
 }
 
