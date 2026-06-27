@@ -1,4 +1,16 @@
-﻿const landmarks = [
+﻿// v61: jsDelivr CDN 加速 — 本地开发用相对路径，线上用 CDN
+const _IS_LOCAL = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+const CDN_BASE = _IS_LOCAL ? '' : 'https://cdn.jsdelivr.net/gh/zhaoshengheng/HusterH5.github.io@main';
+function cdn(path) {
+  if (!path || !CDN_BASE) return path;
+  // 已经是完整 URL 则不处理
+  if (/^https?:\/\//.test(path)) return path;
+  // 去掉开头的 ./
+  const clean = path.replace(/^\.\//, '');
+  return `${CDN_BASE}/${clean}`;
+}
+
+const landmarks = [
   {
     id: 1, name: '南大门—毛主席像', group: '精神之门', mode: 'timegate', campus: '主校区', icon: '门', x: 50, y: 82,
     now: '图片/1南大门1.jpg', future: 'assets/landmarks/01_future.jpg',
@@ -320,11 +332,12 @@ function landmarkStem(item) {
 }
 
 function getNowSrc(item) {
-  return item.nowByIdentity?.[currentIdentity] || item.now || `assets/landmarks/${landmarkStem(item)}_now.jpg`;
+  const src = item.nowByIdentity?.[currentIdentity] || item.now || `assets/landmarks/${landmarkStem(item)}_now.jpg`;
+  return cdn(src);
 }
 
 function getFutureSrc(item) {
-  if (item.futureByIdentity?.[currentIdentity]) return item.futureByIdentity[currentIdentity];
+  if (item.futureByIdentity?.[currentIdentity]) return cdn(item.futureByIdentity[currentIdentity]);
   // v43: 新未来图目录结构 assets/landmarks/未来图片/{folder}/{n}{身份名}.png
   // 文件夹按地标名称匹配（11-14 的文件夹编号与地标 id 不一致，按名称对应）
   const futureFolders = {
@@ -342,9 +355,9 @@ function getFutureSrc(item) {
     const overrides = { 1: { alumni: '已毕业校友' }, 4: { public: '社会人士' } };
     const name = overrides[item.id]?.[currentIdentity] || nameMap[currentIdentity];
     const num = numMap[currentIdentity];
-    return `assets/landmarks/未来图片/${folder}/${num}${name}.png`;
+    return cdn(`assets/landmarks/未来图片/${folder}/${num}${name}.png`);
   }
-  return `assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.jpg`;
+  return cdn(`assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.jpg`);
 }
 
 function getFutureFileName(item) {
@@ -435,7 +448,7 @@ function updateGuideBubble() {
   const pageName = pages[pageIndex]?.dataset.page || 'cover';
   const item = landmarks[landmarkIndex] || landmarks[0];
   const pose = guidePoseFor(pageName, item);
-  if (img) img.src = `./assets/generated/guide-xinwuxiong-${pose}.png`;
+  if (img) img.src = cdn(`./assets/generated/guide-xinwuxiong-${pose}.png`);
   bear.dataset.pose = pose;
   bubble.textContent = guideMessageFor(pageName, item);
   bear.classList.toggle('guide-hidden', pageName === 'cover');
@@ -524,7 +537,7 @@ function updateBgmSource() {
   const src = 'assets/audio/Forest Hymn 森林之歌.mp3';
   toggle.hidden = false;
   if (audio.src && decodeURIComponent(audio.src).endsWith(src)) return; // 已加载则不重复
-  audio.src = src;        // 直接同步设置，file:// 和 http:// 均可
+  audio.src = cdn(src);        // v61: CDN 加速
   audio.load();
 }
 
@@ -546,7 +559,7 @@ function renderRoute() {
     const isOpen = openCampus === campus;
     const selectedInCampus = landmarks[landmarkIndex].campus === campus;
     const campusShort = campus === '主校区' ? '' : '';
-    const campusEmblem = campus === '主校区' ? './图片/华中科技大学校徽.png' : './图片/同济医学院院徽.png';
+    const campusEmblem = campus === '主校区' ? cdn('./图片/华中科技大学校徽.png') : cdn('./图片/同济医学院院徽.png');
     const routeCount = list.filter(item => routeIds.includes(item.id)).length;
     const desc = `身份路线 ${routeCount} 站 · 自由探索 ${list.length - routeCount} 处`;
     const pins = list.map(item => {
@@ -1050,10 +1063,10 @@ function avoidWidowText(text) {
 function renderGateTask(module, item, identity) {
   const cardLabel = currentIdentity === 'highschool' ? '未来 HUSTer 卡' : currentIdentity === 'student' ? '校园卡' : currentIdentity === 'alumni' ? '校友卡' : '开放导览卡';
   const cardImgMap = {
-    highschool: 'assets/generated/大门-未来HUSTer卡.png',
-    student: 'assets/generated/大门-校园卡.png',
-    alumni: 'assets/generated/大门-校友卡.png',
-    public: 'assets/generated/大门-导览卡.png'
+    highschool: cdn('assets/generated/大门-未来HUSTer卡.png'),
+    student: cdn('assets/generated/大门-校园卡.png'),
+    alumni: cdn('assets/generated/大门-校友卡.png'),
+    public: cdn('assets/generated/大门-导览卡.png')
   };
   const cardSrc = cardImgMap[currentIdentity];
   module.innerHTML = moduleShell(item, identity, 'gate-module', `
@@ -1587,7 +1600,7 @@ async function makePoster(showMessage = true) {
   const w = designW;
   const h = designH;
   const id = identities[currentIdentity];
-  const bg = await loadCanvasImage('assets/generated/identity-entry-bg.jpg');
+  const bg = await loadCanvasImage(cdn('assets/generated/identity-entry-bg.jpg'));
   if (token !== posterRenderToken) return;
   if (bg) {
     drawCoverImage(ctx, bg, 0, 0, w, h);
@@ -1621,7 +1634,7 @@ async function makePoster(showMessage = true) {
   ctx.fillText(id.label, 104, 128);
 
   // 二维码：右上角空白区域（整体在白色卡片右边界内，含投影不溢出）
-  const qrImg = await loadCanvasImage('assets/generated/二维码.jpg');
+  const qrImg = await loadCanvasImage(cdn('assets/generated/二维码.jpg'));
   if (qrImg && token === posterRenderToken) {
     const qrSize = 100;            // 二维码图片尺寸（缩小避免溢出）
     const qrPad = 8;               // 二维码图片相对白底的内边距
@@ -2038,7 +2051,7 @@ function preloadImage(src) {
   if (!src || _preloadCache.has(src)) return;
   _preloadCache.add(src);
   const img = new Image();
-  img.src = encodeURI(src);
+  img.src = encodeURI(cdn(src));
 }
 // v53: 预加载关键大图（封面背景、地图、loading 背景、identity 背景）
 // 在 loading 消失后立即执行，确保用户翻页时图片已在缓存
@@ -2079,8 +2092,42 @@ function init() {
   bindCompareDrag();
   bindButtonRipple();
   bindGuideDrag();
+  rewriteCssUrls();      // v61: CSS background-image 切换到 CDN
+  rewriteHtmlImgs();     // v61: HTML 中的 img src 切换到 CDN
   updateBgmSource();      // 通用 BGM 从封面页就加载
   goTo(0);
+}
+
+// v61: 线上环境自动把 HTML 中 img[src] 的相对路径改为 jsDelivr CDN 路径
+function rewriteHtmlImgs() {
+  if (_IS_LOCAL) return;
+  document.querySelectorAll('img[src]').forEach(img => {
+    const src = img.getAttribute('src');
+    if (src && !/^https?:\/\//.test(src) && !src.startsWith('data:')) {
+      img.src = cdn(src);
+    }
+  });
+}
+
+// v61: 线上环境自动把 CSS 中的相对 url() 改为 jsDelivr CDN 路径
+function rewriteCssUrls() {
+  if (_IS_LOCAL) return;
+  for (const sheet of document.styleSheets) {
+    try {
+      for (const rule of sheet.cssRules) {
+        if (!rule.style) continue;
+        for (const prop of ['backgroundImage', 'background', 'listStyleImage']) {
+          const val = rule.style[prop];
+          if (!val || !val.includes('url(') || val.includes('http') || val.includes('data:')) continue;
+          const newVal = val.replace(/url\(\s*['"]?(?!https?:|data:|\/)([^'")]*)['"]?\s*\)/g, (m, path) => {
+            const clean = path.replace(/^\.\//, '');
+            return `url("${CDN_BASE}/${clean}")`;
+          });
+          if (newVal !== val) rule.style[prop] = newVal;
+        }
+      }
+    } catch(e) { /* cross-origin stylesheet, skip */ }
+  }
 }
 
 init();
