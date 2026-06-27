@@ -1002,20 +1002,18 @@ function openImageViewer(showFuture = false, directSrc = null, directLabel = nul
     kind = directLabel && directLabel.includes('未来') ? 'future' : 'now';
     labelText = directLabel || '现在 · 实景原图';
   } else {
+    const item = landmarks[landmarkIndex];
     if (showFuture && !taskState.completed) {
-      showFuture = false;
-    }
-    const targetImg = showFuture ? $('#futureImage') : $('#nowImage');
-    const label = showFuture ? '未来图' : '原图';
-    if (!targetImg.src || targetImg.style.display === 'none') {
-      showToast(`${label}暂未加载`);
+      showToast('完成任务后可查看未来图');
       return;
     }
-    src = targetImg.src;
+    // v50c：直接按点击意图取对应 src，不依赖 img 元素的当前 src/display 状态
+    // 避免未来图元素因加载时序/失败导致 src 为空或被重置时回退到现在的图
+    src = showFuture ? getFutureSrc(item) : getNowSrc(item);
     kind = showFuture ? 'future' : 'now';
     labelText = showFuture ? '未来 · AI 生成' : '现在 · 实景原图';
   }
-  viewerImg.src = src;
+  viewerImg.src = encodeURI(src);
   viewerImg.dataset.kind = kind;
   const labelEl = $('#imageViewerLabel');
   if (labelEl) {
@@ -2050,6 +2048,26 @@ function injectKeyframes() {
   document.head.appendChild(style);
 }
 
+// v50c：预加载图片，解决第一次扫码图片加载慢的问题
+// 在加载页/封面页期间，后台静默加载所有地标现在图 + 当前身份未来图
+const _preloadCache = new Set();
+function preloadImage(src) {
+  if (!src || _preloadCache.has(src)) return;
+  _preloadCache.add(src);
+  const img = new Image();
+  img.src = encodeURI(src);
+}
+function preloadLandmarkImages() {
+  // 预加载所有地标的"现在"图（小图，加载快）
+  landmarks.forEach(item => {
+    preloadImage(getNowSrc(item));
+  });
+  // 预加载当前身份所有地标的"未来"图
+  landmarks.forEach(item => {
+    preloadImage(getFutureSrc(item));
+  });
+}
+
 function init() {
   updateStageScale();
   window.addEventListener('resize', updateStageScale);
@@ -2066,6 +2084,7 @@ function init() {
   bindButtonRipple();
   bindGuideDrag();
   updateBgmSource();      // 通用 BGM 从封面页就加载
+  preloadLandmarkImages(); // v50c：封面页期间后台预加载所有图片
   goTo(0);
 }
 
