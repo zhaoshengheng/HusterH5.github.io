@@ -292,7 +292,7 @@ button:active { transform: scale(.98); }
 .role-card:hover, .role-card.active { box-shadow: 0 28px 70px rgba(11,78,162,.24); border-color: rgba(11,78,162,.38); }
 .role-card::before { content: ""; position: absolute; inset: 0; opacity: .7; pointer-events: none; }
 .role-card::after { content: ""; position: absolute; right: 18px; top: 18px; width: 54px; height: 54px; border-radius: 12px; opacity: .95; }
-.role-card.highschool { left: -14px; top: -4px; transform: rotate(-16deg); background: #fff7e1; }
+.role-card.highschool { left: -14px; top: -4px; transform: rotate(-16deg); background: #f0f7ff; }
 .role-card.student { right: -18px; top: 48px; transform: rotate(14deg); background: #eaf3fb; }
 .role-card.alumni { left: 10px; top: 264px; transform: rotate(12deg); background: #f8ecd9; }
 .role-card.public { right: -6px; top: 310px; transform: rotate(-14deg); background: #edf4e7; }
@@ -300,11 +300,11 @@ button:active { transform: scale(.98); }
 .role-card.active.student { transform: rotate(3deg) translateY(-6px); }
 .role-card.active.alumni { transform: rotate(2deg) translateY(-6px); }
 .role-card.active.public { transform: rotate(-3deg) translateY(-6px); }
-.role-card.highschool::before { background: linear-gradient(120deg, rgba(216,168,91,.24), transparent 55%); }
+.role-card.highschool::before { background: linear-gradient(120deg, rgba(10,115,253,.18), transparent 55%); }
 .role-card.student::before { background: linear-gradient(120deg, rgba(11,78,162,.16), transparent 55%); }
 .role-card.alumni::before { background: radial-gradient(circle at 20% 20%, rgba(122,81,43,.13), transparent 40%); }
 .role-card.public::before { background: linear-gradient(120deg, rgba(90,143,105,.18), transparent 55%); }
-.role-card.highschool::after { background: linear-gradient(135deg, #d8a85b 50%, #fff 50%); clip-path: polygon(0 0, 100% 0, 78% 100%, 0 78%); }
+.role-card.highschool::after { background: linear-gradient(135deg, #0A73FD 50%, #72BCFF 50%); clip-path: polygon(0 0, 100% 0, 78% 100%, 0 78%); }
 .role-card.student::after { background: linear-gradient(135deg, var(--hust-blue), #89c8ef); border-radius: 999px; }
 .role-card.alumni::after { background: #fff; border: 6px solid #b98b61; transform: rotate(6deg); }
 .role-card.public::after { background: linear-gradient(90deg, transparent 18%, #5a8f69 19% 27%, transparent 28% 46%, #5a8f69 47% 55%, transparent 56%); border: 1px solid rgba(90,143,105,.3); }
@@ -429,7 +429,7 @@ button:active { transform: scale(.98); }
   box-shadow: 0 14px 38px rgba(23,42,64,.10);
 }
 .module-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-.module-head h3 { margin: 0; font-size: 19px; }
+.module-head h3 { margin: 0; font-size: 21px; }
 .module-head span { color: var(--hust-blue); font-size: 12px; font-weight: 900; letter-spacing: .12em; }
 .module-copy { margin: 8px 0 0; color: var(--muted); line-height: 1.5; font-size: 13px; }
 .detail-nav { display: flex; gap: 10px; margin-top: 13px; }
@@ -1443,7 +1443,7 @@ body.dragging-compare * { cursor: ew-resize !important; }
 /* identity-specific viewing styles */
 .h5-stage.theme-highschool .route,
 .h5-stage.theme-highschool .detail,
-.h5-stage.theme-highschool .collection { background: linear-gradient(180deg, #f9f0dd, #eff6f2); }
+.h5-stage.theme-highschool .collection { background: linear-gradient(180deg, #eef5ff, #e4effb); }
 .h5-stage.theme-student .route,
 .h5-stage.theme-student .detail,
 .h5-stage.theme-student .collection { background: linear-gradient(180deg, #edf4ff, #eef5f2); }
@@ -1453,7 +1453,7 @@ body.dragging-compare * { cursor: ew-resize !important; }
 .h5-stage.theme-public .route,
 .h5-stage.theme-public .detail,
 .h5-stage.theme-public .collection { background: linear-gradient(180deg, #eef5e7, #edf5f2); }
-.h5-stage.theme-highschool .route-preview-card span { background: rgba(216,168,91,.12); color: #8b6a2d; }
+.h5-stage.theme-highschool .route-preview-card span { background: rgba(10,115,253,.10); color: #0A73FD; }
 .h5-stage.theme-student .route-preview-card span { background: rgba(11,78,162,.08); color: var(--hust-blue); }
 .h5-stage.theme-alumni .route-preview-card span { background: rgba(185,139,97,.12); color: #8b5c37; }
 .h5-stage.theme-public .route-preview-card span { background: rgba(90,143,105,.12); color: #467252; }
@@ -1550,8 +1550,8 @@ body.dragging-compare * { cursor: ew-resize !important; }
 }
 
 .h5-stage.theme-highschool {
-  --identity-accent: #d8a85b;
-  --identity-soft: #fff1c7;
+  --identity-accent: #0A73FD;
+  --identity-soft: #e6f2ff;
 }
 .h5-stage.theme-student {
   --identity-accent: #0b4ea2;
@@ -2013,30 +2013,87 @@ body.dragging-compare * { cursor: ew-resize !important; }
 /* ===== v11 interaction redesign ===== */
 .music-toggle {
   pointer-events: auto;
-  position: absolute;
-  left: 118px;
-  top: 0;
-  width: 40px;
+  position: relative;
+  margin-left: auto;
+  margin-right: 10px;
   height: 40px;
-  border-radius: 50%;
+  padding: 0 18px;
+  border-radius: 999px;
   display: grid;
   place-items: center;
+  gap: 8px;
   color: #fff;
-  background: linear-gradient(135deg, #16304c, #0b4ea2);
-  border: 1px solid rgba(255,255,255,.38);
-  box-shadow: 0 10px 24px rgba(23,42,64,.18);
-  font-weight: 900;
+  background: linear-gradient(135deg, #5ce1e6 0%, #a78bfa 45%, #f472b6 85%, #fb923c 100%);
+  border: none;
+  box-shadow:
+    inset 0 2px 12px rgba(255, 255, 255, .50),
+    inset 0 4px 24px rgba(255, 255, 255, .25),
+    0 8px 24px rgba(92, 225, 230, .22);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .04em;
+  overflow: hidden;
+  isolation: isolate;
+  text-shadow: 0 1px 4px rgba(0,0,0,.14);
+}
+/* 高光层：椭圆 + blur + plus-lighter */
+.music-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 140%;
+  height: 120%;
+  left: -20%;
+  top: -10%;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 65% 50% at 30% 24%, rgba(255, 255, 255, .80), transparent 62%);
+  filter: blur(48px);
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+  z-index: 1;
+}
+/* 内描边 */
+.music-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, .32);
+  pointer-events: none;
+  z-index: 2;
 }
 .music-toggle[hidden] { display: none !important; }
 .music-toggle.playing::after {
   content: "";
   position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 1px solid rgba(41,197,216,.58);
-  animation: musicPulse 1.4s ease-out infinite;
+  inset: -4px;
+  border-radius: inherit;
+  border: 1.5px solid rgba(92, 225, 230, .55);
+  animation: musicPulse 1.8s ease-out infinite;
+  z-index: 3;
 }
 @keyframes musicPulse { from { opacity: .8; transform: scale(.84); } to { opacity: 0; transform: scale(1.24); } }
+
+/* —— 音乐按钮内部元素：图标 + 文字 —— */
+.music-icon {
+  font-size: 14px;
+  position: relative;
+  z-index: 4;
+}
+.music-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  opacity: .92;
+  position: relative;
+  z-index: 4;
+  transform: translateY(-1.5px);
+}
+/* 播放时文字变化：BGM → PAUSE */
+.music-toggle.playing .music-label {
+  content: "PAUSE";
+}
+/* 用 JS 切换更可靠，此处仅做样式定位 */
 
 .image-hint-line { display: none !important; }
 
@@ -2464,11 +2521,13 @@ body.dragging-compare * { cursor: ew-resize !important; }
   }
 
   .music-toggle {
-    left: 136px;
-    width: 44px;
+    margin-right: 12px;
     height: 44px;
-    font-size: 18px;
+    padding: 0 20px;
+    font-size: 13px;
   }
+  .music-icon { font-size: 15px; }
+  .music-label { font-size: 12px; }
 
   .primary-btn,
   .ghost-btn,
@@ -2704,7 +2763,7 @@ body.dragging-compare * { cursor: ew-resize !important; }
   }
 
   .module-head h3 {
-    font-size: 23px;
+    font-size: 25px;
     line-height: 1.25;
   }
 
@@ -3279,7 +3338,7 @@ body {
 }
 
 .module-head h3 {
-  font-size: 23px;
+  font-size: 25px;
 }
 
 .module-head span {
@@ -3590,6 +3649,36 @@ body {
 /* v16 guide bubble return, richer task visuals, and poster-card fallback */
 .no-break {
   white-space: nowrap;
+}
+
+/* v36 防孤行：完整继承 h3 样式，避免被 .module-head span 命中
+   v37 修复：用 .module-head h3 .widow-keep 提升优先级（0,3,0 > 0,2,0），
+   并对被 !important 声明的属性同样使用 !important，确保冒号后所有文字
+   与冒号前格式完全一致，所有站点统一生效。 */
+.module-head h3 .widow-keep {
+  white-space: normal !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  font-family: inherit !important;
+  letter-spacing: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  display: inline !important;
+  position: static !important;
+  line-height: inherit !important;
+  text-align: inherit !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  place-items: unset !important;
+  justify-self: unset !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
 }
 
 .module-head {
@@ -4498,7 +4587,7 @@ body {
   overflow-wrap: anywhere !important;
   text-wrap: balance;
   line-height: 1.24 !important;
-  font-size: 21px !important;
+  font-size: 23px !important;
 }
 
 .module-head h3 .no-break,
@@ -4615,7 +4704,7 @@ body {
   }
 
   .module-head h3 {
-    font-size: 20px !important;
+    font-size: 22px !important;
   }
 
   .ending #endingRestart {
@@ -4894,9 +4983,12 @@ body {
   box-shadow: 0 12px 24px rgba(23,42,64,.14), inset 0 0 0 1px rgba(255,255,255,.42);
 }
 
-.gate-pass.pass-student .gate-card-art { background-position: center center; }
-.gate-pass.pass-alumni .gate-card-art,
-.gate-pass.pass-public .gate-card-art { background-position: right center; }
+/* 精灵图 4 张卡平铺（background-size: 320% 100%），4 个身份各对应一张：
+   0% = 第1张(高中生) / 33.33% = 第2张(在读生) / 66.66% = 第3张(校友) / 100% = 第4张(社会大众) */
+.gate-pass.pass-highschool .gate-card-art { background-position: 0% center; }
+.gate-pass.pass-student .gate-card-art { background-position: 33.33% center; }
+.gate-pass.pass-alumni .gate-card-art { background-position: 66.66% center; }
+.gate-pass.pass-public .gate-card-art { background-position: 100% center; }
 
 .gate-pass-copy {
   min-width: 0;
@@ -5746,7 +5838,7 @@ body {
 
 /* —— 8. 标题渐变：青色终点 → 金色终点（各身份统一） —— */
 :root { --title-gradient: linear-gradient(100deg, #16304c 0%, #0b4ea2 58%, #d8a85b 100%); }
-.h5-stage.theme-highschool { --title-gradient: linear-gradient(100deg, #16304c 0%, #d8a85b 62%, #b8893a 100%); }
+.h5-stage.theme-highschool { --title-gradient: linear-gradient(100deg, #0c2f68 0%, #0A73FD 50%, #72BCFF 85%, #B2C7FE 100%); }
 .h5-stage.theme-student    { --title-gradient: linear-gradient(100deg, #0c2f68 0%, #0b4ea2 55%, #6b9cc4 100%); }
 .h5-stage.theme-alumni     { --title-gradient: linear-gradient(100deg, #16304c 0%, #b98b61 58%, #d8a85b 100%); }
 .h5-stage.theme-public     { --title-gradient: linear-gradient(100deg, #16304c 0%, #6f8f6a 58%, #d8a85b 100%); }
@@ -5885,17 +5977,72 @@ body {
    每个身份一套契合背景图的配色，按钮随身份变化
    ============================================================ */
 
-/* —— 高中生：琥珀金（契合金色背景图，朝气/录取通知感） —— */
+/* —— 高中生：活力蓝（契合蓝色背景图，参考封面按钮渐变风格） —— */
 .h5-stage.theme-highschool {
-  --identity-accent: #c8932e;
-  --identity-soft: #fbf0d6;
-  --title-gradient: linear-gradient(100deg, #3a2c12 0%, #c8932e 58%, #e8c878 100%);
+  --identity-accent: #0A73FD;
+  --identity-soft: #e6f2ff;
+  --title-gradient: linear-gradient(100deg, #0c2f68 0%, #0A73FD 45%, #72BCFF 82%, #B2C7FE 100%);
 }
 .h5-stage.theme-highschool .route,
 .h5-stage.theme-highschool .detail,
 .h5-stage.theme-highschool .collection {
-  background: linear-gradient(180deg, #fbf3df, #f4ead0);
+  background: linear-gradient(180deg, #eef5ff, #e4effb);
 }
+
+/* —— 高中生按钮：精确按参考图蓝色渐变还原 —— */
+.h5-stage.theme-highschool .primary-btn,
+.h5-stage.theme-highschool .task-next-btn,
+.h5-stage.theme-highschool .route-enter-btn {
+  background: linear-gradient(135deg, #0A73FD 0%, #72BCFF 35%, #B2C7FE 70%, #FFDDB7 100%);
+  border: none;
+  border-radius: 999px;
+  box-shadow:
+    /* 内阴影1：模糊30，#DEFEFF 80% */
+    inset 0 3px 18px rgba(222, 239, 255, .80),
+    /* 内阴影2：模糊60，#BDD4FF 100% */
+    inset 0 6px 38px rgba(189, 212, 255, 1.00),
+    /* 外投影 */
+    0 12px 36px rgba(10, 115, 253, .22);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+  text-shadow: 0 1px 6px rgba(10, 115, 253, .20);
+}
+/* 高光层：椭圆 + blur60 + plus-lighter（与封面按钮一致） */
+.h5-stage.theme-highschool .primary-btn::before,
+.h5-stage.theme-highschool .task-next-btn::before,
+.h5-stage.theme-highschool .route-enter-btn::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 140%;
+  height: 120%;
+  left: -20%;
+  top: -10%;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 70% 55% at 35% 22%, rgba(255, 255, 255, .95), transparent 65%);
+  filter: blur(60px);
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+  animation: none;
+  z-index: 1;
+}
+/* 描边 + 呼吸光晕 */
+.h5-stage.theme-highschool .primary-btn::after,
+.h5-stage.theme-highschool .task-next-btn::after,
+.h5-stage.theme-highschool .route-enter-btn::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, .28);
+  pointer-events: none;
+  animation: actionGlow 2s ease-in-out infinite;
+  z-index: 2;
+}
+.h5-stage.theme-highschool .primary-btn:active,
+.h5-stage.theme-highschool .task-next-btn:active,
+.h5-stage.theme-highschool .route-enter-btn:active { filter: brightness(.94); }
 
 /* —— 在读生：学院蓝（契合蓝色背景图，专注/学术感） —— */
 .h5-stage.theme-student {
@@ -5909,16 +6056,16 @@ body {
   background: linear-gradient(180deg, #eef4fb, #e4edf6);
 }
 
-/* —— 校友：暖棕红木（契合棕色背景图，怀旧/温润感） —— */
+/* —— 校友：暖棕红木提亮版（契合棕色背景图，怀旧/温润感） —— */
 .h5-stage.theme-alumni {
-  --identity-accent: #9a6b3e;
-  --identity-soft: #f3e6d4;
-  --title-gradient: linear-gradient(100deg, #2c1f12 0%, #9a6b3e 58%, #d4a878 100%);
+  --identity-accent: #b0884a;
+  --identity-soft: #f7ebdc;
+  --title-gradient: linear-gradient(100deg, #3d2a18 0%, #b0884a 55%, #deb485 100%);
 }
 .h5-stage.theme-alumni .route,
 .h5-stage.theme-alumni .detail,
 .h5-stage.theme-alumni .collection {
-  background: linear-gradient(180deg, #f5ecdf, #ecdfca);
+  background: linear-gradient(180deg, #f8f0e3, #f2e5d2);
 }
 
 /* —— 社会大众：橄榄墨绿（契合绿色背景图，开放/人文感） —— */
@@ -6047,6 +6194,17 @@ body {
   isolation: isolate;
   text-shadow: 0 1px 4px rgba(0, 0, 0, .22);
 }
+
+/* v38b：校友按钮提亮——深棕端偏黑，改成更浅的暖棕，保留深黄调 */
+.h5-stage.theme-alumni .primary-btn,
+.h5-stage.theme-alumni .task-next-btn,
+.h5-stage.theme-alumni .route-enter-btn {
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--identity-accent) 62%, #fff) 0%,
+    color-mix(in srgb, var(--identity-accent) 82%, #fff) 30%,
+    color-mix(in srgb, var(--identity-accent) 50%, #fff) 65%,
+    #E8B86A 100%);
+}
 /* 高光层：椭圆 + blur48 + plus-lighter */
 .primary-btn::before,
 .task-next-btn::before,
@@ -6137,4 +6295,153 @@ body {
 /* 选中态：图标微放大 */
 .role-card.active::after {
   transform: scale(1.12);
+}
+
+/* ============================================================
+   v37 高中生主题：全面清除橘色/金色残留，统一为活力蓝
+   覆盖 v28 硬编码金色的字体与组件，与按钮配色一致
+   ============================================================ */
+
+/* —— 1. 字体颜色：金色标签文字 → 蓝色 —— */
+.h5-stage.theme-highschool .campus-meta span { color: #0A73FD; }
+
+/* —— 2. 组件边框/背景：金色 → 蓝色 —— */
+/* 图书馆故事卡片左边框 */
+.h5-stage.theme-highschool .detail-book .story-card { border-left-color: rgba(10, 115, 253, .55); }
+
+/* 未来图标签 */
+.h5-stage.theme-highschool .image-viewer[data-kind="future"] .image-viewer-label,
+.h5-stage.theme-highschool .image-viewer img[data-kind="future"] ~ .image-viewer-label {
+  background: rgba(10, 115, 253, .72);
+}
+
+/* 未来图占位渐变：蓝金 → 纯蓝 */
+.h5-stage.theme-highschool .future-placeholder {
+  background:
+    linear-gradient(135deg, rgba(10, 115, 253, .52), rgba(114, 188, 255, .30)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .26) 0 1px, transparent 1px 24px),
+    #0c2f68;
+}
+
+/* 教室灯光：金色 → 蓝色 */
+.h5-stage.theme-highschool .window-dot.on {
+  background: #5ba8ff;
+  box-shadow: 0 0 14px rgba(91, 168, 255, .72);
+}
+
+/* 星点：深蓝 → 活力蓝 */
+.h5-stage.theme-highschool .star.on {
+  background: #0A73FD;
+  box-shadow: 0 0 20px rgba(10, 115, 253, .8);
+}
+
+/* —— 3. 装饰性金色光斑 → 蓝色光斑 —— */
+/* 路线页 / 详情页 / 集章册页背景光斑 */
+.h5-stage.theme-highschool .route,
+.h5-stage.theme-highschool .detail,
+.h5-stage.theme-highschool .collection {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(10, 115, 253, .14), transparent 26%),
+    radial-gradient(circle at 88% 18%, rgba(114, 188, 255, .14), transparent 28%),
+    linear-gradient(180deg, #eef5ff, #e4effb);
+}
+
+/* 详情页内交互区氛围光斑 */
+.h5-stage.theme-highschool .detail::before {
+  background:
+    radial-gradient(circle at 74% 8%, rgba(10, 115, 253, .14), transparent 22%),
+    radial-gradient(circle at 22% 22%, rgba(114, 188, 255, .12), transparent 24%);
+}
+
+/* story-card / interaction-card 装饰光斑 */
+.h5-stage.theme-highschool .story-card::before,
+.h5-stage.theme-highschool .interaction-card::before {
+  background: radial-gradient(circle at 70% 25%, rgba(10, 115, 253, .12), transparent 18%);
+}
+
+/* info / detail 底部氛围 */
+.h5-stage.theme-highschool .info {
+  background:
+    radial-gradient(circle at 84% 72%, rgba(10, 115, 253, .10), transparent 24%),
+    linear-gradient(180deg, #eef5ff, #e4effb);
+}
+
+/* —— 4. 票根/集章册装饰：金色描边 → 蓝色描边 —— */
+.h5-stage.theme-highschool .stamp {
+  border-color: rgba(10, 115, 253, .22);
+}
+.h5-stage.theme-highschool .stamp.unlocked {
+  border-color: rgba(10, 115, 253, .48);
+}
+.h5-stage.theme-highschool .notebook {
+  border-color: rgba(10, 115, 253, .18);
+}
+
+/* —— 5. ghost-btn 金灰边 → 蓝灰边 —— */
+.h5-stage.theme-highschool .ghost-btn {
+  border-color: rgba(10, 115, 253, .20);
+}
+
+/* —— 6. topbar / progress 胶囊金边 → 蓝边 —— */
+.h5-stage.theme-highschool .topbar-brand,
+.h5-stage.theme-highschool .progress-pill {
+  border-color: rgba(10, 115, 253, .16);
+}
+
+/* —— 7. 路线预览卡片装饰 —— */
+.h5-stage.theme-highschool .route-preview-card::before {
+  background: linear-gradient(90deg, rgba(10, 115, 253, .18), transparent 12%);
+}
+
+/* —— 8. 校区折叠卡：暖米底 → 冷蓝白底（主校区/同济校区按钮） —— */
+.h5-stage.theme-highschool .campus-card,
+.h5-stage.theme-highschool .campus-card.open {
+  background: rgba(238, 245, 255, .88);
+}
+
+/* —— 9. 校区展开开关：蓝底 —— */
+.h5-stage.theme-highschool .campus-card.open .campus-toggle {
+  background: rgba(10, 115, 253, .14);
+}
+
+/* —— 10. 集章册底色：暖亚麻 → 冷蓝白 —— */
+.h5-stage.theme-highschool .notebook {
+  background:
+    linear-gradient(90deg, rgba(10, 115, 253, .06) 1px, transparent 1px),
+    linear-gradient(#f6faff, #e8f0fc);
+}
+.h5-stage.theme-highschool .collection {
+  background: linear-gradient(180deg, #eef5ff, #e4effb);
+}
+
+/* —— 11. 票根：暖白 → 冷蓝白 —— */
+.h5-stage.theme-highschool .ticket {
+  background: linear-gradient(145deg, rgba(246, 250, 255, .94), rgba(228, 239, 251, .88));
+}
+.h5-stage.theme-highschool .ticket-stats div {
+  background: rgba(10, 115, 253, .06);
+}
+
+/* —— 12. 图片层底色：暖纸 → 冷蓝灰 —— */
+.h5-stage.theme-highschool .image-layers {
+  background: #dce8f5;
+}
+
+/* —— 13. 占位符：暖纸 → 冷蓝 —— */
+.h5-stage.theme-highschool .placeholder {
+  background: rgba(238, 245, 255, .68);
+}
+
+/* —— 14. image-badge 现在标签 —— */
+.h5-stage.theme-highschool .image-badge {
+  background: rgba(10, 115, 253, .52);
+}
+
+/* —— 15. compare-handle 拖动手柄：金 → 蓝 —— */
+.h5-stage.theme-highschool .compare-handle {
+  background: rgba(10, 115, 253, .72);
+  box-shadow: 0 0 12px rgba(10, 115, 253, .52);
+}
+.h5-stage.theme-highschool .compare-handle i {
+  background: rgba(238, 245, 255, .72);
 }

@@ -53,7 +53,7 @@
   },
   {
     id: 5, name: '百景园（食堂）', group: '今日能量补给站', mode: 'canteen', campus: '主校区', icon: '饭', x: 76, y: 39,
-    now: '图片/5.百景园 2.jpg', future: 'assets/landmarks/05_future.jpg',
+    now: '图片/5.百景园1.jpg', future: 'assets/landmarks/05_future.jpg',
     intro: '校园生活最终会落到一餐饭里，百景园把理想、日常和味道连在一起。',
     moduleTitle: '选择菜单：补充喻园能量',
     moduleText: '把百景园定位为食堂体验点，用菜品、饭卡和能量条承接真实大学生活。',
@@ -193,7 +193,7 @@ const identities = {
     visual: 'assets/generated/identity/highschool.jpg',
     bg: 'assets/generated/背景-高中生.png',
     bgm: 'assets/audio/highschool.mp3',
-    accent: '#d8a85b', soft: '#fff4d4',
+    accent: '#0A73FD', soft: '#e6f2ff',
     lensTitle: '看见未来的自己',
     lensCopy: '把南大门、校史、图书馆、课堂和第一顿饭连成一次提前入学体验。',
     taskLead: '收集未来入园线索',
@@ -225,7 +225,7 @@ const identities = {
     visual: 'assets/generated/identity/alumni.jpg',
     bg: 'assets/generated/背景-校友.png',
     bgm: 'assets/audio/alumni.mp3',
-    accent: '#b98252', soft: '#f7e7d2',
+    accent: '#c4965a', soft: '#f7ebdc',
     lensTitle: '重回母校',
     lensCopy: '从南大门重新入园，在图书馆、食堂、亭边和青年园里找回旧日味道。',
     taskLead: '唤起一段校园记忆',
@@ -324,11 +324,31 @@ function getNowSrc(item) {
 }
 
 function getFutureSrc(item) {
-  return item.futureByIdentity?.[currentIdentity] || `assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.jpg`;
+  if (item.futureByIdentity?.[currentIdentity]) return item.futureByIdentity[currentIdentity];
+  // v43: 新未来图目录结构 assets/landmarks/未来图片/{folder}/{n}{身份名}.png
+  // 文件夹按地标名称匹配（11-14 的文件夹编号与地标 id 不一致，按名称对应）
+  const futureFolders = {
+    1: '1南大门-毛主席像', 2: '2图书馆', 3: '3校史馆', 4: '4青年园',
+    5: '5百景园', 6: '6西十二教学楼', 7: '7醉晚亭', 8: '8东九教学楼',
+    9: '9爱因斯坦广场', 10: '10裘法祖像',
+    11: '12碧珠长廊', 12: '11图书馆',
+    13: '14同济医学院大门', 14: '13水塔'
+  };
+  const folder = futureFolders[item.id];
+  if (folder) {
+    const numMap = { highschool: '1', student: '2', alumni: '3', public: '4' };
+    const nameMap = { highschool: '高中生', student: '在校生', alumni: '毕业校友', public: '社会大众' };
+    // 两个特殊文件名：南大门校友=已毕业校友，青年园公众=社会人士
+    const overrides = { 1: { alumni: '已毕业校友' }, 4: { public: '社会人士' } };
+    const name = overrides[item.id]?.[currentIdentity] || nameMap[currentIdentity];
+    const num = numMap[currentIdentity];
+    return `assets/landmarks/未来图片/${folder}/${num}${name}.png`;
+  }
+  return `assets/landmarks/${landmarkStem(item)}_future_${currentIdentity}.jpg`;
 }
 
 function getFutureFileName(item) {
-  return `${landmarkStem(item)}_future_${currentIdentity}.jpg`;
+  return getFutureSrc(item).split('/').pop();
 }
 
 function detailFlowFor(item) {
@@ -497,18 +517,9 @@ function updateBgmSource() {
   // 通用 BGM：所有身份共用一首《Forest Hymn 森林之歌》
   const src = 'assets/audio/Forest Hymn 森林之歌.mp3';
   toggle.hidden = false;
-  if (audio.src && audio.src.endsWith(encodeURI(src))) return; // 已加载则不重复
-  audio.pause();
-  audio.removeAttribute('src');
-  toggle.classList.remove('playing');
-  if (location.protocol === 'file:') return;
-  fetch(src, { method: 'HEAD' })
-    .then(response => {
-      if (!response.ok) return;
-      audio.src = src;
-      audio.load();
-    })
-    .catch(() => {});
+  if (audio.src && decodeURIComponent(audio.src).endsWith(src)) return; // 已加载则不重复
+  audio.src = src;        // 直接同步设置，file:// 和 http:// 均可
+  audio.load();
 }
 
 function campusPinY(item) {
@@ -936,7 +947,10 @@ function bindCompareDrag() {
     moved = false;
     const rect = box.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
-    const handlePct = parseFloat($('#compareRange').value) || 100;
+    // 注意：value="0" 时 parseFloat 得到 0（falsy），不能用 || 100 兜底，
+    // 否则手柄在最左侧时会被误判为 100%（最右侧），导致无法从左往右拖回。
+    const rawVal = parseFloat($('#compareRange').value);
+    const handlePct = isNaN(rawVal) ? 100 : rawVal;
     const handleX = (handlePct / 100) * rect.width;
     // 判断按下点是否在手柄热区内
     const onHandle = Math.abs(clickX - handleX) <= HANDLE_HIT_WIDTH;
@@ -1048,7 +1062,7 @@ function moduleShell(item, identity, className, body, copy) {
 function avoidWidowText(text) {
   const keep = 6;
   if (!text || text.length <= keep + 2) return text;
-  return `${text.slice(0, -keep)}<span class="no-break">${text.slice(-keep)}</span>`;
+  return `${text.slice(0, -keep)}<span class="widow-keep">${text.slice(-keep)}</span>`;
 }
 
 function renderGateTask(module, item, identity) {
@@ -1834,17 +1848,20 @@ function bindEvents() {
   $('#musicToggle').addEventListener('click', async () => {
     const audio = $('#bgmAudio');
     const toggle = $('#musicToggle');
+    const label = toggle.querySelector('.music-label');
     if (!audio || !audio.src) return;
     if (audio.paused) {
       try {
         await audio.play();
         toggle.classList.add('playing');
+        if (label) label.textContent = 'PAUSE';
       } catch {
         showToast('轻触后即可播放背景音乐');
       }
     } else {
       audio.pause();
       toggle.classList.remove('playing');
+      if (label) label.textContent = 'BGM';
     }
   });
 
@@ -1855,10 +1872,12 @@ function bindEvents() {
     bgmAutoPlayTried = true;
     const audio = $('#bgmAudio');
     const toggle = $('#musicToggle');
+    const label = toggle?.querySelector('.music-label');
     if (!audio || !audio.src || !audio.paused) return;
     try {
       await audio.play();
       toggle.classList.add('playing');
+      if (label) label.textContent = 'PAUSE';
     } catch {
       // 自动播放被拦截，保留按钮供用户手动点击
     }
