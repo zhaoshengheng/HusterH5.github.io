@@ -494,17 +494,19 @@ function updateBgmSource() {
   const audio = $('#bgmAudio');
   const toggle = $('#musicToggle');
   if (!audio || !toggle) return;
-  const src = identities[currentIdentity]?.bgm;
+  // 通用 BGM：所有身份共用一首《Forest Hymn 森林之歌》
+  const src = 'assets/audio/Forest Hymn 森林之歌.mp3';
+  toggle.hidden = false;
+  if (audio.src && audio.src.endsWith(encodeURI(src))) return; // 已加载则不重复
   audio.pause();
   audio.removeAttribute('src');
-  toggle.hidden = true;
   toggle.classList.remove('playing');
-  if (!src || location.protocol === 'file:') return;
+  if (location.protocol === 'file:') return;
   fetch(src, { method: 'HEAD' })
     .then(response => {
       if (!response.ok) return;
       audio.src = src;
-      toggle.hidden = false;
+      audio.load();
     })
     .catch(() => {});
 }
@@ -1845,6 +1847,25 @@ function bindEvents() {
       toggle.classList.remove('playing');
     }
   });
+
+  // 浏览器自动播放策略：首次用户交互时尝试自动播放 BGM
+  let bgmAutoPlayTried = false;
+  const tryAutoPlayBgm = async () => {
+    if (bgmAutoPlayTried) return;
+    bgmAutoPlayTried = true;
+    const audio = $('#bgmAudio');
+    const toggle = $('#musicToggle');
+    if (!audio || !audio.src || !audio.paused) return;
+    try {
+      await audio.play();
+      toggle.classList.add('playing');
+    } catch {
+      // 自动播放被拦截，保留按钮供用户手动点击
+    }
+  };
+  ['pointerdown', 'keydown', 'touchstart'].forEach(evt => {
+    document.addEventListener(evt, tryAutoPlayBgm, { once: true, passive: true });
+  });
   $('#backRoute').addEventListener('click', () => goTo(2));
   $('#compareRange').addEventListener('input', e => {
     setCompare(e.target.value);
@@ -2015,6 +2036,7 @@ function init() {
   bindCompareDrag();
   bindButtonRipple();
   bindGuideDrag();
+  updateBgmSource();      // 通用 BGM 从封面页就加载
   goTo(0);
 }
 
