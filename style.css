@@ -4970,25 +4970,72 @@ body {
   background:
     linear-gradient(135deg, rgba(255,248,232,.94), rgba(232,243,241,.74)),
     radial-gradient(circle at 12% 14%, rgba(41,197,216,.20), transparent 28%);
+  transition: transform .38s cubic-bezier(.22,1,.36,1), background .38s ease, box-shadow .38s ease;
+  position: relative;
 }
 
+/* v49：刷卡成功后整张卡片图完整展示，文字叠在图上 */
+.gate-pass.swiped,
+.gate-pass.done {
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+  min-height: 0 !important;
+  border: 0;
+  background: transparent;
+  box-shadow: 0 22px 44px rgba(23,42,64,.20);
+}
+.gate-pass.swiped .gate-card-art,
+.gate-pass.done .gate-card-art {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(23,42,64,.20);
+}
+.gate-pass.swiped .gate-card-art img,
+.gate-pass.done .gate-card-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gate-pass.swiped .gate-pass-copy,
+.gate-pass.done .gate-pass-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 18px;
+  gap: 2px;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(0deg, rgba(7,24,46,.82), rgba(7,24,46,.36) 60%, transparent);
+  color: #fff;
+}
+.gate-pass.swiped .gate-pass-copy small,
+.gate-pass.done .gate-pass-copy small,
+.gate-pass.swiped .gate-pass-copy strong,
+.gate-pass.done .gate-pass-copy strong,
+.gate-pass.swiped .gate-pass-copy i,
+.gate-pass.done .gate-pass-copy i {
+  color: #fff;
+}
+.gate-pass.swiped .gate-pass-copy i,
+.gate-pass.done .gate-pass-copy i {
+  color: rgba(255,255,255,.86);
+}
+
+/* v49：用 <img> 元素天然保比例，不再用 background 拉伸 */
 .gate-card-art {
   display: block;
-  height: 102px;
-  border-radius: 18px;
-  background-image: url("assets/generated/hust-card-pass-set-v2.png");
-  background-size: 320% 100%;
-  background-repeat: no-repeat;
-  background-position: left center;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
   box-shadow: 0 12px 24px rgba(23,42,64,.14), inset 0 0 0 1px rgba(255,255,255,.42);
 }
-
-/* 精灵图 4 张卡平铺（background-size: 320% 100%），4 个身份各对应一张：
-   0% = 第1张(高中生) / 33.33% = 第2张(在读生) / 66.66% = 第3张(校友) / 100% = 第4张(社会大众) */
-.gate-pass.pass-highschool .gate-card-art { background-position: 0% center; }
-.gate-pass.pass-student .gate-card-art { background-position: 33.33% center; }
-.gate-pass.pass-alumni .gate-card-art { background-position: 66.66% center; }
-.gate-pass.pass-public .gate-card-art { background-position: 100% center; }
+.gate-card-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
 .gate-pass-copy {
   min-width: 0;
@@ -5124,7 +5171,8 @@ body {
   }
 
   .gate-card-art {
-    height: 118px;
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
 
   .memory-strip {

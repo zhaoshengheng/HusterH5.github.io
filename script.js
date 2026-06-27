@@ -936,8 +936,8 @@ function launchTaskEffect(strong = false) {
 function bindCompareDrag() {
   const box = $('#imageLayers');
   let downX = 0, downY = 0, moved = false;
-  let clickShowsFuture = false;
   let pointerActive = false;
+  let wasDragSession = false; // 标记本次交互是否为拖动
   const MOVE_THRESHOLD = 8;
   // 手柄热区：手柄中心 ±40px 的竖向条带视为"拖动手柄"
   const HANDLE_HIT_WIDTH = 40;
@@ -947,6 +947,7 @@ function bindCompareDrag() {
     downY = e.clientY;
     moved = false;
     pointerActive = true;
+    wasDragSession = false;
     const rect = box.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     // 注意：value="0" 时 parseFloat 得到 0（falsy），不能用 || 100 兜底，
@@ -956,46 +957,54 @@ function bindCompareDrag() {
     const handleX = (handlePct / 100) * rect.width;
     // 判断按下点是否在手柄热区内
     const onHandle = Math.abs(clickX - handleX) <= HANDLE_HIT_WIDTH;
-    clickShowsFuture = clickX > handleX;
 
     if (onHandle) {
       // 按在手柄上 → 立即激活拖动，零延迟
       box.setPointerCapture?.(e.pointerId);
       draggingCompare = true;
+      wasDragSession = true;
       document.body.classList.add('dragging-compare');
       setCompareFromClientX(e.clientX);
     }
-    // 按在图片区域 → 不 setPointerCapture，等 pointerup 时若未移动则查看图片
+    // 按在图片区域 → 不 setPointerCapture，等 click 事件查看图片
   });
 
   box.addEventListener('pointermove', e => {
     if (!pointerActive) return;
     if (Math.abs(e.clientX - downX) > MOVE_THRESHOLD || Math.abs(e.clientY - downY) > MOVE_THRESHOLD) {
       moved = true;
+      wasDragSession = true;
     }
     if (draggingCompare) {
       setCompareFromClientX(e.clientX);
     }
   });
 
-  const endDrag = (allowClick) => {
+  const endDrag = () => {
     if (!pointerActive && !draggingCompare) return;
-    const wasDragging = draggingCompare;
     draggingCompare = false;
     pointerActive = false;
     document.body.classList.remove('dragging-compare');
-    // 非拖动 + 未移动 → 查看图片
-    if (allowClick && !wasDragging && !moved) {
-      openImageViewer(clickShowsFuture);
-    }
   };
   box.addEventListener('pointerup', e => {
     try { box.releasePointerCapture?.(e.pointerId); } catch (_) {}
-    endDrag(true);
+    endDrag();
   });
-  box.addEventListener('pointercancel', () => endDrag(false));
-  // 注意：不绑定 mouseleave —— 手机端 pointer 行为下它会误触发，
-  // 导致 endDrag(false) 抢在 pointerup 之前执行，点击查看图片失效。
+  box.addEventListener('pointercancel', () => endDrag());
+
+  // v44b：用 click 事件处理"点击查看图片"
+  // 原因：手机端 touch-action:pan-y 下，轻触可能触发 pointercancel 而非 pointerup，
+  // 但 click 事件在 tap 后始终可靠触发（浏览器会在拖动/滚动后自动抑制 click）。
+  box.addEventListener('click', e => {
+    // 拖动后不触发查看
+    if (wasDragSession || moved || draggingCompare) return;
+    const rect = box.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const rawVal = parseFloat($('#compareRange').value);
+    const handlePct = isNaN(rawVal) ? 100 : rawVal;
+    const handleX = (handlePct / 100) * rect.width;
+    openImageViewer(clickX > handleX);
+  });
 }
 
 function openImageViewer(showFuture = false, directSrc = null, directLabel = null) {
@@ -1076,11 +1085,20 @@ function avoidWidowText(text) {
 
 function renderGateTask(module, item, identity) {
   const cardLabel = currentIdentity === 'highschool' ? '未来 HUSTer 卡' : currentIdentity === 'student' ? '校园卡' : currentIdentity === 'alumni' ? '校友卡' : '开放导览卡';
+  const cardImgMap = {
+    highschool: 'assets/generated/大门-未来HUSTer卡.png',
+    student: 'assets/generated/大门-校园卡.png',
+    alumni: 'assets/generated/大门-校友卡.png',
+    public: 'assets/generated/大门-导览卡.png'
+  };
+  const cardSrc = cardImgMap[currentIdentity];
   module.innerHTML = moduleShell(item, identity, 'gate-module', `
     <div class="gate-swipe">
       <div class="gate-reader"><span></span><b>SCAN</b></div>
       <button class="gate-pass task-step pass-${currentIdentity}" data-message="${cardLabel}已刷入，校门未来图景正在展开。">
-        <span class="gate-card-art" aria-hidden="true"></span>
+        <span class="gate-card-art" aria-hidden="true">
+          <img src="${cardSrc}" alt="${cardLabel}" />
+        </span>
         <span class="gate-pass-copy">
           <small>${cardLabel}</small><strong>${identities[currentIdentity].label}</strong><i>刷卡入园</i>
         </span>
