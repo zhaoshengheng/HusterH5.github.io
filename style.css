@@ -94,7 +94,7 @@ button:active { transform: scale(.98); }
 .loading.hide { opacity: 0; visibility: hidden; }
 .loader-emblem {
   width: 118px;
-  height: 118px;
+  height: 104px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -1223,7 +1223,7 @@ button, .campus-accordion, .interaction-module, .detail-nav, .collection-actions
   text-align: center;
   box-shadow: 0 10px 22px rgba(23,42,64,.06);
 }
-#imageLayers { touch-action: none; user-select: none; }
+#imageLayers { touch-action: pan-y; user-select: none; }
 .compare-range { pointer-events: none; opacity: 0; }
 body.dragging-compare * { cursor: ew-resize !important; }
 .image-layers::after { content: none !important; }
@@ -5314,7 +5314,7 @@ body {
 .loader-emblem {
   position: relative;
   width: 148px;
-  height: 148px;
+  height: 130px;
   overflow: visible;
   border-radius: 50%;
   background: #ffffff;
@@ -5328,10 +5328,10 @@ body {
   position: relative;
   z-index: 2;
   width: 124px;
-  height: 124px;
-  object-fit: cover;
+  height: 106px;
+  object-fit: contain;
   border-radius: 50%;
-  clip-path: circle(50%);
+  clip-path: ellipse(50% 50% at 50% 50%);
   filter: drop-shadow(0 2px 8px rgba(0,0,0,.18));
 }
 
@@ -5527,15 +5527,15 @@ body {
 @media (max-width: 640px), (max-height: 1030px) {
   .loader-emblem {
     width: 134px;
-    height: 134px;
+    height: 118px;
   }
 
   .loader-emblem img {
     width: 112px;
-    height: 112px;
-    object-fit: cover;
+    height: 96px;
+    object-fit: contain;
     border-radius: 50%;
-    clip-path: circle(50%);
+    clip-path: ellipse(50% 50% at 50% 50%);
   }
 
   .ripple-surface {

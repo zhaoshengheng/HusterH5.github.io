@@ -937,6 +937,7 @@ function bindCompareDrag() {
   const box = $('#imageLayers');
   let downX = 0, downY = 0, moved = false;
   let clickShowsFuture = false;
+  let pointerActive = false;
   const MOVE_THRESHOLD = 8;
   // 手柄热区：手柄中心 ±40px 的竖向条带视为"拖动手柄"
   const HANDLE_HIT_WIDTH = 40;
@@ -945,6 +946,7 @@ function bindCompareDrag() {
     downX = e.clientX;
     downY = e.clientY;
     moved = false;
+    pointerActive = true;
     const rect = box.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     // 注意：value="0" 时 parseFloat 得到 0（falsy），不能用 || 100 兜底，
@@ -955,18 +957,19 @@ function bindCompareDrag() {
     // 判断按下点是否在手柄热区内
     const onHandle = Math.abs(clickX - handleX) <= HANDLE_HIT_WIDTH;
     clickShowsFuture = clickX > handleX;
-    box.setPointerCapture?.(e.pointerId);
 
     if (onHandle) {
       // 按在手柄上 → 立即激活拖动，零延迟
+      box.setPointerCapture?.(e.pointerId);
       draggingCompare = true;
       document.body.classList.add('dragging-compare');
       setCompareFromClientX(e.clientX);
     }
-    // 按在图片区域 → 不激活拖动，pointerup 时若未移动则查看图片
+    // 按在图片区域 → 不 setPointerCapture，等 pointerup 时若未移动则查看图片
   });
 
   box.addEventListener('pointermove', e => {
+    if (!pointerActive) return;
     if (Math.abs(e.clientX - downX) > MOVE_THRESHOLD || Math.abs(e.clientY - downY) > MOVE_THRESHOLD) {
       moved = true;
     }
@@ -976,17 +979,23 @@ function bindCompareDrag() {
   });
 
   const endDrag = (allowClick) => {
+    if (!pointerActive && !draggingCompare) return;
     const wasDragging = draggingCompare;
     draggingCompare = false;
+    pointerActive = false;
     document.body.classList.remove('dragging-compare');
     // 非拖动 + 未移动 → 查看图片
     if (allowClick && !wasDragging && !moved) {
       openImageViewer(clickShowsFuture);
     }
   };
-  box.addEventListener('pointerup', () => endDrag(true));
+  box.addEventListener('pointerup', e => {
+    try { box.releasePointerCapture?.(e.pointerId); } catch (_) {}
+    endDrag(true);
+  });
   box.addEventListener('pointercancel', () => endDrag(false));
-  box.addEventListener('mouseleave', () => endDrag(false));
+  // 注意：不绑定 mouseleave —— 手机端 pointer 行为下它会误触发，
+  // 导致 endDrag(false) 抢在 pointerup 之前执行，点击查看图片失效。
 }
 
 function openImageViewer(showFuture = false, directSrc = null, directLabel = null) {
