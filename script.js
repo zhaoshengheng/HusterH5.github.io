@@ -7,7 +7,8 @@ function cdn(path) {
   if (/^https?:\/\//.test(path)) return path;
   // 去掉开头的 ./
   const clean = path.replace(/^\.\//, '');
-  return `${CDN_BASE}/${clean}`;
+  // v61: 对中文路径进行 encodeURI，避免浏览器/jsDelivr 对中文解析失败
+  return `${CDN_BASE}/${encodeURI(clean)}`;
 }
 
 const landmarks = [
@@ -680,11 +681,9 @@ function updateImage(img, placeholder, src) {
   };
   showPlaceholder();
   if (!src) return;
-  const safeSrc = encodeURI(src);
-  // v50b：直接设 src 加载图片，不再先 fetch HEAD
-  // 原因：fetch HEAD 对中文路径在某些环境会因 CORS/编码失败，
-  // 导致图片永远不加载。直接设 src 让浏览器自己加载，onerror 兜底。
-  img.src = safeSrc;
+  // v61: cdn() 已对中文路径做 encodeURI，这里不再二次编码
+  // 之前的 safeSrc = encodeURI(src) 会对 CDN URL 中的 % 编码二次编码导致路径错误
+  img.src = src;
 }
 
 function updateLandmark() {
@@ -1009,7 +1008,8 @@ function openImageViewer(showFuture = false, directSrc = null, directLabel = nul
     kind = showFuture ? 'future' : 'now';
     labelText = showFuture ? '未来 · AI 生成' : '现在 · 实景原图';
   }
-  viewerImg.src = encodeURI(src);
+  // v61: cdn() 已处理编码，直接使用
+  viewerImg.src = src;
   viewerImg.dataset.kind = kind;
   const labelEl = $('#imageViewerLabel');
   if (labelEl) {
@@ -2051,7 +2051,8 @@ function preloadImage(src) {
   if (!src || _preloadCache.has(src)) return;
   _preloadCache.add(src);
   const img = new Image();
-  img.src = encodeURI(cdn(src));
+  // v61: cdn() 内部已做 encodeURI，无需再次编码
+  img.src = cdn(src);
 }
 // v53: 预加载关键大图（封面背景、地图、loading 背景、identity 背景）
 // 在 loading 消失后立即执行，确保用户翻页时图片已在缓存
